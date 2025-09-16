@@ -1,0 +1,493 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Kensuke Portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      /* ==============================
+         Warm Professional Theme
+      ============================== */
+      body {
+        background-color: #faf9f6; /* cream */
+        color: #2e2e2e; /* dark gray */
+        font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+      }
+      a {
+        color: #b22222; /* deep red */
+        text-decoration: none;
+        transition: 0.3s ease;
+      }
+      a:hover {
+        color: #f4a261; /* warm orange */
+        text-shadow: 0 0 6px #f4a261;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        color: #2e2e2e;
+      }
+      header#header {
+        background: #faf9f6;
+        border-bottom: 1px solid #e0dcd3;
+        padding-bottom: 0.5rem;
+      }
+      nav, #sidebar {
+        background: #faf9f6;
+        border-left: 1px solid #e0dcd3;
+      }
+      footer {
+        background: #faf9f6;
+        border-top: 1px solid #e0dcd3;
+        color: #7a7a7a;
+        text-align: center;
+      }
+
+      /* CTA Buttons */
+      .cta-buttons { margin-top: 1.5rem; }
+      .cta-buttons a { 
+        display: inline-block; 
+        margin-right: 1rem; 
+        padding: 0.6rem 1.2rem; 
+        border-radius: 8px; 
+        font-weight: bold; 
+        transition: all 0.3s; 
+      }
+      .cta-buttons a:hover { transform: scale(1.05); }
+      .btn-projects { 
+        background: linear-gradient(135deg, #b22222, #f4a261); 
+        color: #fff; 
+      }
+      .btn-resume { 
+        background: #b22222; 
+        color: #fff; 
+        border: 2px solid #b22222; 
+      }
+      .btn-resume:hover { 
+        background: #f4a261; 
+        color: #2e2e2e; 
+      }
+
+      /* About / Skills */
+      #about-skills .columns {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3rem;
+        margin-bottom: 3rem;
+        align-items: flex-start;
+      }
+      .about-box, .skills-box {
+        flex: 1 1 300px;
+        background: #fff6ed; /* light warm background */
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 4px 18px rgba(200, 150, 130, 0.2);
+        border: 1px solid #e0dcd3;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+      .about-box:hover, .skills-box:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 28px rgba(178, 34, 34, 0.3);
+      }
+      .skills-list {
+        list-style: none;
+        padding: 0;
+        margin-top: 1rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem 1rem;
+      }
+      .skills-list li {
+        background: #fff6ed;
+        border: 1px solid #e0dcd3;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        font-weight: 500;
+        padding: 0.55rem 1rem;
+        color: #2e2e2e;
+      }
+      .skills-list i {
+        color: #b22222;
+        font-size: 1.1em;
+      }
+      .cert {
+        margin-top: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+      .cert span {
+        background: #b22222;
+        color: #fff;
+        padding: 0.33rem 0.8rem;
+        border-radius: 15px;
+        font-size: 0.87rem;
+      }
+
+      /* Project & Experience Items */
+      .projects-list, .experience-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.3rem;
+        margin-top: 1.4rem;
+      }
+      .project-item {
+        background: #fff6ed;
+        border-radius: 12px;
+        box-shadow: 0 4px 18px rgba(200, 150, 130, 0.2);
+        padding: 1.5rem;
+        border: 1px solid #e0dcd3;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .project-media {
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        gap: 1rem;
+        align-items: start;
+      }
+      .project-thumb {
+        width: 140px;
+        height: 90px;
+        object-fit: cover;
+        border-radius: 8px;
+        border: 1px solid #e0dcd3;
+        box-shadow: 0 2px 8px rgba(200, 150, 130, 0.2);
+        background: #fff;
+      }
+      @media (max-width: 640px) {
+        .project-media {
+          grid-template-columns: 1fr;
+        }
+        .project-thumb {
+          width: 100%;
+          height: 180px;
+        }
+      }
+      .project-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 28px rgba(178, 34, 34, 0.3);
+      }
+      .project-item h3 a {
+        color: #b22222;
+      }
+      .project-item h3 a:hover {
+        color: #f4a261;
+        text-decoration: underline;
+      }
+      .project-item p, .project-item ul li {
+        margin: 0.3rem 0;
+        color: #2e2e2e;
+      }
+
+      /* Project Filters */
+      .project-filters { 
+        margin-bottom: 1rem; 
+      }
+      .project-filters button { 
+        color: #fff; 
+        border: none; 
+        border-radius: 8px; 
+        padding: 0.5rem 1rem; 
+        margin-right: 0.5rem; 
+        cursor: pointer; 
+        transition: 0.3s; 
+        font-weight: bold; 
+      }
+      .project-filters button:hover {
+        background: #f4a261; /* warm orange on hover */
+        color: #2e2e2e;
+      }
+      .project-filters button.active {
+        background: #b22222; /* active button red */
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Main -->
+      <div id="main">
+        <div class="inner">
+
+          <!-- Header -->
+          <header id="header">
+            <a href="index.html" class="logo"><strong>Kensuke / Portfolio</strong></a>
+          </header>
+
+          <!-- Hero / Banner -->
+          <section id="banner">
+            <div class="content">
+              <header>
+                <h1>Data & AI Enthusiast</h1>
+                <p>Seeking Spring 2026  Opportunities</p>
+              </header>
+              <p>
+                Data &amp; AI professional skilled in building end-to-end solutions — from cloud-native ETL pipelines 
+                to interactive dashboards and machine learning systems. Passionate about solving real-world problems 
+                with Python, SQL, and AWS.
+              </p>
+              <div class="cta-buttons">
+                <a href="#projects" class="btn-projects">View Projects</a>
+                <a href="https://drive.google.com/file/d/1IDUlWq66mZY-jh0URw2VH39gu_FnccR9/view?usp=sharing" target="_blank" class="btn-resume">Download Resume</a>
+                <a href="https://github.com/kensuke0529" target="_blank" class="btn-resume">GitHub</a>
+                <a href="https://www.linkedin.com/in/umakoshi-kensuke/" target="_blank" class="btn-resume">Linkedin</a>
+              </div>
+            </div>
+          </section>
+
+          <!-- About Me / Skills -->
+          <section id="about-skills">
+            <div class="columns">
+              <div class="about-box">
+                <h2>About Me</h2>
+                <p>Passionate about solving real-world problems using data. Currently seeking Summer 2025 internships and full-time opportunities after May 2026 graduation in Data Science, Analytics, and AI roles.</p>
+              </div>
+              <div class="skills-box">
+                <h2>Skills</h2>
+                <ul class="skills-list">
+                  <li><i class="fab fa-python"></i> Python</li>
+                  <li><i class="fas fa-database"></i> SQL</li>
+                  <li><i class="fas fa-chart-line"></i> Tableau</li>
+                  <li><i class="fas fa-chart-bar"></i> Power BI</li>
+                  <li><i class="fas fa-server"></i> AWS</li>
+                  <li><i class="fas fa-cogs"></i> Docker</li>
+                  <li><i class="fas fa-project-diagram"></i> Airflow</li>
+                  <li><i class="fab fa-git-alt"></i> Git / GitHub</li>
+                </ul>
+                <div class="cert">
+                  <span>AWS Solutions Architect – Associate</span>
+                  <span>IBM Data Science Professional Certificate</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- EXPERIENCE SECTION -->
+          <section id="experience">
+            <header class="major">
+              <h2>Experience</h2>
+            </header>
+            <div class="experience-list">
+              <div class="project-item">
+                <h3>Teaching Assistant, Introduction to Business Analytics | University of Utah | Salt Lake City, UT</h3>
+                <span>Aug 2025 – Present</span>
+                <ul>
+                  <li>Grade assignments, hold office hours, and mentor students in Python programming and machine learning concepts.</li>
+                  <li>Facilitate clear communication of technical results to help students develop strong analytical and data storytelling skills.</li>
+                </ul>
+              </div>
+
+              <div class="project-item">
+                <h3>Customer Insights Analyst | Cortex Evolution | Salt Lake City, UT</h3>
+                <span>Oct 2024 – May 2025</span>
+                <ul>
+                  <li>Analyzed 200+ customer behavior records using Google Analytics and Hotjar, identifying key friction points and implementing changes that elevated user engagement.</li>
+                  <li>Developed and managed interactive Tableau dashboards to visualize campaign datasets and support decisions for subsequent campaigns.</li>
+                  <li>Automated Reddit thread scraping via API to identify relevant discussions and potential market leads.</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- PROJECTS SECTION -->
+          <section id="projects">
+            <header class="major">
+              <h2>Projects</h2>
+            </header>
+
+            <!-- Filter Buttons -->
+            <div class="project-filters">
+              <button class="filter-btn active" data-category="all">All</button>
+              <button class="filter-btn" data-category="data-analysis">Data Analysis</button>
+              <button class="filter-btn" data-category="data-science">Data Science</button>
+              <button class="filter-btn" data-category="ai">AI</button>
+              <button class="filter-btn" data-category="cloud">Cloud</button>
+            </div>
+
+            <div class="projects-list">
+              <div class="project-item" data-category="data-analysis">
+                <div class="project-media">
+                  <img class="project-thumb" src="assets/img/projects/visa-dashboard.svg" alt="Visa Sponsor Job Dashboard thumbnail showing filters and charts" loading="lazy" onerror="this.onerror=null;this.src='https://via.placeholder.com/140x90?text=Visa+Dashboard';">
+                  <div>
+                    <h3><a href="https://careers.utah.edu/internationalstudents/" target="_blank">Visa Sponsor Job Dashboard | U Career Success, University of Utah</a></h3>
+                    <span>Feb 2025 – Present</span>
+                    <ul>
+                      <li>Developed and deployed an interactive dashboard supporting international students in finding visa-sponsored jobs, with dynamic filters by visa type, job title, and location using EDA-processed raw datasets.</li>
+                      <li>Led end-to-end data workflow: web scraping, ETL, EDA, and visualization using Dockerized Airflow pipelines and Tableau.</li>
+                      <li>Partnered with career advisors and IT to define requirements, incorporate feedback, and launch the dashboard on the official university website.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-item" data-category="cloud">
+                <div class="project-media">
+                  <img class="project-thumb" src="assets/img/projects/aws-static-site.svg" alt="AWS static website deployment diagram thumbnail" loading="lazy" onerror="this.onerror=null;this.src='https://via.placeholder.com/140x90?text=AWS+Site';">
+                  <div>
+                    <h3><a href="projects/website-auto-deploy.html">Static Website deploy by AWS</a></h3>
+                    <span>Jul 2025</span>
+                    <ul>
+                      <li>Deploy a static website using an AWS S3 bucket, Terraform, and GitHub Actions for continuous deployment.</li>
+                    </ul>
+                    <p><a href="https://github.com/kensuke0529/MyWeb" target="_blank">GitHub</a></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-item" data-category="data-science,cloud">
+                <div class="project-media">
+                  <img class="project-thumb" src="assets/img/projects/fraud-detection.svg" alt="Fraud detection pipeline thumbnail with Airflow and SageMaker" loading="lazy" onerror="this.onerror=null;this.src='https://via.placeholder.com/140x90?text=Fraud+Detection';">
+                  <div>
+                    <h3><a href="projects/end-to-end-fraud-detection.html">End-to-End Fraud Detection</a></h3>
+                    <span>Jun 2025</span>
+                    <ul>
+                      <li>Developed a scalable ETL pipeline with <strong>Apache Airflow</strong> orchestrating ingestion of 284k+ transactions into AWS.</li>
+                      <li>Trained and deployed fraud detection models (<strong>XGBoost, Random Forest, Isolation Forest</strong>) on <strong>AWS SageMaker</strong>, achieving 0.89 F1-score.</li>
+                      <li>Optimized imbalanced dataset handling and evaluated recall-precision tradeoffs to mitigate financial risk.</li>
+                    </ul>
+                    <p><a href="https://github.com/kensuke0529/ML" target="_blank">GitHub</a></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-item" data-category="data-science">
+                <div class="project-media">
+                  <img class="project-thumb" src="assets/img/projects/cms-medicare.svg" alt="CMS Medicare payment prediction dashboard thumbnail" loading="lazy" onerror="this.onerror=null;this.src='https://via.placeholder.com/140x90?text=CMS+Medicare';">
+                  <div>
+                    <h3><a href="projects/cms-medicare-prediction.html">CMS Medicare Payment Prediction</a></h3>
+                    <span>Jul 2025</span>
+                    <ul>
+                      <li>Implemented a full-cycle ML pipeline: <strong>ETL → SQL (MySQL) → EDA → ML modeling</strong> on 100k+ inpatient records.</li>
+                      <li>Built and tuned <strong>XGBoost + ensemble models</strong> with Optuna, achieving MAE $1,891 and R² 0.946 (75% accuracy improvement).</li>
+                      <li>Deployed a <strong>Streamlit + Docker</strong> web app with optional <strong>SageMaker integration</strong> for cloud inference.</li>
+                    </ul>
+                    <p><a href="https://github.com/kensuke0529/CMS" target="_blank">GitHub</a></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-item" data-category="data-science">
+                <div class="project-media">
+                  <img class="project-thumb" src="assets/img/projects/recommender.svg" alt="Hybrid movie recommendation system UI thumbnail" loading="lazy" onerror="this.onerror=null;this.src='https://via.placeholder.com/140x90?text=Recommender';">
+                  <div>
+                    <h3><a href="projects/rec-sys.html">Hybrid Movie Recommendation System</a></h3>
+                    <span>Jul 2025 – Present</span>
+                    <ul>
+                      <li>Engineered a hybrid engine combining <strong>collaborative filtering (PyTorch)</strong>, <strong>semantic search (SentenceTransformer)</strong>, and item-item similarity.</li>
+                      <li>Achieved MAE 0.67 and RMSE 0.87 across 99k+ ratings and 43k+ movie titles.</li>
+                      <li>Deployed as a <strong>FastAPI microservice</strong> with REST endpoints for real-time recommendations and natural language “search + discover” features.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-item" data-category="ai">
+                <div class="project-media">
+                  <img class="project-thumb" src="assets/img/projects/ai-study-agent.svg" alt="AI study assistant agent app thumbnail" loading="lazy" onerror="this.onerror=null;this.src='https://via.placeholder.com/140x90?text=AI+Agent';">
+                  <div>
+                    <h3><a href="projects/ai-study-agent.html">AI Study Assistant Agent (RAG-based LLM Tool)</a></h3>
+                    <span>Jul 2025 – Present</span>
+                    <ul>
+                      <li>Developed an intelligent AI agent using <strong>RAG, FAISS, OpenAI LLMs, and embeddings</strong> to provide context-aware answers from personalized document libraries, reducing hallucinations.</li>
+                      <li>Engineered a robust retrieval pipeline combining <strong>text-embedding-3-small</strong> and FAISS for efficient semantic search across large document datasets.</li>
+                      <li>Built an interactive <strong>Streamlit</strong> interface for real-time querying, enabling scalable and user-friendly deployment.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-item" data-category="data-analysis">
+                <div class="project-media">
+                  <img class="project-thumb" src="assets/img/projects/food-delivery.svg" alt="Food delivery sales analysis dashboard thumbnail" loading="lazy" onerror="this.onerror=null;this.src='https://via.placeholder.com/140x90?text=Food+Delivery';">
+                  <div>
+                    <h3><a href="projects/food-delivery-analysis.html">Food Delivery App Sales Analysis</a></h3>
+                    <span>Oct 2024 – Nov 2024</span>
+                    <ul>
+                      <li>Analyzed 20K+ sales records using <strong>SQL (PostgreSQL) and Python</strong> to uncover key business trends and customer behaviors.</li>
+                      <li>Evaluated KPIs including weekly profits, retention rate, and profit margins to identify revenue drivers and friction points.</li>
+                      <li>Produced a detailed descriptive report summarizing actionable insights for business strategy and decision-making.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-item" data-category="data-analysis,data-science">
+                <div class="project-media">
+                  <img class="project-thumb" src="assets/img/projects/banking-churn.svg" alt="Banking churn dashboard thumbnail" loading="lazy" onerror="this.onerror=null;this.src='https://via.placeholder.com/140x90?text=Banking+Churn';">
+                  <div>
+                    <h3><a href="projects/banking-churn.html">Banking Churn Rate Analysis &amp; Prediction</a></h3>
+                    <span>Oct 2024</span>
+                    <ul>
+                      <li>Performed Exploratory Data Analysis (EDA) on 10K bank customer records to understand churn behavior using <strong>Excel &amp; Python</strong>.</li>
+                      <li>Built an interactive dashboard visualizing churn rates by salary, tenure, and age to communicate insights to stakeholders.</li>
+                      <li>Applied predictive modeling to forecast churn, including model selection, tuning, and actionable recommendations for retention strategies.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div id="sidebar">
+        <div class="inner">
+          <section>
+            <header class="major">
+              <h2>Contact</h2>
+            </header>
+            <ul class="contact">
+              <li class="icon solid fa-envelope"><a href="mailto:kenkou1001@gmail.com">kenkou1001@gmail.com</a></li>
+              <li class="icon solid fa-phone">(442) 274-7842</li>
+              <li class="icon solid fa-home">Salt Lake City, UT</li>
+            </ul>
+          </section>
+          <footer id="footer">
+            <p class="copyright">
+              &copy; 2025 Kensuke. Design inspired by <a href="https://html5up.net">HTML5 UP</a>.
+            </p>
+          </footer>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <!-- Filter Script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projects = document.querySelectorAll('.projects-list .project-item');
+
+        filterBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            const category = btn.getAttribute('data-category');
+
+            projects.forEach(project => {
+              const categories = (project.getAttribute('data-category') || '')
+                                    .split(',')
+                                    .map(c => c.trim());
+              project.style.display = (category === 'all' || categories.includes(category)) ? '' : 'none';
+            });
+
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+          });
+        });
+      });
+    </script>
+
+  </body>
+</html>
+
+

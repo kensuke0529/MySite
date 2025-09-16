@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>AI Study Assistant Agent</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+  </head>
+  <body class="is-preload">
+
+    <div id="wrapper">
+      <div id="main">
+        <div class="inner">
+          <header id="header">
+            <a href="../index.html" class="logo"><strong>Kensuke / Portfolio</strong></a>
+          </header>
+
+          <section>
+            <header class="major">
+              <h2>AI Study Assistant Agent (RAG-based)</h2>
+              <p>Document-grounded QA with embeddings and retrieval</p>
+            </header>
+
+            <div id="readme" class="content">
+              <p>Loading README from GitHub…</p>
+            </div>
+
+            <ul class="actions">
+              <li><a class="button icon brands fa-github" href="https://github.com/kensuke0529/AI-study-agent" target="_blank">View on GitHub</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="sidebar">
+        <div class="inner">
+          <section>
+            <header class="major">
+              <h2>Navigate</h2>
+            </header>
+            <ul class="actions">
+              <li><a href="../index.html" class="button">Back to Home</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/browser.min.js"></script>
+    <script src="../assets/js/breakpoints.min.js"></script>
+    <script src="../assets/js/util.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script>
+      (function() {
+        const owner = 'kensuke0529';
+        const repo = 'AI-study-agent';
+        const branch = 'main';
+
+        const apiUrl = `https://api.github.com/repos/${owner}/${repo}/readme?ref=${encodeURIComponent(branch)}`;
+        fetch(apiUrl, { headers: { Accept: 'application/vnd.github.v3.html' } })
+          .then(r => { if (!r.ok) throw new Error('README not found'); return r.text(); })
+          .then(html => {
+            document.getElementById('readme').innerHTML = html;
+            const base = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/`;
+            document.querySelectorAll('#readme img').forEach(img => {
+              const src = img.getAttribute('src') || '';
+              if (src && !/^https?:\/\//i.test(src) && !src.startsWith('data:')) {
+                img.src = base + src.replace(/^\.?\/?/, '');
+              }
+            });
+            document.querySelectorAll('#readme a').forEach(a => {
+              const href = a.getAttribute('href') || '';
+              if (href && !/^https?:\/\//i.test(href) && !href.startsWith('#') && !href.startsWith('mailto:')) {
+                a.href = `https://github.com/${owner}/${repo}/blob/${branch}/` + href.replace(/^\.?\/?/, '');
+                a.target = '_blank';
+                a.rel = 'noopener noreferrer';
+              }
+            });
+          })
+          .catch(() => {
+            const rawUrls = [
+              `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/README.md`,
+              `https://raw.githubusercontent.com/${owner}/${repo}/master/README.md`,
+              `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/readme.md`,
+              `https://raw.githubusercontent.com/${owner}/${repo}/master/readme.md`
+            ];
+
+            function toHtml(md) {
+              let h = md
+                .replace(/\r\n|\r/g, '\n')
+                .replace(/^# (.*)$/gm, '<h1>$1<\/h1>')
+                .replace(/^## (.*)$/gm, '<h2>$1<\/h2>')
+                .replace(/^### (.*)$/gm, '<h3>$1<\/h3>')
+                .replace(/\n\n+/g, '</p><p>')
+                .replace(/\n/g, '<br />')
+                .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1<\/a>');
+              return '<p>' + h + '</p>';
+            }
+
+            (function tryRaw(i) {
+              if (i >= rawUrls.length) {
+                document.getElementById('readme').innerHTML = '<p>Unable to load README. See the repository on GitHub.</p>';
+                return;
+              }
+              fetch(rawUrls[i])
+                .then(r => r.ok ? r.text() : Promise.reject())
+                .then(md => { document.getElementById('readme').innerHTML = toHtml(md); })
+                .catch(() => tryRaw(i + 1));
+            })(0);
+          });
+      })();
+    </script>
+  </body>
+</html>
+
+

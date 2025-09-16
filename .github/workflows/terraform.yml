@@ -1,0 +1,61 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5.7
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Terraform Init
+        run: terraform init
+        working-directory: ./
+
+      - name: Terraform Import existing S3 buckets
+        run: |
+          terraform import aws_s3_bucket.myweb kensuke-terraform-web-log-123 || echo "myweb bucket already imported"
+          terraform import aws_s3_bucket.mylogs kensuke-terraform-website-123 || echo "mylogs bucket already imported"
+        working-directory: ./
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
+        working-directory: ./
+
+      - name: Get Terraform outputs
+        id: tf_outputs
+        run: |
+          terraform output -json > tf_outputs.json
+          cat tf_outputs.json  # Optional: useful for debugging
+          cf_dist_id=$(jq -r '.cloudfront_distribution_id.value' tf_outputs.json)
+          website_bucket=$(jq -r '.website_bucket.value' tf_outputs.json)
+          echo "cf_dist_id=$cf_dist_id" >> $GITHUB_OUTPUT
+          echo "website_bucket=$website_bucket" >> $GITHUB_OUTPUT
+        working-directory: ./
+
+
+      - name: List static website files
+        run: ls -l ./my-website
+
+      - name: Sync static site to S3
+        run: aws s3 sync ./my-website s3://${{ steps.tf_outputs.outputs.website_bucket }} --delete
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ steps.tf_outputs.outputs.cf_dist_id }} \
+            --paths "/*"
