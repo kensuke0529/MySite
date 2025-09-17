@@ -1,0 +1,40 @@
+<svg width="140" height="90" viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8f9fa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e9ecef;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cardGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f8f9fa;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="140" height="90" fill="url(#bgGradient)" rx="8"/>
+  
+  <!-- Header -->
+  <rect x="10" y="8" width="120" height="20" fill="#b22222" rx="4"/>
+  <text x="70" y="22" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" font-weight="bold">AI News Analyst</text>
+  
+  <!-- News cards -->
+  <rect x="12" y="32" width="116" height="12" fill="url(#cardGradient)" rx="2" stroke="#dee2e6" stroke-width="0.5"/>
+  <rect x="14" y="34" width="4" height="8" fill="#b22222" rx="1"/>
+  <text x="20" y="42" fill="#495057" font-family="Arial, sans-serif" font-size="6">AI breakthrough in healthcare...</text>
+  
+  <rect x="12" y="46" width="116" height="12" fill="url(#cardGradient)" rx="2" stroke="#dee2e6" stroke-width="0.5"/>
+  <rect x="14" y="48" width="4" height="8" fill="#28a745" rx="1"/>
+  <text x="20" y="56" fill="#495057" font-family="Arial, sans-serif" font-size="6">Machine learning trends...</text>
+  
+  <rect x="12" y="60" width="116" height="12" fill="url(#cardGradient)" rx="2" stroke="#dee2e6" stroke-width="0.5"/>
+  <rect x="14" y="62" width="4" height="8" fill="#007bff" rx="1"/>
+  <text x="20" y="70" fill="#495057" font-family="Arial, sans-serif" font-size="6">RAG technology updates...</text>
+  
+  <!-- AI/RAG icon -->
+  <circle cx="115" cy="25" r="8" fill="#f4a261" stroke="#b22222" stroke-width="1"/>
+  <text x="115" y="29" text-anchor="middle" fill="#2e2e2e" font-family="Arial, sans-serif" font-size="8" font-weight="bold">AI</text>
+  
+  <!-- Search icon -->
+  <circle cx="125" cy="75" r="6" fill="none" stroke="#6c757d" stroke-width="1.5"/>
+  <line x1="120" y1="70" x2="118" y2="68" stroke="#6c757d" stroke-width="1.5"/>
+</svg>

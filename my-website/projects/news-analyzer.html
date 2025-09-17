@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>AI News Analyst</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+  </head>
+  <body class="is-preload">
+
+    <div id="wrapper">
+      <div id="main">
+        <div class="inner">
+          <header id="header">
+            <a href="../index.html" class="logo"><strong>Kensuke / Portfolio</strong></a>
+          </header>
+
+          <section>
+            <header class="major">
+              <h2>AI News Analyst</h2>
+              <p>Intelligent news platform with RAG-powered insights</p>
+            </header>
+
+            <div class="content">
+              <h3>Overview</h3>
+              <p>Cut through the AI news noise—<strong>AI News Analyst</strong> is an intelligent news platform designed to help busy professionals, researchers and students stay on top of AI trends. Get concise weekly summaries, and deep article insights by RAG (retrieval-augmented generation).</p>
+
+              <h3>Why use AI News Analyst?</h3>
+              <ul>
+                <li><strong>Save hours on manual research</strong> - Automated news curation and summarization</li>
+                <li><strong>Catch up quickly on fast-moving topics</strong> - Weekly summary reports with key insights</li>
+                <li><strong>Always have context</strong> - Chat bot asks anything about the news with RAG-powered responses</li>
+              </ul>
+
+              <h3>Key Features</h3>
+              <ul>
+                <li><strong>Curated News Dashboard:</strong> Browse up-to-date AI news with concise, AI-generated summaries and direct source links</li>
+                <li><strong>Weekly Summary Reports:</strong> Let the AI generate a week-in-review—a quick, smart overview of the biggest stories</li>
+                <li><strong>AI Chat Assistant:</strong> Ask questions about articles, themes, companies, or overall trends for instant context</li>
+                <li><strong>RAG Similarity Search:</strong> Find related news using a cutting-edge retrieval-augmented pipeline—explore clusters, discover patterns</li>
+                <li><strong>Modern UX:</strong> Responsive web design with intuitive navigation (mobile-friendly)</li>
+              </ul>
+
+              <h3>Technical Architecture</h3>
+              <p><strong>Retrieval-Augmented Generation (RAG) Pipeline:</strong></p>
+              <ul>
+                <li>Embeds all articles using <code>sentence-transformers/all-mpnet-base-v2</code> for high semantic similarity accuracy</li>
+                <li>Stores embeddings in a <strong>Chroma</strong> vector database for fast retrieval and scale</li>
+                <li>At query time, retrieves relevant articles via similarity search—feeds results to the LLM for context-rich responses</li>
+              </ul>
+
+              <h3>Technologies Used</h3>
+              <ul>
+                <li><strong>Backend:</strong> Flask (Python)</li>
+                <li><strong>AI/ML:</strong> LangChain, OpenAI GPT APIs, HuggingFace transformers</li>
+                <li><strong>Frontend:</strong> HTML5, CSS3, JavaScript (ES6+)</li>
+                <li><strong>Database:</strong> Chroma for vector embeddings</li>
+                <li><strong>Data Sources:</strong> MIT AI News, Techmeme, and extensible news sources</li>
+              </ul>
+
+              <h3>Project Structure</h3>
+              <pre><code>ai_news/
+├── agents/                # Core AI modules (chatbot, doc loader, summary reporter)
+├── data/                  # News datasets (JSON)
+├── rag/                   # RAG pipeline logic
+├── static/                # CSS/JS assets
+├── templates/             # HTML templates
+├── app.py                 # Flask app
+└── requirements.txt       # Python dependencies</code></pre>
+
+              <h3>API Endpoints</h3>
+              <table>
+                <tr>
+                  <th>Endpoint</th>
+                  <th>Method</th>
+                  <th>Description</th>
+                </tr>
+                <tr>
+                  <td>/news</td>
+                  <td>GET</td>
+                  <td>Fetch latest news</td>
+                </tr>
+                <tr>
+                  <td>/summary</td>
+                  <td>POST</td>
+                  <td>Generate weekly summary</td>
+                </tr>
+                <tr>
+                  <td>/chat</td>
+                  <td>POST</td>
+                  <td>Interactive news Q&A</td>
+                </tr>
+                <tr>
+                  <td>/search?q=query</td>
+                  <td>GET</td>
+                  <td>RAG similarity search</td>
+                </tr>
+              </table>
+
+              <h3>What sets this apart?</h3>
+              <ul>
+                <li>Integrated Q&A over <em>all</em> stored news—no other aggregator explains context this deeply</li>
+                <li>State-of-the-art vector similarity search for discovery</li>
+                <li>Fully open, extensible—easy to add more sources or improve the underlying models</li>
+              </ul>
+
+              <h3>Data Sources</h3>
+              <ul>
+                <li><strong>MIT AI News</strong> - Curated AI research and news from MIT</li>
+                <li><strong>Techmeme</strong> - Top technology news and commentary from around the web</li>
+                <li><strong>Combined Sources</strong> - Weekly aggregated data from all sources</li>
+              </ul>
+              <p><em>Easy to extend to more sources—add a loader under <code>agents/docloader</code> and plug into the RAG pipeline.</em></p>
+
+              <h3>Development & Future Plans</h3>
+              <p><strong>Planned:</strong></p>
+              <ul>
+                <li>Ingest more sources (e.g., TechCrunch, Arxiv, CB Insights)</li>
+                <li>Deploy a scalable demo (hosting TBA; currently local/prototype due to OpenAI API and vector DB costs)</li>
+                <li>Personalized feeds and user accounts</li>
+              </ul>
+
+              <p><strong>Recently Added:</strong></p>
+              <ul>
+                <li><strong>Techmeme Integration</strong> - Added support for Techmeme RSS feed as a news source</li>
+                <li><strong>Unified News Loader</strong> - Created <code>unified_news_loader.py</code> to manage multiple news sources</li>
+                <li><strong>Combined Weekly Data</strong> - Generate weekly files that aggregate articles from all sources</li>
+                <li><strong>Source Attribution</strong> - Display source information for each article in the UI</li>
+              </ul>
+            </div>
+
+            <ul class="actions">
+              <li><a class="button icon brands fa-github" href="https://github.com/kensuke0529/News-analyzer" target="_blank">View on GitHub</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="sidebar">
+        <div class="inner">
+          <section>
+            <header class="major">
+              <h2>Navigate</h2>
+            </header>
+            <ul class="actions">
+              <li><a href="../index.html" class="button">Back to Home</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/browser.min.js"></script>
+    <script src="../assets/js/breakpoints.min.js"></script>
+    <script src="../assets/js/util.js"></script>
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>
