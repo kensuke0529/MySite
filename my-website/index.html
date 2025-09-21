@@ -8,64 +8,191 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
       /* ==============================
-         Warm Professional Theme
+         Enhanced Interactive Portfolio
       ============================== */
-      body {
-        background-color: #faf9f6; /* cream */
-        color: #2e2e2e; /* dark gray */
-        font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-      }
-      a {
-        color: #b22222; /* deep red */
-        text-decoration: none;
-        transition: 0.3s ease;
-      }
-      a:hover {
-        color: #f4a261; /* warm orange */
-        text-shadow: 0 0 6px #f4a261;
-      }
-      h1, h2, h3, h4, h5, h6 {
-        color: #2e2e2e;
-      }
-      header#header {
-        background: #faf9f6;
-        border-bottom: 1px solid #e0dcd3;
-        padding-bottom: 0.5rem;
-      }
-      nav, #sidebar {
-        background: #faf9f6;
-        border-left: 1px solid #e0dcd3;
-      }
-      footer {
-        background: #faf9f6;
-        border-top: 1px solid #e0dcd3;
-        color: #7a7a7a;
-        text-align: center;
+      
+      /* CSS Variables for Theme */
+      :root {
+        --primary-color: #b22222;
+        --secondary-color: #f4a261;
+        --bg-color: #faf9f6;
+        --text-color: #2e2e2e;
+        --accent-color: #e76f51;
+        --gradient-1: linear-gradient(135deg, #b22222, #f4a261);
+        --gradient-2: linear-gradient(135deg, #e76f51, #f4a261);
+        --shadow: 0 10px 30px rgba(178, 34, 34, 0.2);
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
-      /* CTA Buttons */
-      .cta-buttons { margin-top: 1.5rem; }
+      /* Dark mode variables */
+      [data-theme="dark"] {
+        --bg-color: #1a1a1a;
+        --text-color: #e0e0e0;
+        --primary-color: #ff6b6b;
+        --secondary-color: #4ecdc4;
+        --accent-color: #45b7d1;
+        --gradient-1: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+        --gradient-2: linear-gradient(135deg, #45b7d1, #96ceb4);
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+        transition: var(--transition);
+        overflow-x: hidden;
+      }
+
+
+      /* Theme Toggle Button */
+      .theme-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+        background: var(--gradient-1);
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.2em;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+      }
+
+      .theme-toggle:hover {
+        transform: scale(1.1) rotate(180deg);
+      }
+      a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: var(--transition);
+        position: relative;
+      }
+      a:hover {
+        color: var(--secondary-color);
+        text-shadow: 0 0 8px var(--secondary-color);
+        transform: translateY(-1px);
+      }
+      h1, h2, h3, h4, h5, h6 {
+        color: var(--text-color) !important;
+        transition: var(--transition);
+        font-weight: 700;
+      }
+      nav, #sidebar {
+        background: var(--bg-color);
+        border-left: 1px solid rgba(224, 220, 211, 0.3);
+        transition: var(--transition);
+      }
+      footer {
+        background: var(--bg-color);
+        border-top: 1px solid rgba(224, 220, 211, 0.3);
+        color: var(--text-color);
+        text-align: center;
+        transition: var(--transition);
+      }
+
+      /* Animated Typing Effect */
+      .typing-text {
+        overflow: hidden;
+        border-right: 3px solid var(--primary-color);
+        white-space: nowrap;
+        animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+      }
+
+      @keyframes typing {
+        from { width: 0 }
+        to { width: 100% }
+      }
+
+      @keyframes blink-caret {
+        from, to { border-color: transparent }
+        50% { border-color: var(--primary-color) }
+      }
+
+      /* Rotating Text Animation */
+      .rotating-text {
+        display: inline-block;
+        animation: rotateText 8s infinite;
+      }
+
+      @keyframes rotateText {
+        0%, 20% { content: "Data Scientist"; }
+        25%, 45% { content: "AI Engineer"; }
+        50%, 70% { content: "ML Engineer"; }
+        75%, 95% { content: "Data Analyst"; }
+        100% { content: "Data Scientist"; }
+      }
+
+      /* Enhanced CTA Buttons */
+      .cta-buttons { 
+        margin-top: 1.5rem; 
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
       .cta-buttons a { 
         display: inline-block; 
-        margin-right: 1rem; 
-        padding: 0.6rem 1.2rem; 
-        border-radius: 8px; 
+        padding: 0.8rem 1.5rem; 
+        border-radius: 12px; 
         font-weight: bold; 
-        transition: all 0.3s; 
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+        min-width: 140px;
       }
-      .cta-buttons a:hover { transform: scale(1.05); }
+      .cta-buttons a::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: left 0.5s;
+      }
+      .cta-buttons a:hover::before {
+        left: 100%;
+      }
+      .cta-buttons a:hover { 
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: var(--shadow);
+      }
       .btn-projects { 
-        background: linear-gradient(135deg, #b22222, #f4a261); 
+        background: var(--gradient-1); 
         color: #fff; 
+        box-shadow: 0 4px 15px rgba(178, 34, 34, 0.3);
       }
       .btn-resume { 
-        background: #b22222; 
+        background: var(--primary-color); 
         color: #fff; 
-        border: 2px solid #b22222; 
+        border: 2px solid var(--primary-color);
+        box-shadow: 0 4px 15px rgba(178, 34, 34, 0.2);
       }
       .btn-resume:hover { 
-        background: #f4a261; 
-        color: #2e2e2e; 
+        background: var(--secondary-color); 
+        color: var(--text-color);
+        border-color: var(--secondary-color);
+      }
+
+      /* Fixed Background Colors for Main Sections */
+      #banner {
+        background: var(--bg-color);
+        position: relative;
+        z-index: 1;
+      }
+      
+      #about-skills {
+        background: var(--bg-color);
+        position: relative;
+        z-index: 1;
       }
 
       /* About / Skills */
@@ -78,11 +205,11 @@
       }
       .about-box, .skills-box {
         flex: 1 1 300px;
-        background: #fff6ed; /* light warm background */
+        background: var(--bg-color);
         border-radius: 12px;
         padding: 2rem;
         box-shadow: 0 4px 18px rgba(200, 150, 130, 0.2);
-        border: 1px solid #e0dcd3;
+        border: 1px solid rgba(224, 220, 211, 0.5);
         transition: transform 0.3s, box-shadow 0.3s;
       }
       .about-box:hover, .skills-box:hover {
@@ -98,20 +225,47 @@
         gap: 0.6rem 1rem;
       }
       .skills-list li {
-        background: #fff6ed;
-        border: 1px solid #e0dcd3;
+        background: var(--bg-color);
+        border: 1px solid rgba(224, 220, 211, 0.5);
         border-radius: 20px;
         display: flex;
         align-items: center;
         gap: 0.65rem;
         font-weight: 500;
         padding: 0.55rem 1rem;
-        color: #2e2e2e;
+        color: var(--text-color);
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+      }
+      .skills-list li::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: var(--gradient-1);
+        opacity: 0.1;
+        transition: left 0.5s ease;
+      }
+      .skills-list li:hover::before {
+        left: 0;
+      }
+      .skills-list li:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(178, 34, 34, 0.2);
+        border-color: var(--primary-color);
       }
       .skills-list i {
-        color: #b22222;
+        color: var(--primary-color);
         font-size: 1.1em;
+        transition: var(--transition);
       }
+      .skills-list li:hover i {
+        transform: scale(1.2) rotate(5deg);
+      }
+
       .cert {
         margin-top: 1rem;
         display: flex;
@@ -119,7 +273,7 @@
         gap: 0.5rem;
       }
       .cert span {
-        background: #b22222;
+        background: var(--primary-color);
         color: #fff;
         padding: 0.33rem 0.8rem;
         border-radius: 15px;
@@ -134,12 +288,29 @@
         margin-top: 1.4rem;
       }
       .project-item {
-        background: #fff6ed;
-        border-radius: 12px;
-        box-shadow: 0 4px 18px rgba(200, 150, 130, 0.2);
+        background: var(--bg-color);
+        border-radius: 16px;
+        box-shadow: 0 8px 32px rgba(200, 150, 130, 0.15);
         padding: 1.5rem;
-        border: 1px solid #e0dcd3;
-        transition: transform 0.2s, box-shadow 0.2s;
+        border: 1px solid rgba(224, 220, 211, 0.5);
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+        backdrop-filter: blur(10px);
+      }
+      .project-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--gradient-1);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+      .project-item:hover::before {
+        transform: scaleX(1);
       }
       .project-media {
         display: grid;
@@ -152,9 +323,9 @@
         height: 90px;
         object-fit: cover;
         border-radius: 8px;
-        border: 1px solid #e0dcd3;
+        border: 1px solid rgba(224, 220, 211, 0.5);
         box-shadow: 0 2px 8px rgba(200, 150, 130, 0.2);
-        background: #fff;
+        background: var(--bg-color);
       }
       @media (max-width: 640px) {
         .project-media {
@@ -166,63 +337,352 @@
         }
       }
       .project-item:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 28px rgba(178, 34, 34, 0.3);
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(178, 34, 34, 0.25);
+        border-color: var(--primary-color);
+      }
+
+      /* Scroll Animations */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease;
+      }
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .slide-in-left {
+        opacity: 0;
+        transform: translateX(-50px);
+        transition: all 0.8s ease;
+      }
+      .slide-in-left.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .slide-in-right {
+        opacity: 0;
+        transform: translateX(50px);
+        transition: all 0.8s ease;
+      }
+      .slide-in-right.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .scale-in {
+        opacity: 0;
+        transform: scale(0.8);
+        transition: all 0.8s ease;
+      }
+      .scale-in.visible {
+        opacity: 1;
+        transform: scale(1);
       }
       .project-item h3 a {
-        color: #b22222;
+        color: var(--primary-color);
       }
       .project-item h3 a:hover {
-        color: #f4a261;
+        color: var(--secondary-color);
         text-decoration: underline;
       }
       .project-item p, .project-item ul li {
         margin: 0.3rem 0;
-        color: #2e2e2e;
+        color: var(--text-color);
       }
 
       /* Project Filters */
       .project-filters { 
         margin-bottom: 1rem; 
       }
+      .project-filters { 
+        margin-bottom: 2rem; 
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+      }
       .project-filters button { 
-        color: #fff; 
+        color: #ffffff !important; 
         border: none; 
-        border-radius: 8px; 
-        padding: 0.5rem 1rem; 
-        margin-right: 0.5rem; 
+        border-radius: 25px; 
+        padding: 0.6rem 1.2rem; 
         cursor: pointer; 
-        transition: 0.3s; 
+        transition: var(--transition);
         font-weight: bold; 
+        background: var(--primary-color) !important;
+        border: 2px solid var(--primary-color);
+        position: relative;
+        overflow: hidden;
+        text-shadow: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        vertical-align: middle;
+      }
+      .project-filters button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: left 0.5s;
+      }
+      .project-filters button:hover::before {
+        left: 100%;
       }
       .project-filters button:hover {
-        background: #f4a261; /* warm orange on hover */
-        color: #2e2e2e;
+        background: var(--secondary-color) !important;
+        color: #ffffff !important;
+        border-color: var(--secondary-color);
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: var(--shadow);
       }
       .project-filters button.active {
-        background: #b22222; /* active button red */
-        color: #fff;
+        background: var(--primary-color) !important;
+        color: #ffffff !important;
+        border-color: var(--primary-color);
+        transform: scale(1.1);
+        box-shadow: 0 0 20px rgba(178, 34, 34, 0.4);
       }
+
+      /* Interactive Contact Form */
+      .contact-form {
+        margin-top: 1rem;
+      }
+      .form-group {
+        position: relative;
+        margin-bottom: 1.5rem;
+      }
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 1rem;
+        border: 2px solid rgba(224, 220, 211, 0.5);
+        border-radius: 8px;
+        background: var(--bg-color);
+        color: var(--text-color);
+        font-size: 1rem;
+        transition: var(--transition);
+        resize: vertical;
+      }
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(178, 34, 34, 0.1);
+        transform: translateY(-2px);
+      }
+      .form-group label {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        color: var(--text-color);
+        transition: var(--transition);
+        pointer-events: none;
+        opacity: 0.7;
+      }
+      .form-group input:focus + label,
+      .form-group textarea:focus + label,
+      .form-group input:not(:placeholder-shown) + label,
+      .form-group textarea:not(:placeholder-shown) + label {
+        top: -0.5rem;
+        left: 0.5rem;
+        font-size: 0.8rem;
+        color: var(--primary-color);
+        background: var(--bg-color);
+        padding: 0 0.5rem;
+        opacity: 1;
+      }
+      .submit-btn {
+        width: 100%;
+        padding: 1rem 2rem;
+        background: var(--gradient-1);
+        color: #ffffff !important;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        position: relative;
+        overflow: hidden;
+        text-shadow: none;
+      }
+      .submit-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: left 0.5s;
+      }
+      .submit-btn:hover::before {
+        left: 100%;
+      }
+      .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow);
+      }
+      .submit-btn:active {
+        transform: translateY(0);
+      }
+      .submit-btn i {
+        transition: var(--transition);
+      }
+      .submit-btn:hover i {
+        transform: translateX(5px);
+      }
+
+
+      /* Enhanced Experience Timeline */
+      .timeline {
+        position: relative;
+        padding: 2rem 0;
+      }
+
+      .timeline::before {
+        content: '';
+        position: absolute;
+        left: 2rem;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: var(--gradient-1);
+        border-radius: 2px;
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 3rem;
+        padding: 1.5rem 0 1.5rem 5rem;
+        background: var(--bg-color);
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border-left: 3px solid var(--primary-color);
+        opacity: 0;
+        transform: translateX(-50px);
+        transition: all 0.8s ease;
+      }
+
+      .timeline-item.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      
+      .timeline-item:hover {
+        transform: translateX(0) translateY(-2px);
+        box-shadow: 0 10px 28px rgba(178, 34, 34, 0.3);
+      }
+
+      .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -2.5rem;
+        top: 0.5rem;
+        width: 15px;
+        height: 15px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        border: 3px solid var(--bg-color);
+        box-shadow: 0 0 0 3px var(--primary-color);
+      }
+
+      .timeline-item:hover::before {
+        transform: scale(1.5);
+        box-shadow: 0 0 0 3px var(--secondary-color);
+      }
+
+      /* Achievement Badges */
+      .achievement-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .badge {
+        background: var(--gradient-1);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: var(--transition);
+        cursor: pointer;
+      }
+
+      .badge:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: var(--shadow);
+      }
+
+      .badge i {
+        font-size: 1rem;
+      }
+
+      /* Ensure consistent color scheme throughout */
+      * {
+        box-sizing: border-box;
+      }
+      
+      /* Override any remaining hardcoded colors */
+      .major h2 {
+        color: var(--text-color) !important;
+      }
+      
+      span {
+        color: var(--text-color);
+      }
+      
+      /* Ensure all text uses theme colors */
+      p, li, div {
+        color: var(--text-color);
+      }
+      
+      /* Timeline dates */
+      .timeline-item span {
+        color: var(--primary-color) !important;
+        font-weight: bold;
+      }
+
     </style>
   </head>
   <body class="is-preload">
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" title="Toggle Dark Mode">
+      <i class="fas fa-moon"></i>
+    </button>
+
+
+
+
+
     <!-- Wrapper -->
     <div id="wrapper">
       <!-- Main -->
       <div id="main">
         <div class="inner">
 
-          <!-- Header -->
-          <header id="header">
-            <a href="index.html" class="logo"><strong>Kensuke / Portfolio</strong></a>
-          </header>
 
           <!-- Hero / Banner -->
-          <section id="banner">
+          <section id="banner" class="fade-in">
             <div class="content">
               <header>
-                <h1>Data & AI Enthusiast</h1>
-                <p>Seeking Spring 2026  Opportunities</p>
+                <h1 class="typing-text">Data & AI Enthusiast</h1>
+                <p class="slide-in-left">Seeking Spring 2026 Opportunities</p>
               </header>
               <p>
                 Data &amp; AI professional skilled in building end-to-end solutions — from cloud-native ETL pipelines 
@@ -241,11 +701,11 @@
           <!-- About Me / Skills -->
           <section id="about-skills">
             <div class="columns">
-              <div class="about-box">
+              <div class="about-box slide-in-left">
                 <h2>About Me</h2>
                 <p>Passionate about solving real-world problems using data. Currently seeking Summer 2025 internships and full-time opportunities after May 2026 graduation in Data Science, Analytics, and AI roles.</p>
               </div>
-              <div class="skills-box">
+              <div class="skills-box slide-in-right">
                 <h2>Skills</h2>
                 <ul class="skills-list">
                   <li><i class="fab fa-python"></i> Python</li>
@@ -257,32 +717,46 @@
                   <li><i class="fas fa-project-diagram"></i> Airflow</li>
                   <li><i class="fab fa-git-alt"></i> Git / GitHub</li>
                 </ul>
-                <div class="cert">
-                  <span>AWS Solutions Architect – Associate</span>
-                  <span>IBM Data Science Professional Certificate</span>
+                <div class="achievement-badges">
+                  <div class="badge">
+                    <i class="fab fa-aws"></i>
+                    AWS Solutions Architect – Associate
+                </div>
+                  <div class="badge">
+                    <i class="fas fa-certificate"></i>
+                    IBM Data Science Professional Certificate
+                  </div>
+                  <div class="badge">
+                    <i class="fas fa-graduation-cap"></i>
+                    University of Utah
+                  </div>
+                  <div class="badge">
+                    <i class="fas fa-code"></i>
+                    Full-Stack Developer
+                  </div>
                 </div>
               </div>
             </div>
           </section>
 
           <!-- EXPERIENCE SECTION -->
-          <section id="experience">
+          <section id="experience" class="fade-in">
             <header class="major">
               <h2>Experience</h2>
             </header>
-            <div class="experience-list">
-              <div class="project-item">
+            <div class="timeline">
+              <div class="timeline-item">
                 <h3>Teaching Assistant, Introduction to Business Analytics | University of Utah | Salt Lake City, UT</h3>
-                <span>Aug 2025 – Present</span>
+                <span style="color: var(--primary-color); font-weight: bold;">Aug 2025 – Present</span>
                 <ul>
                   <li>Grade assignments, hold office hours, and mentor students in Python programming and machine learning concepts.</li>
                   <li>Facilitate clear communication of technical results to help students develop strong analytical and data storytelling skills.</li>
                 </ul>
               </div>
 
-              <div class="project-item">
+              <div class="timeline-item">
                 <h3>Customer Insights Analyst | Cortex Evolution | Salt Lake City, UT</h3>
-                <span>Oct 2024 – May 2025</span>
+                <span style="color: var(--primary-color); font-weight: bold;">Oct 2024 – May 2025</span>
                 <ul>
                   <li>Analyzed 200+ customer behavior records using Google Analytics and Hotjar, identifying key friction points and implementing changes that elevated user engagement.</li>
                   <li>Developed and managed interactive Tableau dashboards to visualize campaign datasets and support decisions for subsequent campaigns.</li>
@@ -293,7 +767,7 @@
           </section>
 
           <!-- PROJECTS SECTION -->
-          <section id="projects">
+          <section id="projects" class="fade-in">
             <header class="major">
               <h2>Projects</h2>
             </header>
@@ -308,7 +782,7 @@
             </div>
 
             <div class="projects-list">
-              <div class="project-item" data-category="data-analysis">
+              <div class="project-item scale-in" data-category="data-analysis">
                 <div class="project-media">
                   <img class="project-thumb" src="assets/img/projects/visa-dashboard.svg" alt="Visa Sponsor Job Dashboard thumbnail showing filters and charts" loading="lazy" onerror="this.onerror=null;this.src='https://via.placeholder.com/140x90?text=Visa+Dashboard';">
                   <div>
@@ -323,7 +797,7 @@
                 </div>
               </div>
 
-              <div class="project-item" data-category="cloud">
+              <div class="project-item scale-in" data-category="cloud">
                 <div class="project-media">
                   <img class="project-thumb" src="assets/img/projects/aws-static-site.svg" alt="AWS static website deployment diagram thumbnail" loading="lazy" onerror="this.onerror=null;this.src='https://via.placeholder.com/140x90?text=AWS+Site';">
                   <div>
@@ -479,6 +953,35 @@
               <li class="icon solid fa-home">Salt Lake City, UT</li>
             </ul>
           </section>
+
+          <!-- Interactive Contact Form -->
+          <section>
+            <header class="major">
+              <h2>Get In Touch</h2>
+            </header>
+            <form id="contactForm" class="contact-form">
+              <div class="form-group">
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                <label for="name">Name</label>
+              </div>
+              <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+                <label for="email">Email</label>
+              </div>
+              <div class="form-group">
+                <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                <label for="subject">Subject</label>
+              </div>
+              <div class="form-group">
+                <textarea id="message" name="message" placeholder="Your Message" rows="4" required></textarea>
+                <label for="message">Message</label>
+              </div>
+              <button type="submit" class="submit-btn">
+                <span>Send Message</span>
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </form>
+          </section>
           <footer id="footer">
             <p class="copyright">
               &copy; 2025 Kensuke. Design inspired by <a href="https://html5up.net">HTML5 UP</a>.
@@ -495,9 +998,74 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
 
-    <!-- Filter Script -->
+    <!-- Enhanced Interactive Scripts -->
     <script>
       document.addEventListener('DOMContentLoaded', () => {
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        body.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+          const currentTheme = body.getAttribute('data-theme');
+          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          
+          body.setAttribute('data-theme', newTheme);
+          localStorage.setItem('theme', newTheme);
+          updateThemeIcon(newTheme);
+        });
+
+        function updateThemeIcon(theme) {
+          const icon = themeToggle.querySelector('i');
+          icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+
+        // Scroll Animations
+        initScrollAnimations();
+
+
+        // Project Filter Functionality
+        initProjectFilters();
+
+        // Typing Animation
+        initTypingAnimation();
+
+        // Contact Form
+        initContactForm();
+
+        initTimelineAnimations();
+      });
+
+
+      // Scroll animations
+      function initScrollAnimations() {
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in').forEach(el => {
+          observer.observe(el);
+        });
+      }
+
+
+      // Project filters
+      function initProjectFilters() {
         const filterBtns = document.querySelectorAll('.filter-btn');
         const projects = document.querySelectorAll('.projects-list .project-item');
 
@@ -509,14 +1077,200 @@
               const categories = (project.getAttribute('data-category') || '')
                                     .split(',')
                                     .map(c => c.trim());
-              project.style.display = (category === 'all' || categories.includes(category)) ? '' : 'none';
+              const shouldShow = category === 'all' || categories.includes(category);
+              
+              if (shouldShow) {
+                project.style.display = '';
+                project.style.animation = 'fadeIn 0.5s ease forwards';
+              } else {
+                project.style.display = 'none';
+              }
             });
 
             filterBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
           });
         });
-      });
+      }
+
+      // Typing animation
+      function initTypingAnimation() {
+        const typingElement = document.querySelector('.typing-text');
+        if (!typingElement) return;
+
+        const texts = [
+          'Data & AI Enthusiast',
+          'Machine Learning Engineer',
+          'Data Scientist',
+          'Cloud Solutions Architect',
+          'Analytics Professional'
+        ];
+        
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeText() {
+          const currentText = texts[textIndex];
+          
+          if (isDeleting) {
+            typingElement.textContent = currentText.substring(0, charIndex - 1);
+            charIndex--;
+          } else {
+            typingElement.textContent = currentText.substring(0, charIndex + 1);
+            charIndex++;
+          }
+
+          let typeSpeed = isDeleting ? 50 : 100;
+
+          if (!isDeleting && charIndex === currentText.length) {
+            typeSpeed = 2000; // Pause at end
+            isDeleting = true;
+          } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            textIndex = (textIndex + 1) % texts.length;
+            typeSpeed = 500; // Pause before next text
+          }
+
+          setTimeout(typeText, typeSpeed);
+        }
+
+        // Start typing animation after a delay
+        setTimeout(typeText, 1000);
+      }
+
+      // Contact form functionality
+      function initContactForm() {
+        const form = document.getElementById('contactForm');
+        if (!form) return;
+
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          
+          const formData = new FormData(form);
+          const data = Object.fromEntries(formData);
+          
+          // Create mailto link with form data
+          const subject = encodeURIComponent(data.subject || 'Portfolio Contact');
+          const body = encodeURIComponent(
+            `Name: ${data.name}\n` +
+            `Email: ${data.email}\n` +
+            `Subject: ${data.subject}\n\n` +
+            `Message:\n${data.message}`
+          );
+          
+          const mailtoLink = `mailto:kenkou1001@gmail.com?subject=${subject}&body=${body}`;
+          
+          // Open email client
+          window.location.href = mailtoLink;
+          
+          // Show success message
+          const submitBtn = form.querySelector('.submit-btn');
+          const originalText = submitBtn.innerHTML;
+          
+          submitBtn.innerHTML = '<i class="fas fa-envelope"></i> Email Opened!';
+          submitBtn.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
+          
+          // Reset form
+          form.reset();
+          
+          // Reset button after 3 seconds
+          setTimeout(() => {
+            submitBtn.innerHTML = originalText;
+            submitBtn.style.background = '';
+          }, 3000);
+        });
+
+        // Real-time validation
+        const inputs = form.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+          input.addEventListener('blur', validateField);
+          input.addEventListener('input', clearError);
+        });
+
+        function validateField(e) {
+          const field = e.target;
+          const value = field.value.trim();
+          
+          // Remove existing error
+          clearError(e);
+          
+          if (field.hasAttribute('required') && !value) {
+            showError(field, 'This field is required');
+            return false;
+          }
+          
+          if (field.type === 'email' && value) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(value)) {
+              showError(field, 'Please enter a valid email address');
+              return false;
+            }
+          }
+          
+          return true;
+        }
+
+        function showError(field, message) {
+          field.style.borderColor = 'var(--primary-color)';
+          
+          // Remove existing error message
+          const existingError = field.parentNode.querySelector('.error-message');
+          if (existingError) {
+            existingError.remove();
+          }
+          
+          // Add error message
+          const errorDiv = document.createElement('div');
+          errorDiv.className = 'error-message';
+          errorDiv.style.color = 'var(--primary-color)';
+          errorDiv.style.fontSize = '0.8rem';
+          errorDiv.style.marginTop = '0.25rem';
+          errorDiv.textContent = message;
+          
+          field.parentNode.appendChild(errorDiv);
+        }
+
+        function clearError(e) {
+          const field = e.target;
+          field.style.borderColor = '';
+          
+          const errorMessage = field.parentNode.querySelector('.error-message');
+          if (errorMessage) {
+            errorMessage.remove();
+          }
+        }
+      }
+
+
+
+
+      // Timeline Animations
+      function initTimelineAnimations() {
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        
+        const timelineObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, { threshold: 0.3 });
+
+        timelineItems.forEach(item => {
+          timelineObserver.observe(item);
+        });
+      }
+
+      // Add CSS for fadeIn animation
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `;
+      document.head.appendChild(style);
     </script>
 
   </body>
