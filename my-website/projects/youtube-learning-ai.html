@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>YouTube Learning AI</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+  </head>
+  <body class="is-preload">
+
+    <div id="wrapper">
+      <div id="main">
+        <div class="inner">
+          <header id="header">
+            <a href="../index.html" class="logo"><strong>Kensuke / Portfolio</strong></a>
+          </header>
+
+          <section>
+            <header class="major">
+              <h2>YouTube Learning AI - Smart Video Content Assistant</h2>
+              <p>Transform any YouTube video into an interactive learning experience with AI-powered summarization and intelligent Q&A</p>
+            </header>
+
+            <div class="content">
+              <h3>What This App Does</h3>
+              <p>This application solves a common problem: <strong>How do you quickly extract and retain knowledge from long YouTube videos?</strong> Instead of watching hours of content or taking manual notes, users can:</p>
+              <ul>
+                <li><strong>Extract Content:</strong> Paste any YouTube URL and automatically get the video's transcript</li>
+                <li><strong>Smart Summarization:</strong> Get AI-generated summaries in two levels - quick overview or detailed analysis</li>
+                <li><strong>Build Knowledge Base:</strong> Store video content in a searchable database for future reference</li>
+                <li><strong>Interactive Q&A:</strong> Ask specific questions about any video and get accurate answers with source citations</li>
+              </ul>
+
+              <h3>Key Features & Business Value</h3>
+              <ul>
+                <li><strong>Time Savings:</strong> Get key insights from 2-hour videos in minutes</li>
+                <li><strong>Better Retention:</strong> Interactive Q&A helps reinforce learning</li>
+                <li><strong>Personal Knowledge Base:</strong> Build a searchable library of video content</li>
+                <li><strong>Source Verification:</strong> Every answer includes citations back to the original video</li>
+              </ul>
+
+              <h3>How It Works (Simple Explanation)</h3>
+              <ol>
+                <li><strong>Content Extraction:</strong> The app connects to YouTube to automatically download video subtitles</li>
+                <li><strong>AI Summarization:</strong> Uses advanced language models to create concise summaries</li>
+                <li><strong>Smart Storage:</strong> Converts text into mathematical representations (embeddings) for fast searching</li>
+                <li><strong>Intelligent Search:</strong> When you ask a question, it finds the most relevant parts of the video content</li>
+                <li><strong>Contextual Answers:</strong> AI generates answers using only the relevant video content, ensuring accuracy</li>
+              </ol>
+
+              <h3>Technical Architecture</h3>
+              <ul>
+                <li><strong>Frontend:</strong> React with TypeScript - Modern, responsive user interface</li>
+                <li><strong>Backend:</strong> Python FastAPI - Fast, reliable API server</li>
+                <li><strong>AI Engine:</strong> OpenAI GPT models for summarization and Q&A</li>
+                <li><strong>Database:</strong> FAISS vector database for semantic search</li>
+                <li><strong>Deployment:</strong> Ready for cloud deployment (Vercel, Render, etc.)</li>
+              </ul>
+
+              <h3>API Endpoints</h3>
+              <table>
+                <tr>
+                  <th>Endpoint</th>
+                  <th>Method</th>
+                  <th>Description</th>
+                </tr>
+                <tr>
+                  <td>/health</td>
+                  <td>GET</td>
+                  <td>Verify the service is running</td>
+                </tr>
+                <tr>
+                  <td>/subtitles/extract</td>
+                  <td>POST</td>
+                  <td>Get video transcript and metadata</td>
+                </tr>
+                <tr>
+                  <td>/summarize</td>
+                  <td>POST</td>
+                  <td>Create AI-powered summaries</td>
+                </tr>
+                <tr>
+                  <td>/rag/ingest</td>
+                  <td>POST</td>
+                  <td>Add video content to knowledge base</td>
+                </tr>
+                <tr>
+                  <td>/rag/ask</td>
+                  <td>POST</td>
+                  <td>Get answers with source citations</td>
+                </tr>
+              </table>
+
+              <h3>Use Cases</h3>
+              <ul>
+                <li><strong>Students:</strong> Quickly understand lecture videos and prepare for exams</li>
+                <li><strong>Professionals:</strong> Extract insights from training videos and tutorials</li>
+                <li><strong>Researchers:</strong> Build searchable databases of educational content</li>
+                <li><strong>Content Creators:</strong> Analyze competitor videos and extract key points</li>
+              </ul>
+
+              <h3>Technical Highlights</h3>
+              <ul>
+                <li><strong>Efficient Processing:</strong> Duplicate detection prevents unnecessary AI API calls</li>
+                <li><strong>Scalable Design:</strong> Vector database supports thousands of video chunks</li>
+                <li><strong>Error Handling:</strong> Comprehensive error messages and fallback mechanisms</li>
+                <li><strong>Modern Stack:</strong> Built with industry-standard tools and best practices</li>
+                <li><strong>Cost Optimization:</strong> Smart chunking and duplicate detection minimize API costs</li>
+                <li><strong>Token Management:</strong> Built-in usage limits (10k daily, 1k hourly) with real-time tracking</li>
+              </ul>
+
+              <h3>Future Enhancements</h3>
+              <ul>
+                <li>Multi-video knowledge bases</li>
+                <li>Flashcard generation for spaced repetition</li>
+                <li>Learning analytics and progress tracking</li>
+                <li>Collaborative knowledge sharing</li>
+                <li>Mobile app development</li>
+              </ul>
+            </div>
+
+            <ul class="actions">
+              <li><a class="button icon brands fa-external-link-alt" href="https://youtube-extracter.vercel.app/" target="_blank">Live Demo</a></li>
+              <li><a class="button icon brands fa-github" href="https://github.com/kensuke0529/youtube-extracter" target="_blank">View on GitHub</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="sidebar">
+        <div class="inner">
+          <section>
+            <header class="major">
+              <h2>Navigate</h2>
+            </header>
+            <ul class="actions">
+              <li><a href="../index.html" class="button">Back to Home</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/browser.min.js"></script>
+    <script src="../assets/js/breakpoints.min.js"></script>
+    <script src="../assets/js/util.js"></script>
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>
+
