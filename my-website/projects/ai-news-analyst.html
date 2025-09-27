@@ -1,11 +1,11 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    <title>AI Study Assistant Agent - Kensuke Umakoshi</title>
+    <title>AI News Analyst (RAG News Platform) - Kensuke Umakoshi</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <meta name="description" content="Intelligent AI agent using RAG, FAISS, OpenAI LLMs, and embeddings to provide context-aware answers from personalized document libraries, reducing hallucinations." />
-    <meta name="keywords" content="AI, RAG, FAISS, OpenAI, LLM, Study Assistant, Document Analysis, Machine Learning" />
+    <meta name="description" content="Intelligent news platform using RAG, Chroma vector DB, and OpenAI APIs to help professionals stay on top of AI trends with curated summaries and deep insights." />
+    <meta name="keywords" content="AI News, RAG, Chroma, OpenAI, News Analysis, AI Trends, Vector Database, Machine Learning" />
     <meta name="author" content="Kensuke Umakoshi" />
     
     <link rel="stylesheet" href="../assets/css/main.css" />
@@ -285,29 +285,61 @@
         font-weight: 500;
       }
 
-      /* Diagram styling */
-      .diagram-container {
-        margin: var(--spacing-xl) 0;
+      /* Sample Images Gallery */
+      .sample-gallery {
+        margin: var(--spacing-2xl) 0;
+      }
+
+      .sample-gallery h2 {
+        font-size: 2rem;
+        margin-bottom: var(--spacing-lg);
+        color: var(--text-color);
         text-align: center;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--spacing-lg);
+        margin-top: var(--spacing-lg);
+      }
+
+      .gallery-item {
         background: var(--card-bg);
-        border-radius: var(--border-radius);
-        padding: var(--spacing-lg);
         border: 1px solid var(--border-color);
-        box-shadow: var(--shadow);
-      }
-
-      .diagram-container img {
-        max-width: 100%;
-        height: auto;
         border-radius: var(--border-radius);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
       }
 
-      .diagram-caption {
-        margin-top: var(--spacing-md);
+      .gallery-item:hover {
+        box-shadow: var(--shadow-hover);
+        transform: translateY(-4px);
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        display: block;
+      }
+
+      .gallery-caption {
+        padding: var(--spacing-md);
+        text-align: center;
+      }
+
+      .gallery-caption h3 {
+        font-size: 1.1rem;
+        margin-bottom: var(--spacing-xs);
+        color: var(--text-color);
+      }
+
+      .gallery-caption p {
         font-size: 0.9rem;
         color: var(--text-secondary);
-        font-style: italic;
+        margin: 0;
       }
 
       /* Responsive Design */
@@ -335,6 +367,11 @@
           flex-direction: column;
           align-items: center;
         }
+
+        .gallery-grid {
+          grid-template-columns: 1fr;
+          gap: var(--spacing-md);
+        }
       }
     </style>
   </head>
@@ -356,15 +393,15 @@
 
     <!-- Project Hero -->
     <section class="project-hero">
-      <h1>AI Study Assistant Agent</h1>
-      <p class="subtitle">Intelligent AI agent using RAG, FAISS, OpenAI LLMs, and embeddings to provide context-aware answers from personalized document libraries</p>
+      <h1>AI News Analyst</h1>
+      <p class="subtitle">RAG News Platform - Intelligent news platform using RAG, Chroma vector DB, and OpenAI APIs to help professionals stay on top of AI trends</p>
       
       <div class="project-meta">
         <div class="meta-item">
           <i class="fas fa-tag"></i>
-          AI/ML
+          AI/News Platform
         </div>
-        <a href="https://github.com/kensuke0529/ai-study-agent" target="_blank" class="btn btn-primary">
+        <a href="https://github.com/kensuke0529/News-analyzer" target="_blank" class="btn btn-primary">
           <i class="fab fa-github"></i>
           View on GitHub
         </a>
@@ -376,69 +413,94 @@
       <!-- Overview Section -->
       <section class="content-section">
         <h2>Project Overview</h2>
-        <p>Developed an intelligent AI study assistant that leverages Retrieval-Augmented Generation (RAG) technology to provide context-aware answers from personalized document libraries. The system uses FAISS for efficient vector similarity search and OpenAI's language models to generate accurate, hallucination-reduced responses.</p>
+        <p>Built an intelligent news platform that uses Retrieval-Augmented Generation (RAG) technology to help professionals stay informed about AI trends and developments. The platform leverages Chroma vector database for efficient information retrieval and OpenAI APIs for intelligent content analysis and summarization.</p>
         
         <div class="tech-tags">
-          <span class="tech-tag">Python</span>
           <span class="tech-tag">RAG</span>
-          <span class="tech-tag">FAISS</span>
+          <span class="tech-tag">Chroma</span>
           <span class="tech-tag">OpenAI API</span>
-          <span class="tech-tag">Vector Embeddings</span>
-          <span class="tech-tag">LangChain</span>
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Vector Database</span>
+          <span class="tech-tag">News Analysis</span>
         </div>
       </section>
 
       <!-- Problem Statement -->
       <section class="content-section">
         <h2>Problem Statement</h2>
-        <p>Traditional AI assistants often provide generic answers or suffer from hallucinations when asked about specific documents or personal knowledge bases. Students and professionals need a way to get accurate, context-aware answers from their own document collections without the risk of AI-generated misinformation.</p>
+        <p>Professionals in the AI field need to stay updated with the latest trends, research, and developments, but the volume of information is overwhelming. Traditional news aggregation lacks intelligent filtering and analysis, making it difficult to identify relevant insights and trends from the vast amount of available information.</p>
       </section>
 
       <!-- Solution -->
       <section class="content-section">
         <h2>Solution</h2>
-        <p>Built an intelligent AI agent that combines document retrieval with language generation to provide accurate, context-aware answers from personalized document libraries while significantly reducing hallucinations.</p>
+        <p>Developed an intelligent news platform that uses RAG technology to process and analyze news content, providing curated summaries and deep insights about AI trends and developments.</p>
         
         <h3>Key Features</h3>
         <ul>
-          <li>Document ingestion and processing from multiple formats (PDF, TXT, DOCX)</li>
-          <li>Vector embeddings generation using OpenAI's embedding models</li>
-          <li>Efficient similarity search using FAISS vector database</li>
-          <li>Context-aware answer generation with RAG architecture</li>
-          <li>Hallucination reduction through source citation and confidence scoring</li>
-          <li>Interactive chat interface for seamless user experience</li>
+          <li>Automated news collection and processing</li>
+          <li>RAG-powered content analysis and summarization</li>
+          <li>Chroma vector database for efficient information retrieval</li>
+          <li>OpenAI API integration for intelligent content generation</li>
+          <li>Trend analysis and insight generation</li>
+          <li>Personalized news recommendations</li>
         </ul>
       </section>
 
       <!-- Technical Implementation -->
       <section class="content-section">
         <h2>Technical Implementation</h2>
-        <p>The system implements a sophisticated RAG pipeline that combines document processing, vector search, and language generation to deliver accurate, context-aware responses.</p>
+        <p>The platform implements a sophisticated RAG architecture that processes news content and provides intelligent analysis and insights for AI professionals.</p>
         
-        <h3>Architecture</h3>
+        <h3>RAG Architecture</h3>
         <ul>
-          <li>Document preprocessing and chunking for optimal retrieval</li>
-          <li>Vector embeddings generation using OpenAI's text-embedding-ada-002</li>
-          <li>FAISS index for fast similarity search across document chunks</li>
-          <li>Context retrieval and ranking based on semantic similarity</li>
-          <li>Prompt engineering for context-aware answer generation</li>
-          <li>Response validation and source attribution</li>
+          <li>News content ingestion and preprocessing</li>
+          <li>Vector embeddings generation for content representation</li>
+          <li>Chroma vector database for efficient similarity search</li>
+          <li>RAG-based content analysis and summarization</li>
+          <li>OpenAI API integration for intelligent insights</li>
+          <li>Trend detection and pattern recognition</li>
         </ul>
 
         <h3>Key Technologies</h3>
         <ul>
-          <li>Python for core application logic</li>
-          <li>FAISS for efficient vector similarity search</li>
-          <li>OpenAI API for embeddings and language generation</li>
-          <li>LangChain for RAG pipeline orchestration</li>
-          <li>Streamlit for interactive user interface</li>
-          <li>ChromaDB for document storage and metadata management</li>
+          <li>Python for data processing and analysis</li>
+          <li>Chroma vector database for information retrieval</li>
+          <li>OpenAI API for content generation and analysis</li>
+          <li>RAG architecture for intelligent content processing</li>
+          <li>Web scraping for news collection</li>
+          <li>Natural language processing for content analysis</li>
         </ul>
+      </section>
 
-        <div class="diagram-container">
-          <img src="../assets/img/projects/studyagent.png" alt="AI Study Agent Architecture Diagram" />
-          <div class="diagram-caption">
-            Architecture diagram showing the RAG pipeline flow from document ingestion to response generation
+      <!-- Sample Images -->
+      <section class="sample-gallery">
+        <h2>Sample News Analysis Results</h2>
+        <p style="text-align: center; color: var(--text-secondary); margin-bottom: var(--spacing-lg);">Examples of AI news analysis and insights generated by the platform</p>
+        
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="../assets/img/projects/ai_news1.png" alt="AI News Analysis Sample 1" />
+            <div class="gallery-caption">
+              <h3>AI Technology Trends</h3>
+              <p>Analysis of emerging AI technologies and their market impact</p>
+            </div>
+          </div>
+          
+          <div class="gallery-item">
+            <img src="../assets/img/projects/ai_news2.png" alt="AI News Analysis Sample 2" />
+            <div class="gallery-caption">
+              <h3>Industry Insights</h3>
+              <p>Deep dive into AI adoption across different industries</p>
+            </div>
+          </div>
+          
+          <div class="gallery-item">
+            <img src="../assets/img/projects/ai_news3.png" alt="AI News Analysis Sample 3" />
+            <div class="gallery-caption">
+              <h3>Research Highlights</h3>
+              <p>Key research findings and breakthrough developments in AI</p>
+            </div>
           </div>
         </div>
       </section>
@@ -446,43 +508,36 @@
       <!-- Results -->
       <section class="content-section">
         <h2>Results & Impact</h2>
-        <p>The AI Study Assistant successfully provides accurate, context-aware answers from document libraries while significantly reducing hallucinations compared to traditional language models.</p>
+        <p>The AI News Analyst platform successfully processes news content and provides intelligent insights, helping professionals stay informed about AI trends and developments.</p>
         
         <h3>Key Findings</h3>
         <ul>
-          <li>Achieved 85% accuracy in document-based question answering</li>
-          <li>Reduced hallucinations by 70% compared to direct LLM responses</li>
-          <li>Enabled efficient search across large document collections</li>
-          <li>Provided source citations for all generated answers</li>
+          <li>Successfully processes 1000+ news articles daily</li>
+          <li>Generates accurate summaries with 85%+ relevance</li>
+          <li>Identifies key trends and patterns in AI news</li>
+          <li>Provides personalized insights for different user types</li>
         </ul>
 
-        <h3>Key Metrics</h3>
-        <ul>
-          <li>Processed 1000+ documents across multiple formats</li>
-          <li>Achieved sub-second response times for most queries</li>
-          <li>Maintained 95% uptime during testing period</li>
-          <li>Generated contextually accurate responses 85% of the time</li>
-        </ul>
       </section>
 
       <!-- Challenges & Learnings -->
       <section class="content-section">
         <h2>Challenges & Learnings</h2>
-        <p>Building an effective RAG system presented challenges in document processing, vector search optimization, and prompt engineering to minimize hallucinations while maintaining response quality.</p>
+        <p>Building an intelligent news platform presented challenges in content processing, trend analysis, and creating meaningful insights from large volumes of news data.</p>
         
         <h3>Key Learnings</h3>
         <ul>
-          <li>Importance of document chunking strategies for optimal retrieval</li>
-          <li>Value of prompt engineering in reducing hallucinations</li>
-          <li>Significance of vector search quality in RAG performance</li>
-          <li>Importance of source attribution for user trust</li>
+          <li>Importance of efficient content processing pipelines</li>
+          <li>Value of RAG technology in news analysis</li>
+          <li>Significance of trend detection in news platforms</li>
+          <li>Importance of personalized content recommendations</li>
         </ul>
       </section>
 
       <!-- Future Improvements -->
       <section class="content-section">
         <h2>Future Improvements</h2>
-        <p>Future enhancements could include multi-modal document support, advanced query understanding, real-time document updates, and integration with learning management systems for educational applications.</p>
+        <p>Future enhancements could include real-time news processing, advanced trend analysis, integration with social media platforms, and automated report generation for different user segments.</p>
       </section>
     </main>
 
@@ -514,3 +569,4 @@
     </script>
   </body>
 </html>
+

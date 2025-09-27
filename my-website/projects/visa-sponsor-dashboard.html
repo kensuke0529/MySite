@@ -1,11 +1,11 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    <title>AI Study Assistant Agent - Kensuke Umakoshi</title>
+    <title>Visa Sponsor Job Dashboard - Kensuke Umakoshi</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <meta name="description" content="Intelligent AI agent using RAG, FAISS, OpenAI LLMs, and embeddings to provide context-aware answers from personalized document libraries, reducing hallucinations." />
-    <meta name="keywords" content="AI, RAG, FAISS, OpenAI, LLM, Study Assistant, Document Analysis, Machine Learning" />
+    <meta name="description" content="Interactive dashboard supporting international students in finding visa-sponsored jobs, with dynamic filters by visa type, job title, and location using EDA-processed raw datasets." />
+    <meta name="keywords" content="Visa Sponsorship, Job Dashboard, Data Visualization, EDA, International Students, Job Search, Interactive Dashboard" />
     <meta name="author" content="Kensuke Umakoshi" />
     
     <link rel="stylesheet" href="../assets/css/main.css" />
@@ -285,31 +285,6 @@
         font-weight: 500;
       }
 
-      /* Diagram styling */
-      .diagram-container {
-        margin: var(--spacing-xl) 0;
-        text-align: center;
-        background: var(--card-bg);
-        border-radius: var(--border-radius);
-        padding: var(--spacing-lg);
-        border: 1px solid var(--border-color);
-        box-shadow: var(--shadow);
-      }
-
-      .diagram-container img {
-        max-width: 100%;
-        height: auto;
-        border-radius: var(--border-radius);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      }
-
-      .diagram-caption {
-        margin-top: var(--spacing-md);
-        font-size: 0.9rem;
-        color: var(--text-secondary);
-        font-style: italic;
-      }
-
       /* Responsive Design */
       @media (max-width: 768px) {
         .nav-content {
@@ -356,17 +331,17 @@
 
     <!-- Project Hero -->
     <section class="project-hero">
-      <h1>AI Study Assistant Agent</h1>
-      <p class="subtitle">Intelligent AI agent using RAG, FAISS, OpenAI LLMs, and embeddings to provide context-aware answers from personalized document libraries</p>
+      <h1>Visa Sponsor Job Dashboard</h1>
+      <p class="subtitle">Interactive dashboard supporting international students in finding visa-sponsored jobs with dynamic filters by visa type, job title, and location</p>
       
       <div class="project-meta">
         <div class="meta-item">
           <i class="fas fa-tag"></i>
-          AI/ML
+          Data Visualization
         </div>
-        <a href="https://github.com/kensuke0529/ai-study-agent" target="_blank" class="btn btn-primary">
-          <i class="fab fa-github"></i>
-          View on GitHub
+        <a href="https://careers.utah.edu/internationalstudents/" target="_blank" class="btn btn-primary">
+          <i class="fas fa-external-link-alt"></i>
+          Site
         </a>
       </div>
     </section>
@@ -376,113 +351,106 @@
       <!-- Overview Section -->
       <section class="content-section">
         <h2>Project Overview</h2>
-        <p>Developed an intelligent AI study assistant that leverages Retrieval-Augmented Generation (RAG) technology to provide context-aware answers from personalized document libraries. The system uses FAISS for efficient vector similarity search and OpenAI's language models to generate accurate, hallucination-reduced responses.</p>
+        <p>Developed and deployed an interactive dashboard specifically designed to support international students in finding visa-sponsored job opportunities. The dashboard features dynamic filters by visa type, job title, and location, using EDA-processed raw datasets to provide comprehensive job search capabilities.</p>
         
         <div class="tech-tags">
           <span class="tech-tag">Python</span>
-          <span class="tech-tag">RAG</span>
-          <span class="tech-tag">FAISS</span>
-          <span class="tech-tag">OpenAI API</span>
-          <span class="tech-tag">Vector Embeddings</span>
-          <span class="tech-tag">LangChain</span>
+          <span class="tech-tag">EDA</span>
+          <span class="tech-tag">Data Visualization</span>
+          <span class="tech-tag">Interactive Dashboard</span>
+          <span class="tech-tag">Job Search</span>
+          <span class="tech-tag">Visa Sponsorship</span>
         </div>
       </section>
 
       <!-- Problem Statement -->
       <section class="content-section">
         <h2>Problem Statement</h2>
-        <p>Traditional AI assistants often provide generic answers or suffer from hallucinations when asked about specific documents or personal knowledge bases. Students and professionals need a way to get accurate, context-aware answers from their own document collections without the risk of AI-generated misinformation.</p>
+        <p>International students face significant challenges in finding job opportunities that offer visa sponsorship. Traditional job search platforms lack specialized filtering for visa sponsorship requirements, making it difficult for international students to identify relevant opportunities and navigate the complex job market.</p>
       </section>
 
       <!-- Solution -->
       <section class="content-section">
         <h2>Solution</h2>
-        <p>Built an intelligent AI agent that combines document retrieval with language generation to provide accurate, context-aware answers from personalized document libraries while significantly reducing hallucinations.</p>
+        <p>Built a comprehensive interactive dashboard that processes job data and provides specialized filtering capabilities for visa-sponsored positions, helping international students find relevant opportunities efficiently.</p>
         
         <h3>Key Features</h3>
         <ul>
-          <li>Document ingestion and processing from multiple formats (PDF, TXT, DOCX)</li>
-          <li>Vector embeddings generation using OpenAI's embedding models</li>
-          <li>Efficient similarity search using FAISS vector database</li>
-          <li>Context-aware answer generation with RAG architecture</li>
-          <li>Hallucination reduction through source citation and confidence scoring</li>
-          <li>Interactive chat interface for seamless user experience</li>
+          <li>Interactive dashboard with dynamic filtering capabilities</li>
+          <li>Filter by visa type, job title, and location</li>
+          <li>EDA-processed raw datasets for accurate job matching</li>
+          <li>Comprehensive job search functionality</li>
+          <li>User-friendly interface for international students</li>
+          <li>Real-time data updates and filtering</li>
         </ul>
       </section>
 
       <!-- Technical Implementation -->
       <section class="content-section">
         <h2>Technical Implementation</h2>
-        <p>The system implements a sophisticated RAG pipeline that combines document processing, vector search, and language generation to deliver accurate, context-aware responses.</p>
+        <p>The dashboard implements a sophisticated data processing pipeline that combines exploratory data analysis with interactive visualization to provide comprehensive job search capabilities.</p>
         
-        <h3>Architecture</h3>
+        <h3>Data Processing Pipeline</h3>
         <ul>
-          <li>Document preprocessing and chunking for optimal retrieval</li>
-          <li>Vector embeddings generation using OpenAI's text-embedding-ada-002</li>
-          <li>FAISS index for fast similarity search across document chunks</li>
-          <li>Context retrieval and ranking based on semantic similarity</li>
-          <li>Prompt engineering for context-aware answer generation</li>
-          <li>Response validation and source attribution</li>
+          <li>Raw dataset collection and preprocessing</li>
+          <li>Exploratory data analysis (EDA) for data insights</li>
+          <li>Data cleaning and standardization</li>
+          <li>Feature engineering for job categorization</li>
+          <li>Interactive filtering and search implementation</li>
+          <li>Real-time data visualization and updates</li>
+        </ul>
+
+        <h3>Dashboard Features</h3>
+        <ul>
+          <li>Dynamic filtering by multiple criteria</li>
+          <li>Interactive data visualization</li>
+          <li>Responsive design for all devices</li>
+          <li>Real-time search and filtering</li>
+          <li>User-friendly interface design</li>
+          <li>Comprehensive job information display</li>
         </ul>
 
         <h3>Key Technologies</h3>
         <ul>
-          <li>Python for core application logic</li>
-          <li>FAISS for efficient vector similarity search</li>
-          <li>OpenAI API for embeddings and language generation</li>
-          <li>LangChain for RAG pipeline orchestration</li>
-          <li>Streamlit for interactive user interface</li>
-          <li>ChromaDB for document storage and metadata management</li>
+          <li>Python for data processing and analysis</li>
+          <li>EDA tools for data exploration</li>
+          <li>Interactive visualization libraries</li>
+          <li>Web technologies for dashboard interface</li>
+          <li>Data processing and filtering algorithms</li>
+          <li>User interface design and development</li>
         </ul>
-
-        <div class="diagram-container">
-          <img src="../assets/img/projects/studyagent.png" alt="AI Study Agent Architecture Diagram" />
-          <div class="diagram-caption">
-            Architecture diagram showing the RAG pipeline flow from document ingestion to response generation
-          </div>
-        </div>
       </section>
 
       <!-- Results -->
       <section class="content-section">
         <h2>Results & Impact</h2>
-        <p>The AI Study Assistant successfully provides accurate, context-aware answers from document libraries while significantly reducing hallucinations compared to traditional language models.</p>
+        <p>The visa sponsor job dashboard successfully provides international students with an efficient tool for finding relevant job opportunities, significantly improving their job search experience.</p>
         
-        <h3>Key Findings</h3>
-        <ul>
-          <li>Achieved 85% accuracy in document-based question answering</li>
-          <li>Reduced hallucinations by 70% compared to direct LLM responses</li>
-          <li>Enabled efficient search across large document collections</li>
-          <li>Provided source citations for all generated answers</li>
-        </ul>
-
-        <h3>Key Metrics</h3>
-        <ul>
-          <li>Processed 1000+ documents across multiple formats</li>
-          <li>Achieved sub-second response times for most queries</li>
-          <li>Maintained 95% uptime during testing period</li>
-          <li>Generated contextually accurate responses 85% of the time</li>
-        </ul>
+        <div style="margin: 2rem 0; text-align: center;">
+          <img src="../assets/img/projects/visa-dashboard-sample.png" alt="Visa Sponsor Dashboard Sample" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);" />
+          <p style="margin-top: 1rem; color: var(--text-secondary); font-style: italic;">Sample of the interactive visa sponsor dashboard showing key metrics, company data, and geographical distribution</p>
+        </div>
+        
       </section>
 
       <!-- Challenges & Learnings -->
       <section class="content-section">
         <h2>Challenges & Learnings</h2>
-        <p>Building an effective RAG system presented challenges in document processing, vector search optimization, and prompt engineering to minimize hallucinations while maintaining response quality.</p>
+        <p>Building an effective job search dashboard presented challenges in data processing, user interface design, and creating meaningful filtering capabilities for complex job requirements.</p>
         
         <h3>Key Learnings</h3>
         <ul>
-          <li>Importance of document chunking strategies for optimal retrieval</li>
-          <li>Value of prompt engineering in reducing hallucinations</li>
-          <li>Significance of vector search quality in RAG performance</li>
-          <li>Importance of source attribution for user trust</li>
+          <li>Importance of EDA in understanding job market data</li>
+          <li>Value of interactive filtering in user experience</li>
+          <li>Significance of user-centered design in specialized tools</li>
+          <li>Importance of data quality in job matching</li>
         </ul>
       </section>
 
       <!-- Future Improvements -->
       <section class="content-section">
         <h2>Future Improvements</h2>
-        <p>Future enhancements could include multi-modal document support, advanced query understanding, real-time document updates, and integration with learning management systems for educational applications.</p>
+        <p>Future enhancements could include machine learning-based job matching, integration with job boards, automated notifications for new opportunities, and advanced analytics for job market trends.</p>
       </section>
     </main>
 

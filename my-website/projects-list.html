@@ -1,0 +1,732 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Project Hub - List Cards - Kensuke Umakoshi</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="description" content="Project hub with list card design system for efficient project management and navigation." />
+    <meta name="keywords" content="Project Management, List Cards, Portfolio, Data Science, AI" />
+    <meta name="author" content="Kensuke Umakoshi" />
+    
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/card-system.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+      /* Override main.css variables for card system */
+      :root {
+        --primary-color: #007AFF;
+        --secondary-color: #5856D6;
+        --bg-color: #FFFFFF;
+        --text-color: #1D1D1F;
+        --text-secondary: #86868B;
+        --border-color: #D2D2D7;
+        --card-bg: #F5F5F7;
+        --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.15);
+        --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        --border-radius: 12px;
+        --spacing-xs: 0.5rem;
+        --spacing-sm: 1rem;
+        --spacing-md: 1.5rem;
+        --spacing-lg: 2rem;
+        --spacing-xl: 3rem;
+        --spacing-2xl: 4rem;
+      }
+
+      [data-theme="dark"] {
+        --bg-color: #000000;
+        --text-color: #F5F5F7;
+        --text-secondary: #86868B;
+        --border-color: #1C1C1E;
+        --card-bg: #1C1C1E;
+        --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.4);
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+        font-weight: 400;
+        line-height: 1.6;
+        transition: var(--transition);
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Navigation */
+      .nav-header {
+        background: var(--card-bg);
+        border-bottom: 1px solid var(--border-color);
+        padding: var(--spacing-lg) 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(20px);
+      }
+
+      .nav-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-lg);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .nav-logo {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--text-color);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: var(--spacing-lg);
+        align-items: center;
+      }
+
+      .nav-link {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-weight: 500;
+        transition: var(--transition);
+      }
+
+      .nav-link:hover {
+        color: var(--primary-color);
+        text-decoration: none;
+      }
+
+      /* Theme Toggle */
+      .theme-toggle {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-color);
+        font-size: 1.1rem;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        backdrop-filter: blur(20px);
+      }
+
+      .theme-toggle:hover {
+        transform: scale(1.05);
+        box-shadow: var(--shadow-hover);
+      }
+    </style>
+  </head>
+  <body class="is-preload">
+    <!-- Navigation -->
+    <nav class="nav-header">
+      <div class="nav-content">
+        <a href="index.html" class="nav-logo">
+          <i class="fas fa-arrow-left"></i>
+          <span>Back to Portfolio</span>
+        </a>
+        <div class="nav-links">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="index.html#projects" class="nav-link">Projects</a>
+          <a href="index.html#contact" class="nav-link">Contact</a>
+          <button class="theme-toggle" id="themeToggle" title="Toggle Dark Mode">
+            <i class="fas fa-moon"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Project List Container -->
+    <main class="project-list-container">
+      <!-- Project List Header -->
+      <div class="project-list-header">
+        <h1 class="project-list-title">Project Hub</h1>
+        <div class="project-list-summary">
+          <div class="summary-item">
+            <i class="fas fa-project-diagram"></i>
+            <span>12 projects active</span>
+          </div>
+          <div class="summary-item">
+            <i class="fas fa-clock"></i>
+            <span>5 due this week</span>
+          </div>
+          <div class="summary-item">
+            <i class="fas fa-check-circle"></i>
+            <span>3 completed</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter & Sort Controls -->
+      <div class="filter-controls">
+        <div class="filter-group">
+          <label class="filter-label" for="categoryFilter">Category</label>
+          <select id="categoryFilter" class="filter-select">
+            <option value="all">All Categories</option>
+            <option value="data-analysis">Data Analysis</option>
+            <option value="data-science">Data Science</option>
+            <option value="ai">AI/ML</option>
+            <option value="cloud">Cloud</option>
+            <option value="web-dev">Web Development</option>
+          </select>
+        </div>
+        
+        <div class="filter-group">
+          <label class="filter-label" for="statusFilter">Status</label>
+          <select id="statusFilter" class="filter-select">
+            <option value="all">All Status</option>
+            <option value="active">Active</option>
+            <option value="progress">In Progress</option>
+            <option value="hold">On Hold</option>
+            <option value="completed">Completed</option>
+          </select>
+        </div>
+
+        <div class="sort-controls">
+          <label class="filter-label">Sort by</label>
+          <button class="sort-btn active" data-sort="date">Date</button>
+          <button class="sort-btn" data-sort="name">Name</button>
+          <button class="sort-btn" data-sort="priority">Priority</button>
+        </div>
+      </div>
+
+      <!-- Project Cards Grid -->
+      <div class="project-cards-grid" id="projectCardsGrid">
+        <!-- Project Card 1 -->
+        <article class="project-card" data-category="data-analysis" data-status="active" data-priority="high" tabindex="0" role="button" aria-expanded="false">
+          <div class="priority-flag priority-high"></div>
+          
+          <div class="card-header">
+            <h3 class="card-title">Visa Sponsor Job Dashboard</h3>
+            <div class="card-actions">
+              <button class="favorite-btn" title="Add to favorites">
+                <i class="far fa-star"></i>
+              </button>
+              <button class="action-btn" title="Share">
+                <i class="fas fa-share"></i>
+              </button>
+              <button class="action-btn" title="More options">
+                <i class="fas fa-ellipsis-h"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="status-badge status-active">
+            <i class="fas fa-circle"></i>
+            <span>Active</span>
+          </div>
+
+          <div class="card-meta">
+            <div class="meta-item">
+              <span class="category-tag">Data Analysis</span>
+            </div>
+            <div class="meta-item">
+              <i class="fas fa-user"></i>
+              <span>Kensuke Umakoshi</span>
+            </div>
+            <div class="meta-item">
+              <i class="fas fa-clock"></i>
+              <span class="last-updated">3 days ago</span>
+            </div>
+          </div>
+
+          <div class="card-content">
+            <p class="card-description">
+              Developed and deployed an interactive dashboard supporting international students in finding visa-sponsored jobs, with dynamic filters by visa type, job title, and location using EDA-processed raw datasets.
+            </p>
+            
+            <div class="progress-container">
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 85%"></div>
+              </div>
+              <div class="progress-text">85% Complete</div>
+            </div>
+
+            <div class="key-metrics">
+              <div class="metric-item">
+                <i class="fas fa-tasks"></i>
+                <span>12/15 tasks</span>
+              </div>
+              <div class="metric-item">
+                <i class="fas fa-comments"></i>
+                <span>8 comments</span>
+              </div>
+              <div class="metric-item">
+                <i class="fas fa-users"></i>
+                <span>3 contributors</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <div class="quick-actions">
+              <a href="projects/visa-sponsor-dashboard.html" class="quick-action-btn">
+                <i class="fas fa-eye"></i>
+                View
+              </a>
+              <a href="https://careers.utah.edu/internationalstudents/" target="_blank" class="quick-action-btn">
+                <i class="fas fa-external-link-alt"></i>
+                Demo
+              </a>
+            </div>
+            <button class="overflow-btn" title="More options">
+              <i class="fas fa-ellipsis-v"></i>
+            </button>
+          </div>
+
+          <div class="card-expandable" aria-hidden="true">
+            <div class="expandable-content">
+              <div class="expandable-section">
+                <h4>Full Description</h4>
+                <p>Comprehensive dashboard built with React and D3.js for visualizing job opportunities for international students. Features advanced filtering, interactive charts, and real-time data updates.</p>
+              </div>
+              
+              <div class="expandable-section">
+                <h4>Tags</h4>
+                <div class="tags-list">
+                  <span class="tag">React</span>
+                  <span class="tag">D3.js</span>
+                  <span class="tag">Data Visualization</span>
+                  <span class="tag">Dashboard</span>
+                </div>
+              </div>
+              
+              <div class="expandable-section">
+                <h4>Links</h4>
+                <div class="links-list">
+                  <a href="projects/visa-sponsor-dashboard.html" class="link-item">
+                    <i class="fas fa-file-alt"></i>
+                    Project Details
+                  </a>
+                  <a href="https://careers.utah.edu/internationalstudents/" target="_blank" class="link-item">
+                    <i class="fas fa-external-link-alt"></i>
+                    Live Demo
+                  </a>
+                  <a href="https://github.com/kensuke0529/visa-dashboard" target="_blank" class="link-item">
+                    <i class="fab fa-github"></i>
+                    GitHub Repository
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project Card 2 -->
+        <article class="project-card" data-category="cloud" data-status="progress" data-priority="medium" tabindex="0" role="button" aria-expanded="false">
+          <div class="priority-flag priority-medium"></div>
+          
+          <div class="card-header">
+            <h3 class="card-title">Static Website on S3 + Terraform + GitHub Actions</h3>
+            <div class="card-actions">
+              <button class="favorite-btn active" title="Remove from favorites">
+                <i class="fas fa-star"></i>
+              </button>
+              <button class="action-btn" title="Share">
+                <i class="fas fa-share"></i>
+              </button>
+              <button class="action-btn" title="More options">
+                <i class="fas fa-ellipsis-h"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="status-badge status-progress">
+            <i class="fas fa-clock"></i>
+            <span>In Progress</span>
+          </div>
+
+          <div class="card-meta">
+            <div class="meta-item">
+              <span class="category-tag">Cloud</span>
+            </div>
+            <div class="meta-item">
+              <i class="fas fa-user"></i>
+              <span>Kensuke Umakoshi</span>
+            </div>
+            <div class="meta-item">
+              <i class="fas fa-clock"></i>
+              <span class="last-updated">1 week ago</span>
+            </div>
+          </div>
+
+          <div class="card-content">
+            <p class="card-description">
+              Deployed a fast, reliable, and lightweight portfolio site using AWS S3, Terraform, and GitHub Actions for automated deployment. Achieved 99.9% uptime with serverless architecture.
+            </p>
+            
+            <div class="progress-container">
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 70%"></div>
+              </div>
+              <div class="progress-text">70% Complete</div>
+            </div>
+
+            <div class="key-metrics">
+              <div class="metric-item">
+                <i class="fas fa-tasks"></i>
+                <span>8/12 tasks</span>
+              </div>
+              <div class="metric-item">
+                <i class="fas fa-comments"></i>
+                <span>5 comments</span>
+              </div>
+              <div class="metric-item">
+                <i class="fas fa-users"></i>
+                <span>1 contributor</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <div class="quick-actions">
+              <a href="projects/website-auto-deploy.html" class="quick-action-btn">
+                <i class="fas fa-eye"></i>
+                View
+              </a>
+              <a href="https://github.com/kensuke0529/MySite" target="_blank" class="quick-action-btn">
+                <i class="fab fa-github"></i>
+                GitHub
+              </a>
+            </div>
+            <button class="overflow-btn" title="More options">
+              <i class="fas fa-ellipsis-v"></i>
+            </button>
+          </div>
+
+          <div class="card-expandable" aria-hidden="true">
+            <div class="expandable-content">
+              <div class="expandable-section">
+                <h4>Full Description</h4>
+                <p>Infrastructure as Code solution for hosting a static portfolio website with automated CI/CD pipeline using GitHub Actions and Terraform for AWS resource management.</p>
+              </div>
+              
+              <div class="expandable-section">
+                <h4>Tags</h4>
+                <div class="tags-list">
+                  <span class="tag">AWS S3</span>
+                  <span class="tag">Terraform</span>
+                  <span class="tag">GitHub Actions</span>
+                  <span class="tag">CI/CD</span>
+                </div>
+              </div>
+              
+              <div class="expandable-section">
+                <h4>Links</h4>
+                <div class="links-list">
+                  <a href="projects/website-auto-deploy.html" class="link-item">
+                    <i class="fas fa-file-alt"></i>
+                    Project Details
+                  </a>
+                  <a href="https://github.com/kensuke0529/MySite" target="_blank" class="link-item">
+                    <i class="fab fa-github"></i>
+                    GitHub Repository
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project Card 3 -->
+        <article class="project-card" data-category="data-science,cloud" data-status="completed" data-priority="high" tabindex="0" role="button" aria-expanded="false">
+          <div class="priority-flag priority-high"></div>
+          
+          <div class="card-header">
+            <h3 class="card-title">End-to-End Fraud Detection</h3>
+            <div class="card-actions">
+              <button class="favorite-btn" title="Add to favorites">
+                <i class="far fa-star"></i>
+              </button>
+              <button class="action-btn" title="Share">
+                <i class="fas fa-share"></i>
+              </button>
+              <button class="action-btn" title="More options">
+                <i class="fas fa-ellipsis-h"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="status-badge status-completed">
+            <i class="fas fa-check-circle"></i>
+            <span>Completed</span>
+          </div>
+
+          <div class="card-meta">
+            <div class="meta-item">
+              <span class="category-tag">Data Science</span>
+            </div>
+            <div class="meta-item">
+              <i class="fas fa-user"></i>
+              <span>Kensuke Umakoshi</span>
+            </div>
+            <div class="meta-item">
+              <i class="fas fa-clock"></i>
+              <span class="last-updated">2 weeks ago</span>
+            </div>
+          </div>
+
+          <div class="card-content">
+            <p class="card-description">
+              Developed a scalable ETL pipeline with Apache Airflow orchestrating ingestion of 284k+ transactions into AWS. Trained and deployed fraud detection models achieving 0.89 F1-score.
+            </p>
+            
+            <div class="progress-container">
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 100%"></div>
+              </div>
+              <div class="progress-text">100% Complete</div>
+            </div>
+
+            <div class="key-metrics">
+              <div class="metric-item">
+                <i class="fas fa-tasks"></i>
+                <span>15/15 tasks</span>
+              </div>
+              <div class="metric-item">
+                <i class="fas fa-comments"></i>
+                <span>12 comments</span>
+              </div>
+              <div class="metric-item">
+                <i class="fas fa-users"></i>
+                <span>2 contributors</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <div class="quick-actions">
+              <a href="projects/end-to-end-fraud-detection.html" class="quick-action-btn">
+                <i class="fas fa-eye"></i>
+                View
+              </a>
+              <a href="https://github.com/kensuke0529/ML" target="_blank" class="quick-action-btn">
+                <i class="fab fa-github"></i>
+                GitHub
+              </a>
+            </div>
+            <button class="overflow-btn" title="More options">
+              <i class="fas fa-ellipsis-v"></i>
+            </button>
+          </div>
+
+          <div class="card-expandable" aria-hidden="true">
+            <div class="expandable-content">
+              <div class="expandable-section">
+                <h4>Full Description</h4>
+                <p>Complete machine learning pipeline for fraud detection using Apache Airflow for orchestration, AWS for cloud infrastructure, and advanced ML models for classification.</p>
+              </div>
+              
+              <div class="expandable-section">
+                <h4>Tags</h4>
+                <div class="tags-list">
+                  <span class="tag">Python</span>
+                  <span class="tag">Apache Airflow</span>
+                  <span class="tag">AWS</span>
+                  <span class="tag">Machine Learning</span>
+                </div>
+              </div>
+              
+              <div class="expandable-section">
+                <h4>Links</h4>
+                <div class="links-list">
+                  <a href="projects/end-to-end-fraud-detection.html" class="link-item">
+                    <i class="fas fa-file-alt"></i>
+                    Project Details
+                  </a>
+                  <a href="https://github.com/kensuke0529/ML" target="_blank" class="link-item">
+                    <i class="fab fa-github"></i>
+                    GitHub Repository
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Add more project cards here following the same pattern -->
+      </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    
+    <!-- Card System Scripts -->
+    <script src="assets/js/project-data.js"></script>
+    <script src="assets/js/card-system.js"></script>
+    <script src="assets/js/accessibility.js"></script>
+
+    <!-- Card System JavaScript -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        body.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+          const currentTheme = body.getAttribute('data-theme');
+          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          
+          body.setAttribute('data-theme', newTheme);
+          localStorage.setItem('theme', newTheme);
+          updateThemeIcon(newTheme);
+        });
+
+        function updateThemeIcon(theme) {
+          const icon = themeToggle.querySelector('i');
+          icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        // Initialize card interactions
+        initCardInteractions();
+        initFilters();
+        initSorting();
+      });
+
+      function initCardInteractions() {
+        const cards = document.querySelectorAll('.project-card');
+        
+        cards.forEach(card => {
+          // Card click to expand/collapse
+          card.addEventListener('click', (e) => {
+            // Don't expand if clicking on action buttons
+            if (e.target.closest('.card-actions') || e.target.closest('.card-footer')) {
+              return;
+            }
+            
+            const isExpanded = card.getAttribute('aria-expanded') === 'true';
+            const expandable = card.querySelector('.card-expandable');
+            
+            if (isExpanded) {
+              card.setAttribute('aria-expanded', 'false');
+              expandable.setAttribute('aria-hidden', 'true');
+              expandable.classList.remove('expanded');
+            } else {
+              card.setAttribute('aria-expanded', 'true');
+              expandable.setAttribute('aria-hidden', 'false');
+              expandable.classList.add('expanded');
+            }
+          });
+
+          // Favorite toggle
+          const favoriteBtn = card.querySelector('.favorite-btn');
+          if (favoriteBtn) {
+            favoriteBtn.addEventListener('click', (e) => {
+              e.stopPropagation();
+              favoriteBtn.classList.toggle('active');
+              const icon = favoriteBtn.querySelector('i');
+              if (favoriteBtn.classList.contains('active')) {
+                icon.className = 'fas fa-star';
+                favoriteBtn.title = 'Remove from favorites';
+              } else {
+                icon.className = 'far fa-star';
+                favoriteBtn.title = 'Add to favorites';
+              }
+            });
+          }
+        });
+      }
+
+      function initFilters() {
+        const categoryFilter = document.getElementById('categoryFilter');
+        const statusFilter = document.getElementById('statusFilter');
+        const cards = document.querySelectorAll('.project-card');
+
+        function filterCards() {
+          const selectedCategory = categoryFilter.value;
+          const selectedStatus = statusFilter.value;
+
+          cards.forEach(card => {
+            const cardCategory = card.getAttribute('data-category');
+            const cardStatus = card.getAttribute('data-status');
+            
+            const categoryMatch = selectedCategory === 'all' || 
+              cardCategory.includes(selectedCategory);
+            const statusMatch = selectedStatus === 'all' || 
+              cardStatus === selectedStatus;
+            
+            if (categoryMatch && statusMatch) {
+              card.style.display = '';
+              card.style.opacity = '0';
+              card.style.transform = 'translateY(20px)';
+              setTimeout(() => {
+                card.style.transition = 'all 0.3s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+              }, 10);
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        }
+
+        categoryFilter.addEventListener('change', filterCards);
+        statusFilter.addEventListener('change', filterCards);
+      }
+
+      function initSorting() {
+        const sortBtns = document.querySelectorAll('.sort-btn');
+        const cards = document.querySelectorAll('.project-card');
+        const grid = document.getElementById('projectCardsGrid');
+
+        sortBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            // Update active state
+            sortBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const sortBy = btn.getAttribute('data-sort');
+            const cardsArray = Array.from(cards);
+
+            // Sort cards based on criteria
+            cardsArray.sort((a, b) => {
+              switch (sortBy) {
+                case 'name':
+                  return a.querySelector('.card-title').textContent.localeCompare(
+                    b.querySelector('.card-title').textContent
+                  );
+                case 'priority':
+                  const priorityOrder = { high: 3, medium: 2, low: 1 };
+                  const aPriority = a.getAttribute('data-priority');
+                  const bPriority = b.getAttribute('data-priority');
+                  return priorityOrder[bPriority] - priorityOrder[aPriority];
+                case 'date':
+                default:
+                  // Sort by last updated (mock data)
+                  return Math.random() - 0.5;
+              }
+            });
+
+            // Reorder cards in DOM
+            cardsArray.forEach(card => {
+              grid.appendChild(card);
+            });
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,117 +1,481 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    <title>Website Auto Deploy</title>
+    <title>Static Website (This site!) on S3 + Terraform + GitHub Actions - Kensuke Umakoshi</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="description" content="Deployed a fast, reliable, and lightweight portfolio site using AWS S3, Terraform, and GitHub Actions for automated deployment with serverless architecture." />
+    <meta name="keywords" content="AWS S3, Terraform, GitHub Actions, CI/CD, DevOps, Static Website, Serverless, Infrastructure as Code" />
+    <meta name="author" content="Kensuke Umakoshi" />
+    
     <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+      /* ==============================
+         Apple-Inspired Project Page
+      ============================== */
+      
+      /* CSS Variables for Apple-inspired Theme */
+      :root {
+        --primary-color: #007AFF;
+        --secondary-color: #5856D6;
+        --bg-color: #FFFFFF;
+        --text-color: #1D1D1F;
+        --text-secondary: #86868B;
+        --border-color: #D2D2D7;
+        --card-bg: #F5F5F7;
+        --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.15);
+        --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        --border-radius: 12px;
+        --spacing-xs: 0.5rem;
+        --spacing-sm: 1rem;
+        --spacing-md: 1.5rem;
+        --spacing-lg: 2rem;
+        --spacing-xl: 3rem;
+        --spacing-2xl: 4rem;
+      }
+
+      /* Dark mode variables */
+      [data-theme="dark"] {
+        --bg-color: #000000;
+        --text-color: #F5F5F7;
+        --text-secondary: #86868B;
+        --border-color: #1C1C1E;
+        --card-bg: #1C1C1E;
+        --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.4);
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+        font-weight: 400;
+        line-height: 1.6;
+        transition: var(--transition);
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Apple-style Typography */
+      h1, h2, h3, h4, h5, h6 {
+        font-weight: 600;
+        line-height: 1.2;
+        margin: 0 0 var(--spacing-sm) 0;
+        color: var(--text-color);
+      }
+
+      h1 { font-size: 3.5rem; font-weight: 700; }
+      h2 { font-size: 2.5rem; font-weight: 600; }
+      h3 { font-size: 1.5rem; font-weight: 600; }
+      h4 { font-size: 1.25rem; font-weight: 500; }
+
+      p {
+        margin: 0 0 var(--spacing-sm) 0;
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
+
+      /* Navigation */
+      .nav-header {
+        background: var(--card-bg);
+        border-bottom: 1px solid var(--border-color);
+        padding: var(--spacing-lg) 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(20px);
+      }
+
+      .nav-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-lg);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .nav-logo {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--text-color);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+      }
+
+      .nav-logo:hover {
+        color: var(--primary-color);
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: var(--spacing-lg);
+        align-items: center;
+      }
+
+      .nav-link {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-weight: 500;
+        transition: var(--transition);
+      }
+
+      .nav-link:hover {
+        color: var(--primary-color);
+        text-decoration: none;
+      }
+
+      /* Project Hero */
+      .project-hero {
+        padding: var(--spacing-2xl) 0;
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .project-hero h1 {
+        font-size: 3rem;
+        margin-bottom: var(--spacing-sm);
+        background: linear-gradient(135deg, var(--text-color), var(--text-secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .project-hero .subtitle {
+        font-size: 1.25rem;
+        color: var(--text-secondary);
+        margin-bottom: var(--spacing-lg);
+        font-weight: 400;
+      }
+
+      .project-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-md);
+        justify-content: center;
+        margin-bottom: var(--spacing-xl);
+      }
+
+      .meta-item {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 20px;
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--text-color);
+      }
+
+      .project-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+        justify-content: center;
+        margin-top: var(--spacing-xl);
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--spacing-sm) var(--spacing-lg);
+        border-radius: var(--border-radius);
+        font-weight: 500;
+        font-size: 1rem;
+        text-decoration: none;
+        transition: var(--transition);
+        border: none;
+        cursor: pointer;
+        gap: var(--spacing-xs);
+      }
+
+      .btn-primary {
+        background: var(--primary-color);
+        color: white;
+        box-shadow: var(--shadow);
+      }
+
+      .btn-primary:hover {
+        background: var(--secondary-color);
+        box-shadow: var(--shadow-hover);
+        transform: translateY(-2px);
+        text-decoration: none;
+      }
+
+      .btn-secondary {
+        background: var(--card-bg);
+        color: var(--text-color);
+        border: 1px solid var(--border-color);
+      }
+
+      .btn-secondary:hover {
+        background: var(--border-color);
+        transform: translateY(-1px);
+        text-decoration: none;
+      }
+
+      /* Project Content */
+      .project-content {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-lg);
+      }
+
+      .content-section {
+        margin-bottom: var(--spacing-2xl);
+      }
+
+      .content-section h2 {
+        font-size: 2rem;
+        margin-bottom: var(--spacing-lg);
+        color: var(--text-color);
+      }
+
+      .content-section h3 {
+        font-size: 1.5rem;
+        margin-bottom: var(--spacing-md);
+        color: var(--text-color);
+      }
+
+      .content-section p {
+        margin-bottom: var(--spacing-md);
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
+
+      .content-section ul, .content-section ol {
+        margin-bottom: var(--spacing-md);
+        padding-left: var(--spacing-lg);
+      }
+
+      .content-section li {
+        margin-bottom: var(--spacing-xs);
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
+
+      /* Technology tags */
+      .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+        margin: var(--spacing-lg) 0;
+      }
+
+      .tech-tag {
+        background: var(--primary-color);
+        color: white;
+        padding: var(--spacing-xs) var(--spacing-sm);
+        border-radius: 15px;
+        font-size: 0.85rem;
+        font-weight: 500;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-content {
+          flex-direction: column;
+          gap: var(--spacing-md);
+        }
+
+        .nav-links {
+          flex-direction: column;
+          gap: var(--spacing-sm);
+        }
+
+        .project-hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .project-meta {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .project-links {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    </style>
   </head>
   <body class="is-preload">
-
-    <div id="wrapper">
-      <div id="main">
-        <div class="inner">
-          <header id="header">
-            <a href="../index.html" class="logo"><strong>Kensuke / Portfolio</strong></a>
-          </header>
-
-          <section>
-            <header class="major">
-              <h2>Website Auto Deploy</h2>
-              <p>Static website on S3 + Terraform + GitHub Actions</p>
-            </header>
-
-            <div id="readme" class="content">
-              <p>Loading README from GitHub…</p>
-            </div>
-
-            <ul class="actions">
-              <li><a class="button icon brands fa-github" href="https://github.com/kensuke0529/MySite" target="_blank">View on GitHub</a></li>
-            </ul>
-          </section>
+    <!-- Navigation -->
+    <nav class="nav-header">
+      <div class="nav-content">
+        <a href="../index.html" class="nav-logo">
+          <i class="fas fa-arrow-left"></i>
+          <span>Back to Portfolio</span>
+        </a>
+        <div class="nav-links">
+          <a href="../index.html" class="nav-link">Home</a>
+          <a href="../index.html#projects" class="nav-link">Projects</a>
+          <a href="../index.html#contact" class="nav-link">Contact</a>
         </div>
       </div>
+    </nav>
 
-      <div id="sidebar">
-        <div class="inner">
-          <section>
-            <header class="major">
-              <h2>Navigate</h2>
-            </header>
-            <ul class="actions">
-              <li><a href="../index.html" class="button">Back to Home</a></li>
-            </ul>
-          </section>
+    <!-- Project Hero -->
+    <section class="project-hero">
+      <h1>Static Website (This site!) on S3 + Terraform + GitHub Actions</h1>
+      <p class="subtitle">Fast, reliable, and lightweight portfolio site with automated deployment using serverless architecture</p>
+      
+      <div class="project-meta">
+        <div class="meta-item">
+          <i class="fas fa-tag"></i>
+          DevOps/Cloud
         </div>
+        <a href="https://github.com/kensuke0529/MySite" target="_blank" class="btn btn-primary">
+          <i class="fab fa-github"></i>
+          View on GitHub
+        </a>
       </div>
-    </div>
+    </section>
+
+    <!-- Project Content -->
+    <main class="project-content">
+      <!-- Overview Section -->
+      <section class="content-section">
+        <h2>Project Overview</h2>
+        <p>Deployed a fast, reliable, and lightweight portfolio site using AWS S3 for static website hosting, Terraform for infrastructure as code, and GitHub Actions for automated deployment. The solution uses a serverless architecture that provides excellent performance and cost-effectiveness.</p>
+        
+        <div class="tech-tags">
+          <span class="tech-tag">AWS S3</span>
+          <span class="tech-tag">Terraform</span>
+          <span class="tech-tag">GitHub Actions</span>
+          <span class="tech-tag">CI/CD</span>
+          <span class="tech-tag">DevOps</span>
+          <span class="tech-tag">Infrastructure as Code</span>
+        </div>
+      </section>
+
+      <!-- Problem Statement -->
+      <section class="content-section">
+        <h2>Problem Statement</h2>
+        <p>Traditional web hosting solutions often require server management, have high costs, and lack automated deployment capabilities. There's a need for a modern, scalable, and cost-effective solution that can host static websites with high availability and automated deployment processes.</p>
+      </section>
+
+      <!-- Solution -->
+      <section class="content-section">
+        <h2>Solution</h2>
+        <p>Implemented a comprehensive serverless architecture using AWS S3 for hosting, Terraform for infrastructure management, and GitHub Actions for automated deployment, providing a modern, scalable, and cost-effective solution.</p>
+        
+        <h3>Key Features</h3>
+        <ul>
+          <li>AWS S3 static website hosting with high availability</li>
+          <li>Terraform infrastructure as code for reproducible deployments</li>
+          <li>GitHub Actions CI/CD pipeline for automated deployment</li>
+          <li>Serverless architecture for reliable hosting</li>
+          <li>Cost-effective solution with minimal operational overhead</li>
+          <li>Scalable and secure hosting environment</li>
+        </ul>
+      </section>
+
+      <!-- Technical Implementation -->
+      <section class="content-section">
+        <h2>Technical Implementation</h2>
+        <p>The solution implements a modern DevOps pipeline that combines cloud infrastructure with automated deployment processes for efficient website management.</p>
+        
+        <h3>Infrastructure Architecture</h3>
+        <ul>
+          <li>AWS S3 bucket for static website hosting</li>
+          <li>Global content delivery for fast access</li>
+          <li>Route 53 for DNS management</li>
+          <li>SSL/TLS certificates for secure connections</li>
+          <li>IAM roles and policies for security</li>
+          <li>Monitoring and logging setup</li>
+        </ul>
+
+        <h3>CI/CD Pipeline</h3>
+        <ul>
+          <li>GitHub Actions workflow for automated deployment</li>
+          <li>Terraform for infrastructure provisioning</li>
+        </ul>
+
+        <h3>Key Technologies</h3>
+        <ul>
+          <li>AWS S3 for static website hosting</li>
+          <li>Terraform for infrastructure as code</li>
+          <li>GitHub Actions for CI/CD automation</li>
+          <li>Route 53 for DNS management</li>
+          <li>SSL/TLS for security</li>
+        </ul>
+      </section>
+
+      <!-- Results -->
+      <section class="content-section">
+        <h2>Results & Impact</h2>
+        <p>The serverless architecture successfully provides a fast, reliable, and cost-effective hosting solution with excellent performance metrics and automated deployment capabilities.</p>
+        
+        <h3>Key Findings</h3>
+        <ul>
+          <li>Reduced hosting costs compared to traditional hosting</li>
+          <li>Implemented automated deployment</li>
+          <li>Improved site performance</li>
+        </ul>
+
+      </section>
+
+      <!-- Challenges & Learnings -->
+      <section class="content-section">
+        <h2>Challenges & Learnings</h2>
+        <p>Implementing a serverless architecture presented challenges in infrastructure configuration, CI/CD setup, and ensuring optimal performance while maintaining cost-effectiveness.</p>
+        
+        <h3>Key Learnings</h3>
+        <ul>
+          <li>Importance of infrastructure as code for reproducibility</li>
+          <li>Value of automated deployment in DevOps workflows</li>
+          <li>Significance of serverless architecture for cost optimization</li>
+          <li>Importance of monitoring and logging in cloud environments</li>
+        </ul>
+      </section>
+
+      <!-- Future Improvements -->
+      <section class="content-section">
+        <h2>Future Improvements</h2>
+        <p>Future enhancements could include advanced monitoring and alerting, automated backup strategies, multi-region deployment, and integration with additional AWS services for enhanced functionality.</p>
+      </section>
+    </main>
 
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/js/browser.min.js"></script>
     <script src="../assets/js/breakpoints.min.js"></script>
     <script src="../assets/js/util.js"></script>
     <script src="../assets/js/main.js"></script>
+
     <script>
-      (function() {
-        const owner = 'kensuke0529';
-        const repo = 'MySite';
-        const branch = 'main';
-
-        const apiUrl = `https://api.github.com/repos/${owner}/${repo}/readme?ref=${encodeURIComponent(branch)}`;
-        fetch(apiUrl, { headers: { Accept: 'application/vnd.github.v3.html' } })
-          .then(r => { if (!r.ok) throw new Error('README not found'); return r.text(); })
-          .then(html => {
-            document.getElementById('readme').innerHTML = html;
-            const base = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/`;
-            document.querySelectorAll('#readme img').forEach(img => {
-              const src = img.getAttribute('src') || '';
-              if (src && !/^https?:\/\//i.test(src) && !src.startsWith('data:')) {
-                img.src = base + src.replace(/^\.?\/?/, '');
-              }
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
             });
-            document.querySelectorAll('#readme a').forEach(a => {
-              const href = a.getAttribute('href') || '';
-              if (href && !/^https?:\/\//i.test(href) && !href.startsWith('#') && !href.startsWith('mailto:')) {
-                a.href = `https://github.com/${owner}/${repo}/blob/${branch}/` + href.replace(/^\.?\/?/, '');
-                a.target = '_blank';
-                a.rel = 'noopener noreferrer';
-              }
-            });
-          })
-          .catch(() => {
-            const rawUrls = [
-              `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/README.md`,
-              `https://raw.githubusercontent.com/${owner}/${repo}/master/README.md`,
-              `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/readme.md`,
-              `https://raw.githubusercontent.com/${owner}/${repo}/master/readme.md`
-            ];
+          }
+        });
+      });
 
-            function toHtml(md) {
-              let h = md
-                .replace(/\r\n|\r/g, '\n')
-                .replace(/^# (.*)$/gm, '<h1>$1<\/h1>')
-                .replace(/^## (.*)$/gm, '<h2>$1<\/h2>')
-                .replace(/^### (.*)$/gm, '<h3>$1<\/h3>')
-                .replace(/\n\n+/g, '</p><p>')
-                .replace(/\n/g, '<br />')
-                .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1<\/a>');
-              return '<p>' + h + '</p>';
-            }
-
-            (function tryRaw(i) {
-              if (i >= rawUrls.length) {
-                document.getElementById('readme').innerHTML = '<p>Unable to load README. See the repository on GitHub.</p>';
-                return;
-              }
-              fetch(rawUrls[i])
-                .then(r => r.ok ? r.text() : Promise.reject())
-                .then(md => { document.getElementById('readme').innerHTML = toHtml(md); })
-                .catch(() => tryRaw(i + 1));
-            })(0);
-          });
-      })();
+      // Add loading animation
+      document.addEventListener('DOMContentLoaded', function() {
+        document.body.classList.remove('is-preload');
+      });
     </script>
   </body>
 </html>
-
-

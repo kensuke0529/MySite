@@ -1,12 +1,26 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    <title>AI Study Assistant Agent - Kensuke Umakoshi</title>
+    <title>PROJECT_TITLE - Kensuke Umakoshi</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <meta name="description" content="Intelligent AI agent using RAG, FAISS, OpenAI LLMs, and embeddings to provide context-aware answers from personalized document libraries, reducing hallucinations." />
-    <meta name="keywords" content="AI, RAG, FAISS, OpenAI, LLM, Study Assistant, Document Analysis, Machine Learning" />
+    <meta name="description" content="PROJECT_DESCRIPTION" />
+    <meta name="keywords" content="PROJECT_KEYWORDS" />
     <meta name="author" content="Kensuke Umakoshi" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kensukeumakoshi.com/projects/PROJECT_SLUG" />
+    <meta property="og:title" content="PROJECT_TITLE - Kensuke Umakoshi" />
+    <meta property="og:description" content="PROJECT_DESCRIPTION" />
+    <meta property="og:image" content="https://kensukeumakoshi.com/assets/img/projects/PROJECT_IMAGE" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://kensukeumakoshi.com/projects/PROJECT_SLUG" />
+    <meta property="twitter:title" content="PROJECT_TITLE - Kensuke Umakoshi" />
+    <meta property="twitter:description" content="PROJECT_DESCRIPTION" />
+    <meta property="twitter:image" content="https://kensukeumakoshi.com/assets/img/projects/PROJECT_IMAGE" />
     
     <link rel="stylesheet" href="../assets/css/main.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -268,6 +282,58 @@
         line-height: 1.6;
       }
 
+      /* Code blocks */
+      .code-block {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+        padding: var(--spacing-lg);
+        margin: var(--spacing-lg) 0;
+        overflow-x: auto;
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      .code-block pre {
+        margin: 0;
+        color: var(--text-color);
+      }
+
+      /* Image gallery */
+      .image-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--spacing-lg);
+        margin: var(--spacing-lg) 0;
+      }
+
+      .gallery-item {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        transition: var(--transition);
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .gallery-caption {
+        padding: var(--spacing-md);
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        text-align: center;
+      }
+
       /* Technology tags */
       .tech-tags {
         display: flex;
@@ -283,31 +349,6 @@
         border-radius: 15px;
         font-size: 0.85rem;
         font-weight: 500;
-      }
-
-      /* Diagram styling */
-      .diagram-container {
-        margin: var(--spacing-xl) 0;
-        text-align: center;
-        background: var(--card-bg);
-        border-radius: var(--border-radius);
-        padding: var(--spacing-lg);
-        border: 1px solid var(--border-color);
-        box-shadow: var(--shadow);
-      }
-
-      .diagram-container img {
-        max-width: 100%;
-        height: auto;
-        border-radius: var(--border-radius);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      }
-
-      .diagram-caption {
-        margin-top: var(--spacing-md);
-        font-size: 0.9rem;
-        color: var(--text-secondary);
-        font-style: italic;
       }
 
       /* Responsive Design */
@@ -335,7 +376,30 @@
           flex-direction: column;
           align-items: center;
         }
+
+        .image-gallery {
+          grid-template-columns: 1fr;
+        }
       }
+
+      /* Utility Classes */
+      .text-center { text-align: center; }
+      .text-left { text-align: left; }
+      .text-right { text-align: right; }
+      
+      .mb-0 { margin-bottom: 0; }
+      .mb-1 { margin-bottom: var(--spacing-xs); }
+      .mb-2 { margin-bottom: var(--spacing-sm); }
+      .mb-3 { margin-bottom: var(--spacing-md); }
+      .mb-4 { margin-bottom: var(--spacing-lg); }
+      .mb-5 { margin-bottom: var(--spacing-xl); }
+      
+      .mt-0 { margin-top: 0; }
+      .mt-1 { margin-top: var(--spacing-xs); }
+      .mt-2 { margin-top: var(--spacing-sm); }
+      .mt-3 { margin-top: var(--spacing-md); }
+      .mt-4 { margin-top: var(--spacing-lg); }
+      .mt-5 { margin-top: var(--spacing-xl); }
     </style>
   </head>
   <body class="is-preload">
@@ -356,17 +420,21 @@
 
     <!-- Project Hero -->
     <section class="project-hero">
-      <h1>AI Study Assistant Agent</h1>
-      <p class="subtitle">Intelligent AI agent using RAG, FAISS, OpenAI LLMs, and embeddings to provide context-aware answers from personalized document libraries</p>
+      <h1>PROJECT_TITLE</h1>
+      <p class="subtitle">PROJECT_SUBTITLE</p>
       
       <div class="project-meta">
         <div class="meta-item">
           <i class="fas fa-tag"></i>
-          AI/ML
+          PROJECT_CATEGORY
         </div>
-        <a href="https://github.com/kensuke0529/ai-study-agent" target="_blank" class="btn btn-primary">
+        <a href="PROJECT_GITHUB_URL" target="_blank" class="btn btn-primary">
           <i class="fab fa-github"></i>
           View on GitHub
+        </a>
+        <a href="PROJECT_DEMO_URL" target="_blank" class="btn btn-secondary">
+          <i class="fas fa-external-link-alt"></i>
+          Live Demo
         </a>
       </div>
     </section>
@@ -376,116 +444,85 @@
       <!-- Overview Section -->
       <section class="content-section">
         <h2>Project Overview</h2>
-        <p>Developed an intelligent AI study assistant that leverages Retrieval-Augmented Generation (RAG) technology to provide context-aware answers from personalized document libraries. The system uses FAISS for efficient vector similarity search and OpenAI's language models to generate accurate, hallucination-reduced responses.</p>
+        <p>PROJECT_OVERVIEW_DESCRIPTION</p>
         
         <div class="tech-tags">
-          <span class="tech-tag">Python</span>
-          <span class="tech-tag">RAG</span>
-          <span class="tech-tag">FAISS</span>
-          <span class="tech-tag">OpenAI API</span>
-          <span class="tech-tag">Vector Embeddings</span>
-          <span class="tech-tag">LangChain</span>
+          <span class="tech-tag">TECH_1</span>
+          <span class="tech-tag">TECH_2</span>
+          <span class="tech-tag">TECH_3</span>
+          <span class="tech-tag">TECH_4</span>
         </div>
       </section>
 
       <!-- Problem Statement -->
       <section class="content-section">
         <h2>Problem Statement</h2>
-        <p>Traditional AI assistants often provide generic answers or suffer from hallucinations when asked about specific documents or personal knowledge bases. Students and professionals need a way to get accurate, context-aware answers from their own document collections without the risk of AI-generated misinformation.</p>
+        <p>PROBLEM_DESCRIPTION</p>
       </section>
 
       <!-- Solution -->
       <section class="content-section">
         <h2>Solution</h2>
-        <p>Built an intelligent AI agent that combines document retrieval with language generation to provide accurate, context-aware answers from personalized document libraries while significantly reducing hallucinations.</p>
+        <p>SOLUTION_DESCRIPTION</p>
         
         <h3>Key Features</h3>
         <ul>
-          <li>Document ingestion and processing from multiple formats (PDF, TXT, DOCX)</li>
-          <li>Vector embeddings generation using OpenAI's embedding models</li>
-          <li>Efficient similarity search using FAISS vector database</li>
-          <li>Context-aware answer generation with RAG architecture</li>
-          <li>Hallucination reduction through source citation and confidence scoring</li>
-          <li>Interactive chat interface for seamless user experience</li>
+          <li>FEATURE_1</li>
+          <li>FEATURE_2</li>
+          <li>FEATURE_3</li>
         </ul>
       </section>
 
       <!-- Technical Implementation -->
       <section class="content-section">
         <h2>Technical Implementation</h2>
-        <p>The system implements a sophisticated RAG pipeline that combines document processing, vector search, and language generation to deliver accurate, context-aware responses.</p>
+        <p>TECHNICAL_DESCRIPTION</p>
         
         <h3>Architecture</h3>
-        <ul>
-          <li>Document preprocessing and chunking for optimal retrieval</li>
-          <li>Vector embeddings generation using OpenAI's text-embedding-ada-002</li>
-          <li>FAISS index for fast similarity search across document chunks</li>
-          <li>Context retrieval and ranking based on semantic similarity</li>
-          <li>Prompt engineering for context-aware answer generation</li>
-          <li>Response validation and source attribution</li>
-        </ul>
-
+        <p>ARCHITECTURE_DESCRIPTION</p>
+        
         <h3>Key Technologies</h3>
         <ul>
-          <li>Python for core application logic</li>
-          <li>FAISS for efficient vector similarity search</li>
-          <li>OpenAI API for embeddings and language generation</li>
-          <li>LangChain for RAG pipeline orchestration</li>
-          <li>Streamlit for interactive user interface</li>
-          <li>ChromaDB for document storage and metadata management</li>
+          <li>TECHNOLOGY_1</li>
+          <li>TECHNOLOGY_2</li>
+          <li>TECHNOLOGY_3</li>
         </ul>
-
-        <div class="diagram-container">
-          <img src="../assets/img/projects/studyagent.png" alt="AI Study Agent Architecture Diagram" />
-          <div class="diagram-caption">
-            Architecture diagram showing the RAG pipeline flow from document ingestion to response generation
-          </div>
-        </div>
       </section>
 
       <!-- Results -->
       <section class="content-section">
         <h2>Results & Impact</h2>
-        <p>The AI Study Assistant successfully provides accurate, context-aware answers from document libraries while significantly reducing hallucinations compared to traditional language models.</p>
+        <p>RESULTS_DESCRIPTION</p>
         
-        <h3>Key Findings</h3>
-        <ul>
-          <li>Achieved 85% accuracy in document-based question answering</li>
-          <li>Reduced hallucinations by 70% compared to direct LLM responses</li>
-          <li>Enabled efficient search across large document collections</li>
-          <li>Provided source citations for all generated answers</li>
-        </ul>
-
         <h3>Key Metrics</h3>
         <ul>
-          <li>Processed 1000+ documents across multiple formats</li>
-          <li>Achieved sub-second response times for most queries</li>
-          <li>Maintained 95% uptime during testing period</li>
-          <li>Generated contextually accurate responses 85% of the time</li>
+          <li>METRIC_1</li>
+          <li>METRIC_2</li>
+          <li>METRIC_3</li>
         </ul>
       </section>
 
       <!-- Challenges & Learnings -->
       <section class="content-section">
         <h2>Challenges & Learnings</h2>
-        <p>Building an effective RAG system presented challenges in document processing, vector search optimization, and prompt engineering to minimize hallucinations while maintaining response quality.</p>
+        <p>CHALLENGES_DESCRIPTION</p>
         
         <h3>Key Learnings</h3>
         <ul>
-          <li>Importance of document chunking strategies for optimal retrieval</li>
-          <li>Value of prompt engineering in reducing hallucinations</li>
-          <li>Significance of vector search quality in RAG performance</li>
-          <li>Importance of source attribution for user trust</li>
+          <li>LEARNING_1</li>
+          <li>LEARNING_2</li>
+          <li>LEARNING_3</li>
         </ul>
       </section>
 
       <!-- Future Improvements -->
       <section class="content-section">
         <h2>Future Improvements</h2>
-        <p>Future enhancements could include multi-modal document support, advanced query understanding, real-time document updates, and integration with learning management systems for educational applications.</p>
+        <p>FUTURE_IMPROVEMENTS_DESCRIPTION</p>
       </section>
     </main>
 
+    <!-- Scripts -->
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/js/browser.min.js"></script>
     <script src="../assets/js/breakpoints.min.js"></script>
@@ -514,3 +551,4 @@
     </script>
   </body>
 </html>
+

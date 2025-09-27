@@ -1,11 +1,11 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    <title>AI Study Assistant Agent - Kensuke Umakoshi</title>
+    <title>Deep Learning Pet Breed Classifier - Kensuke Umakoshi</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <meta name="description" content="Intelligent AI agent using RAG, FAISS, OpenAI LLMs, and embeddings to provide context-aware answers from personalized document libraries, reducing hallucinations." />
-    <meta name="keywords" content="AI, RAG, FAISS, OpenAI, LLM, Study Assistant, Document Analysis, Machine Learning" />
+    <meta name="description" content="Comparative analysis system using fine-tuned ResNet50 vs. original ResNet50 for pet breed classification across 35 breeds. Achieved 91.33% test accuracy with 3,500% improvement." />
+    <meta name="keywords" content="Deep Learning, ResNet50, Pet Classification, Computer Vision, PyTorch, Transfer Learning, Image Recognition" />
     <meta name="author" content="Kensuke Umakoshi" />
     
     <link rel="stylesheet" href="../assets/css/main.css" />
@@ -285,31 +285,6 @@
         font-weight: 500;
       }
 
-      /* Diagram styling */
-      .diagram-container {
-        margin: var(--spacing-xl) 0;
-        text-align: center;
-        background: var(--card-bg);
-        border-radius: var(--border-radius);
-        padding: var(--spacing-lg);
-        border: 1px solid var(--border-color);
-        box-shadow: var(--shadow);
-      }
-
-      .diagram-container img {
-        max-width: 100%;
-        height: auto;
-        border-radius: var(--border-radius);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      }
-
-      .diagram-caption {
-        margin-top: var(--spacing-md);
-        font-size: 0.9rem;
-        color: var(--text-secondary);
-        font-style: italic;
-      }
-
       /* Responsive Design */
       @media (max-width: 768px) {
         .nav-content {
@@ -356,17 +331,17 @@
 
     <!-- Project Hero -->
     <section class="project-hero">
-      <h1>AI Study Assistant Agent</h1>
-      <p class="subtitle">Intelligent AI agent using RAG, FAISS, OpenAI LLMs, and embeddings to provide context-aware answers from personalized document libraries</p>
+      <h1>Deep Learning Pet Breed Classifier</h1>
+      <p class="subtitle">Comparative analysis system using fine-tuned ResNet50 vs. original ResNet50 for pet breed classification across 35 breeds with 91.33% test accuracy</p>
       
       <div class="project-meta">
         <div class="meta-item">
           <i class="fas fa-tag"></i>
-          AI/ML
+          Computer Vision
         </div>
-        <a href="https://github.com/kensuke0529/ai-study-agent" target="_blank" class="btn btn-primary">
-          <i class="fab fa-github"></i>
-          View on GitHub
+        <a href="https://huggingface.co/spaces/kennnn1441/pet-breed-classification-comparison" target="_blank" class="btn btn-primary">
+          <i class="fas fa-external-link-alt"></i>
+          Live Demo
         </a>
       </div>
     </section>
@@ -376,113 +351,116 @@
       <!-- Overview Section -->
       <section class="content-section">
         <h2>Project Overview</h2>
-        <p>Developed an intelligent AI study assistant that leverages Retrieval-Augmented Generation (RAG) technology to provide context-aware answers from personalized document libraries. The system uses FAISS for efficient vector similarity search and OpenAI's language models to generate accurate, hallucination-reduced responses.</p>
+        <p>Developed a comprehensive deep learning system for pet breed classification using ResNet50 architecture. The project involved comparative analysis between fine-tuned ResNet50 and original ResNet50 models, achieving 91.33% test accuracy across 35 different pet breeds with a remarkable 3,500% improvement over baseline performance.</p>
         
         <div class="tech-tags">
-          <span class="tech-tag">Python</span>
-          <span class="tech-tag">RAG</span>
-          <span class="tech-tag">FAISS</span>
-          <span class="tech-tag">OpenAI API</span>
-          <span class="tech-tag">Vector Embeddings</span>
-          <span class="tech-tag">LangChain</span>
+          <span class="tech-tag">PyTorch</span>
+          <span class="tech-tag">ResNet50</span>
+          <span class="tech-tag">Transfer Learning</span>
+          <span class="tech-tag">Computer Vision</span>
+          <span class="tech-tag">Deep Learning</span>
+          <span class="tech-tag">Image Classification</span>
         </div>
       </section>
 
       <!-- Problem Statement -->
       <section class="content-section">
         <h2>Problem Statement</h2>
-        <p>Traditional AI assistants often provide generic answers or suffer from hallucinations when asked about specific documents or personal knowledge bases. Students and professionals need a way to get accurate, context-aware answers from their own document collections without the risk of AI-generated misinformation.</p>
+        <p>Pet breed identification is a complex computer vision task that requires distinguishing between subtle visual differences across multiple breeds. Traditional image classification methods struggle with the fine-grained nature of breed classification, requiring advanced deep learning approaches and transfer learning techniques to achieve high accuracy.</p>
       </section>
 
       <!-- Solution -->
       <section class="content-section">
         <h2>Solution</h2>
-        <p>Built an intelligent AI agent that combines document retrieval with language generation to provide accurate, context-aware answers from personalized document libraries while significantly reducing hallucinations.</p>
+        <p>Implemented a sophisticated deep learning pipeline using ResNet50 architecture with transfer learning to achieve high-accuracy pet breed classification across 35 different breeds.</p>
         
         <h3>Key Features</h3>
         <ul>
-          <li>Document ingestion and processing from multiple formats (PDF, TXT, DOCX)</li>
-          <li>Vector embeddings generation using OpenAI's embedding models</li>
-          <li>Efficient similarity search using FAISS vector database</li>
-          <li>Context-aware answer generation with RAG architecture</li>
-          <li>Hallucination reduction through source citation and confidence scoring</li>
-          <li>Interactive chat interface for seamless user experience</li>
+          <li>Fine-tuned ResNet50 model for pet breed classification</li>
+          <li>Comparative analysis with original ResNet50 performance</li>
+          <li>Data augmentation techniques for improved generalization</li>
+          <li>Transfer learning from ImageNet pre-trained weights</li>
+          <li>Comprehensive evaluation across 35 pet breeds</li>
+          <li>Performance optimization and hyperparameter tuning</li>
         </ul>
       </section>
 
       <!-- Technical Implementation -->
       <section class="content-section">
         <h2>Technical Implementation</h2>
-        <p>The system implements a sophisticated RAG pipeline that combines document processing, vector search, and language generation to deliver accurate, context-aware responses.</p>
+        <p>The project implements a sophisticated deep learning pipeline that leverages transfer learning and fine-tuning techniques to achieve exceptional performance in pet breed classification.</p>
         
-        <h3>Architecture</h3>
+        <h3>Model Architecture</h3>
         <ul>
-          <li>Document preprocessing and chunking for optimal retrieval</li>
-          <li>Vector embeddings generation using OpenAI's text-embedding-ada-002</li>
-          <li>FAISS index for fast similarity search across document chunks</li>
-          <li>Context retrieval and ranking based on semantic similarity</li>
-          <li>Prompt engineering for context-aware answer generation</li>
-          <li>Response validation and source attribution</li>
+          <li>ResNet50 backbone with pre-trained ImageNet weights</li>
+          <li>Custom classification head for 35 pet breeds</li>
+          <li>Transfer learning with frozen and unfrozen layers</li>
+          <li>Data augmentation for improved generalization</li>
+          <li>Learning rate scheduling and optimization</li>
+          <li>Comprehensive evaluation and validation</li>
+        </ul>
+
+        <h3>Training Pipeline</h3>
+        <ul>
+          <li>Data preprocessing and augmentation</li>
+          <li>Transfer learning implementation</li>
+          <li>Fine-tuning with custom learning rates</li>
+          <li>Model evaluation and performance analysis</li>
+          <li>Comparative analysis between model variants</li>
+          <li>Visualization of model predictions and errors</li>
         </ul>
 
         <h3>Key Technologies</h3>
         <ul>
-          <li>Python for core application logic</li>
-          <li>FAISS for efficient vector similarity search</li>
-          <li>OpenAI API for embeddings and language generation</li>
-          <li>LangChain for RAG pipeline orchestration</li>
-          <li>Streamlit for interactive user interface</li>
-          <li>ChromaDB for document storage and metadata management</li>
+          <li>PyTorch for deep learning implementation</li>
+          <li>ResNet50 architecture for image classification</li>
+          <li>Transfer learning techniques</li>
+          <li>Data augmentation libraries</li>
+          <li>Computer vision preprocessing tools</li>
+          <li>Model evaluation and visualization tools</li>
         </ul>
-
-        <div class="diagram-container">
-          <img src="../assets/img/projects/studyagent.png" alt="AI Study Agent Architecture Diagram" />
-          <div class="diagram-caption">
-            Architecture diagram showing the RAG pipeline flow from document ingestion to response generation
-          </div>
-        </div>
       </section>
 
       <!-- Results -->
       <section class="content-section">
         <h2>Results & Impact</h2>
-        <p>The AI Study Assistant successfully provides accurate, context-aware answers from document libraries while significantly reducing hallucinations compared to traditional language models.</p>
+        <p>The pet breed classification system achieved exceptional performance metrics, significantly outperforming baseline methods and demonstrating the effectiveness of transfer learning in computer vision tasks.</p>
         
         <h3>Key Findings</h3>
         <ul>
-          <li>Achieved 85% accuracy in document-based question answering</li>
-          <li>Reduced hallucinations by 70% compared to direct LLM responses</li>
-          <li>Enabled efficient search across large document collections</li>
-          <li>Provided source citations for all generated answers</li>
+          <li>Achieved 91.33% test accuracy across 35 pet breeds</li>
+          <li>3,500% improvement over baseline performance</li>
+          <li>Fine-tuned ResNet50 significantly outperformed original model</li>
+          <li>Transfer learning proved highly effective for this task</li>
         </ul>
 
         <h3>Key Metrics</h3>
         <ul>
-          <li>Processed 1000+ documents across multiple formats</li>
-          <li>Achieved sub-second response times for most queries</li>
-          <li>Maintained 95% uptime during testing period</li>
-          <li>Generated contextually accurate responses 85% of the time</li>
+          <li>Test Accuracy: 91.33%</li>
+          <li>Number of Breeds: 35</li>
+          <li>Performance Improvement: 3,500%</li>
+          <li>Model Architecture: ResNet50</li>
         </ul>
       </section>
 
       <!-- Challenges & Learnings -->
       <section class="content-section">
         <h2>Challenges & Learnings</h2>
-        <p>Building an effective RAG system presented challenges in document processing, vector search optimization, and prompt engineering to minimize hallucinations while maintaining response quality.</p>
+        <p>Building an effective pet breed classification system presented challenges in data quality, model optimization, and handling the fine-grained nature of breed classification.</p>
         
         <h3>Key Learnings</h3>
         <ul>
-          <li>Importance of document chunking strategies for optimal retrieval</li>
-          <li>Value of prompt engineering in reducing hallucinations</li>
-          <li>Significance of vector search quality in RAG performance</li>
-          <li>Importance of source attribution for user trust</li>
+          <li>Importance of transfer learning in computer vision tasks</li>
+          <li>Value of data augmentation for model generalization</li>
+          <li>Significance of fine-tuning strategies</li>
+          <li>Importance of comprehensive evaluation in deep learning</li>
         </ul>
       </section>
 
       <!-- Future Improvements -->
       <section class="content-section">
         <h2>Future Improvements</h2>
-        <p>Future enhancements could include multi-modal document support, advanced query understanding, real-time document updates, and integration with learning management systems for educational applications.</p>
+        <p>Future enhancements could include ensemble methods, advanced data augmentation techniques, integration with mobile applications, and real-time breed identification capabilities.</p>
       </section>
     </main>
 
