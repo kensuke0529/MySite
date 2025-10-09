@@ -1,0 +1,594 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Study Notes & Learning Journey - Kensuke Umakoshi</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="description" content="Personal study notes, learning journey, and curated resources in Machine Learning, AI, and Data Science. Explore my learning blog and study projects." />
+    <meta name="keywords" content="Study Notes, Machine Learning, AI, Learning Journey, Blog, Resources, ML/AI Education" />
+    <meta name="author" content="Kensuke Umakoshi" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kensukeumakoshi.com/study.html" />
+    <meta property="og:title" content="Study Notes & Learning Journey - Kensuke Umakoshi" />
+    <meta property="og:description" content="Personal study notes, learning journey, and curated resources in Machine Learning, AI, and Data Science." />
+    <meta property="og:image" content="https://kensukeumakoshi.com/assets/img/og-image.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://kensukeumakoshi.com/study.html" />
+    <meta property="twitter:title" content="Study Notes & Learning Journey - Kensuke Umakoshi" />
+    <meta property="twitter:description" content="Personal study notes, learning journey, and curated resources in Machine Learning, AI, and Data Science." />
+    <meta property="twitter:image" content="https://kensukeumakoshi.com/assets/img/og-image.jpg" />
+    
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+      /* ==============================
+         Apple-Inspired Portfolio Design
+      ============================== */
+      
+      /* CSS Variables for Techy Theme */
+      :root {
+        --primary-color: #00f0ff;
+        --secondary-color: #b026ff;
+        --bg-color: #0a0e27;
+        --text-color: #e6edf3;
+        --text-secondary: #8b949e;
+        --border-color: #30363d;
+        --card-bg: #161b22;
+        --shadow: 0 4px 20px rgba(0, 240, 255, 0.15);
+        --shadow-hover: 0 8px 30px rgba(0, 240, 255, 0.25);
+        --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        --border-radius: 12px;
+        --spacing-xs: 0.5rem;
+        --spacing-sm: 1rem;
+        --spacing-md: 1.5rem;
+        --spacing-lg: 2rem;
+        --spacing-xl: 3rem;
+        --spacing-2xl: 4rem;
+      }
+
+      /* Dark mode variables */
+      [data-theme="dark"] {
+        --bg-color: #000000;
+        --text-color: #e6edf3;
+        --text-secondary: #8b949e;
+        --border-color: #21262d;
+        --card-bg: #0d1117;
+        --shadow: 0 4px 20px rgba(0, 240, 255, 0.2);
+        --shadow-hover: 0 8px 30px rgba(0, 240, 255, 0.3);
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+        font-weight: 400;
+        line-height: 1.6;
+        transition: var(--transition);
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Apple-style Typography */
+      h1, h2, h3, h4, h5, h6 {
+        font-weight: 600;
+        line-height: 1.2;
+        margin: 0 0 var(--spacing-sm) 0;
+        color: var(--text-color);
+      }
+
+      h1 { font-size: 3.5rem; font-weight: 700; }
+      h2 { font-size: 2.5rem; font-weight: 600; }
+      h3 { font-size: 1.5rem; font-weight: 600; }
+      h4 { font-size: 1.25rem; font-weight: 500; }
+
+      p {
+        margin: 0 0 var(--spacing-sm) 0;
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
+
+      /* Theme Toggle Button - Apple Style */
+      .theme-toggle {
+        position: fixed;
+        top: var(--spacing-lg);
+        right: var(--spacing-lg);
+        z-index: 1000;
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-color);
+        font-size: 1.1rem;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        backdrop-filter: blur(20px);
+      }
+
+      .theme-toggle:hover {
+        transform: scale(1.05);
+        box-shadow: var(--shadow-hover);
+      }
+
+      /* Navigation */
+      .nav-header {
+        background: var(--card-bg);
+        border-bottom: 1px solid var(--border-color);
+        padding: var(--spacing-lg) 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(20px);
+      }
+
+      .nav-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-lg);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .nav-logo {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--text-color);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+      }
+
+      .nav-logo:hover {
+        color: var(--primary-color);
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: var(--spacing-lg);
+        align-items: center;
+      }
+
+      .nav-link {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-weight: 500;
+        transition: var(--transition);
+      }
+
+      .nav-link:hover {
+        color: var(--primary-color);
+        text-decoration: none;
+      }
+
+      .nav-link.active {
+        color: var(--primary-color);
+      }
+
+      /* Hero Section */
+      .hero {
+        text-align: center;
+        padding: var(--spacing-2xl) 0;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .hero h1 {
+        font-size: 4rem;
+        font-weight: 700;
+        margin-bottom: var(--spacing-sm);
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero .subtitle {
+        font-size: 1.5rem;
+        color: var(--text-secondary);
+        margin-bottom: var(--spacing-lg);
+        font-weight: 400;
+      }
+
+      .hero .description {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        margin-bottom: var(--spacing-xl);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Layout Components */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-lg);
+      }
+
+      .section {
+        padding: var(--spacing-2xl) 0;
+      }
+
+      .card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+        padding: var(--spacing-lg);
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+      }
+
+      .card:hover {
+        box-shadow: var(--shadow-hover);
+        transform: translateY(-4px);
+      }
+
+      /* Study Blog Preview */
+      .blog-preview {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+        padding: var(--spacing-xl);
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        text-align: center;
+        margin: var(--spacing-xl) 0;
+      }
+
+      .blog-preview:hover {
+        box-shadow: var(--shadow-hover);
+        transform: translateY(-4px);
+      }
+
+      .blog-preview h2 {
+        margin-bottom: var(--spacing-md);
+        color: var(--text-color);
+      }
+
+      .blog-preview p {
+        margin-bottom: var(--spacing-lg);
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+      }
+
+      /* External Link Button */
+      .external-link-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--spacing-sm) var(--spacing-lg);
+        border-radius: var(--border-radius);
+        font-weight: 500;
+        font-size: 1.1rem;
+        text-decoration: none;
+        transition: var(--transition);
+        border: none;
+        cursor: pointer;
+        gap: var(--spacing-sm);
+        background: var(--primary-color);
+        color: white;
+        box-shadow: var(--shadow);
+        margin: var(--spacing-sm);
+      }
+
+      .external-link-btn:hover {
+        background: var(--secondary-color);
+        box-shadow: var(--shadow-hover);
+        transform: translateY(-2px);
+        text-decoration: none;
+      }
+
+      .external-link-btn.large {
+        padding: var(--spacing-md) var(--spacing-xl);
+        font-size: 1.2rem;
+      }
+
+      /* Study Highlights */
+      .study-highlights {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--spacing-lg);
+        margin: var(--spacing-xl) 0;
+      }
+
+      .highlight-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+        padding: var(--spacing-lg);
+        transition: var(--transition);
+        text-align: center;
+      }
+
+      .highlight-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .highlight-card h3 {
+        margin-bottom: var(--spacing-sm);
+        color: var(--text-color);
+      }
+
+      .highlight-card p {
+        color: var(--text-secondary);
+        margin-bottom: var(--spacing-md);
+      }
+
+      .highlight-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-xs);
+        justify-content: center;
+        margin-bottom: var(--spacing-md);
+      }
+
+      .highlight-tag {
+        background: var(--primary-color);
+        color: white;
+        padding: var(--spacing-xs) var(--spacing-sm);
+        border-radius: 15px;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+        
+        .hero .subtitle {
+          font-size: 1.2rem;
+        }
+        
+        .study-highlights {
+          grid-template-columns: 1fr;
+        }
+        
+        .nav-content {
+          flex-direction: column;
+          gap: var(--spacing-md);
+        }
+        
+        .nav-links {
+          flex-direction: column;
+          gap: var(--spacing-sm);
+        }
+      }
+
+      /* Utility Classes */
+      .text-center { text-align: center; }
+      .text-left { text-align: left; }
+      .text-right { text-align: right; }
+      
+      .mb-0 { margin-bottom: 0; }
+      .mb-1 { margin-bottom: var(--spacing-xs); }
+      .mb-2 { margin-bottom: var(--spacing-sm); }
+      .mb-3 { margin-bottom: var(--spacing-md); }
+      .mb-4 { margin-bottom: var(--spacing-lg); }
+      .mb-5 { margin-bottom: var(--spacing-xl); }
+      
+      .mt-0 { margin-top: 0; }
+      .mt-1 { margin-top: var(--spacing-xs); }
+      .mt-2 { margin-top: var(--spacing-sm); }
+      .mt-3 { margin-top: var(--spacing-md); }
+      .mt-4 { margin-top: var(--spacing-lg); }
+      .mt-5 { margin-top: var(--spacing-xl); }
+
+      /* Clean up any remaining styles */
+      * {
+        box-sizing: border-box;
+      }
+      
+      /* Ensure consistent theming */
+      .major h2 {
+        color: var(--text-color);
+      }
+      
+      /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+      
+      /* Focus styles for accessibility */
+      *:focus {
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
+      }
+      
+      /* Remove focus outline for mouse users */
+      *:focus:not(:focus-visible) {
+        outline: none;
+      }
+
+    </style>
+  </head>
+  <body class="is-preload">
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" title="Toggle Dark Mode">
+      <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="nav-header">
+      <div class="nav-content">
+        <a href="index.html" class="nav-logo">
+          <i class="fas fa-home"></i>
+          <span>Kensuke Umakoshi</span>
+        </a>
+        <div class="nav-links">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="index.html#projects" class="nav-link">Projects</a>
+          <a href="study.html" class="nav-link active">Study</a>
+          <a href="index.html#contact" class="nav-link">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Study Notes & Learning Journey</h1>
+      <p class="subtitle">ML/AI Study Notes & Personal Learning</p>
+      <p class="description">
+        Documenting my learning journey in Machine Learning, AI, and Data Science. 
+        Explore my study notes, projects, and curated resources.
+      </p>
+    </section>
+
+    <!-- Study Blog Preview Section -->
+    <section class="section">
+      <div class="container">
+        <div class="blog-preview">
+          <h2><i class="fas fa-book-open"></i> My Learning Blog</h2>
+          <p>
+            I maintain a comprehensive study blog where I document my learning journey, 
+            share detailed study notes, and showcase projects I've built for learning purposes. 
+            This includes in-depth tutorials, code examples, and insights from my ML/AI studies.
+          </p>
+          <a href="https://kensuke-blog-website-1759988624.s3.us-east-1.amazonaws.com/index.html" target="_blank" class="external-link-btn large">
+            <i class="fas fa-external-link-alt"></i>
+            Visit My Study Blog
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Study Highlights Section -->
+    <section class="section">
+      <div class="container">
+        <h2 class="text-center mb-5">What You'll Find in My Study Blog</h2>
+        
+        <div class="study-highlights">
+          <div class="highlight-card">
+            <h3><i class="fas fa-brain"></i> Latest Learning Notes</h3>
+            <p>Comprehensive guides covering LLM fundamentals, transformer architectures, and practical fine-tuning techniques with code examples.</p>
+            <div class="highlight-tags">
+              <span class="highlight-tag">LLMs</span>
+              <span class="highlight-tag">Transformers</span>
+              <span class="highlight-tag">PyTorch</span>
+            </div>
+          </div>
+
+          <div class="highlight-card">
+            <h3><i class="fas fa-project-diagram"></i> Learning Projects</h3>
+            <p>Projects built specifically for learning, including service ticket classification, pet breed classification, and medical image captioning.</p>
+            <div class="highlight-tags">
+              <span class="highlight-tag">BERT</span>
+              <span class="highlight-tag">ResNet50</span>
+              <span class="highlight-tag">BLIP</span>
+            </div>
+          </div>
+
+          <div class="highlight-card">
+            <h3><i class="fas fa-graduation-cap"></i> Learning Resources</h3>
+            <p>Curated collection of books, online courses, libraries, tools, and datasets that have been valuable in my learning journey.</p>
+            <div class="highlight-tags">
+              <span class="highlight-tag">Books</span>
+              <span class="highlight-tag">Courses</span>
+              <span class="highlight-tag">Tools</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Learning Journey Section -->
+    <section class="section">
+      <div class="container">
+        <div class="card">
+          <h2 class="text-center mb-4">About My Learning Journey</h2>
+          <p class="text-center">
+            I'm a passionate learner in the field of Machine Learning and AI, with a strong focus on continuous growth and knowledge sharing. 
+            My journey involves hands-on experimentation with transformer architectures, natural language processing, and building end-to-end ML systems.
+          </p>
+          <p class="text-center">
+            I believe in the power of documentation and sharing knowledge. Through my study blog, I aim to contribute to the learning community 
+            while showcasing my technical skills and learning mindset to potential collaborators and employers.
+          </p>
+          
+          <div class="text-center mt-4">
+            <a href="https://kensuke-blog-website-1759988624.s3.us-east-1.amazonaws.com/index.html" target="_blank" class="external-link-btn large">
+              <i class="fas fa-external-link-alt"></i>
+              Explore My Study Blog
+            </a>
+            <a href="index.html" class="external-link-btn large">
+              <i class="fas fa-arrow-left"></i>
+              Back to Portfolio
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <!-- Apple-Inspired Interactive Scripts -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        body.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+          const currentTheme = body.getAttribute('data-theme');
+          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          
+          body.setAttribute('data-theme', newTheme);
+          localStorage.setItem('theme', newTheme);
+          updateThemeIcon(newTheme);
+        });
+
+        function updateThemeIcon(theme) {
+          const icon = themeToggle.querySelector('i');
+          icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+              target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }
+          });
+        });
+
+        // Add loading animation
+        document.body.classList.remove('is-preload');
+      });
+    </script>
+
+  </body>
+</html>

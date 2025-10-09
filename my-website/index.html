@@ -49,7 +49,7 @@
         --bg-color: #0a0e27;
         --text-color: #e6edf3;
         --text-secondary: #8b949e;
-        --border-color: #30363d;
+        --border-color: #40464d;
         --card-bg: #161b22;
         --shadow: 0 4px 20px rgba(0, 240, 255, 0.15);
         --shadow-hover: 0 8px 30px rgba(0, 240, 255, 0.25);
@@ -68,7 +68,7 @@
         --bg-color: #000000;
         --text-color: #e6edf3;
         --text-secondary: #8b949e;
-        --border-color: #21262d;
+        --border-color: #30363d;
         --card-bg: #0d1117;
         --shadow: 0 4px 20px rgba(0, 240, 255, 0.2);
         --shadow-hover: 0 8px 30px rgba(0, 240, 255, 0.3);
@@ -131,6 +131,63 @@
       .theme-toggle:hover {
         transform: scale(1.05);
         box-shadow: var(--shadow-hover);
+      }
+
+      /* Navigation */
+      .nav-header {
+        background: var(--card-bg);
+        border-bottom: 1px solid var(--border-color);
+        padding: var(--spacing-lg) 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(20px);
+      }
+
+      .nav-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-lg);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .nav-logo {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--text-color);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+      }
+
+      .nav-logo:hover {
+        color: var(--primary-color);
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: var(--spacing-lg);
+        align-items: center;
+      }
+
+      .nav-link {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-weight: 500;
+        transition: var(--transition);
+      }
+
+      .nav-link:hover {
+        color: var(--primary-color);
+        text-decoration: none;
+      }
+
+      .nav-link.active {
+        color: var(--primary-color);
       }
       /* Apple-style Links */
       a {
@@ -201,11 +258,12 @@
 
       .card {
         background: var(--card-bg);
-        border: 1px solid var(--border-color);
+        border: 2px solid var(--border-color);
         border-radius: var(--border-radius);
         padding: var(--spacing-lg);
         box-shadow: var(--shadow);
         transition: var(--transition);
+        width: 100%;
       }
 
       .card:hover {
@@ -271,7 +329,7 @@
         padding: var(--spacing-sm);
         background: var(--card-bg);
         border-radius: var(--border-radius);
-        border: 1px solid var(--border-color);
+        border: 2px solid var(--border-color);
         transition: var(--transition);
       }
 
@@ -295,7 +353,7 @@
 
       .project-card {
         background: var(--card-bg);
-        border: 1px solid var(--border-color);
+        border: 2px solid var(--border-color);
         border-radius: var(--border-radius);
         padding: var(--spacing-lg);
         transition: var(--transition);
@@ -339,48 +397,6 @@
         transform: translateY(-1px);
       }
 
-      /* Sidebar - Apple Style */
-      #sidebar {
-        background: var(--card-bg);
-        border-left: 1px solid var(--border-color);
-        backdrop-filter: blur(20px);
-        transition: var(--transition);
-      }
-
-      #sidebar .inner {
-        padding: var(--spacing-xl);
-      }
-
-      #sidebar h2 {
-        font-size: 1.5rem;
-        margin-bottom: var(--spacing-lg);
-        color: var(--text-color);
-      }
-
-      #sidebar .contact {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      #sidebar .contact li {
-        display: flex;
-        align-items: center;
-        gap: var(--spacing-sm);
-        padding: var(--spacing-sm) 0;
-        border-bottom: 1px solid var(--border-color);
-        color: var(--text-secondary);
-      }
-
-      #sidebar .contact li:last-child {
-        border-bottom: none;
-      }
-
-      #sidebar .contact li i {
-        color: var(--primary-color);
-        width: 20px;
-        text-align: center;
-      }
 
       /* Responsive Design */
       @media (max-width: 768px) {
@@ -403,6 +419,16 @@
         
         .skills-grid {
           grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        }
+        
+        .nav-content {
+          flex-direction: column;
+          gap: var(--spacing-md);
+        }
+        
+        .nav-links {
+          flex-direction: column;
+          gap: var(--spacing-sm);
         }
       }
 
@@ -439,7 +465,7 @@
         margin-bottom: var(--spacing-lg);
         background: var(--card-bg);
         border-radius: var(--border-radius);
-        border: 1px solid var(--border-color);
+        border: 2px solid var(--border-color);
         box-shadow: var(--shadow);
         transition: var(--transition);
       }
@@ -534,75 +560,69 @@
         transform: translateY(-1px);
       }
 
-      /* Contact Form */
-      .contact-form {
-        margin-top: var(--spacing-lg);
+      /* Contact Info */
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+        margin: var(--spacing-lg) 0;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
-      .form-group {
-        margin-bottom: var(--spacing-md);
-      }
-
-      .form-group input,
-      .form-group textarea {
-        width: 100%;
-        padding: var(--spacing-sm);
-        border: 1px solid var(--border-color);
-        border-radius: var(--border-radius);
-        background: var(--card-bg);
-        color: var(--text-color);
-        font-size: 1rem;
-        transition: var(--transition);
-        font-family: inherit;
-      }
-
-      .form-group input:focus,
-      .form-group textarea:focus {
-        outline: none;
-        border-color: var(--primary-color);
-        box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
-      }
-
-      .submit-btn {
-        width: 100%;
-        padding: var(--spacing-sm) var(--spacing-lg);
-        background: var(--primary-color);
-        color: white;
-        border: none;
-        border-radius: var(--border-radius);
-        font-size: 1rem;
-        font-weight: 500;
-        cursor: pointer;
-        transition: var(--transition);
+      .contact-item {
         display: flex;
         align-items: center;
-        justify-content: center;
-        gap: var(--spacing-xs);
-      }
-
-      .submit-btn:hover {
-        background: var(--secondary-color);
-        transform: translateY(-1px);
-      }
-
-      /* Footer */
-      #footer {
+        gap: var(--spacing-sm);
+        padding: var(--spacing-sm);
         background: var(--card-bg);
-        border-top: 1px solid var(--border-color);
-        padding: var(--spacing-lg) 0;
-        text-align: center;
-        color: var(--text-secondary);
-        font-size: 0.9rem;
+        border-radius: var(--border-radius);
+        border: 2px solid var(--border-color);
+        transition: var(--transition);
+        min-width: 250px;
       }
 
-      #footer a {
+      .contact-item:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow);
+      }
+
+      .contact-item i {
+        color: var(--primary-color);
+        font-size: 1.2rem;
+        width: 20px;
+        text-align: center;
+      }
+
+      .contact-item a {
+        color: var(--text-color);
+        text-decoration: none;
+      }
+
+      .contact-item a:hover {
         color: var(--primary-color);
         text-decoration: none;
       }
 
-      #footer a:hover {
-        text-decoration: underline;
+      .contact-item span {
+        color: var(--text-secondary);
       }
+
+      /* Contact Section Animation */
+      .contact-section {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.5s ease-in-out;
+      }
+
+      .contact-section.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+
+
 
       /* Utility Classes */
       .text-center { text-align: center; }
@@ -658,6 +678,22 @@
       <i class="fas fa-moon"></i>
     </button>
 
+    <!-- Navigation -->
+    <nav class="nav-header">
+      <div class="nav-content">
+        <a href="index.html" class="nav-logo">
+          <i class="fas fa-home"></i>
+          <span>Kensuke Umakoshi</span>
+        </a>
+        <div class="nav-links">
+          <a href="index.html" class="nav-link active">Home</a>
+          <a href="index.html#projects" class="nav-link">Projects</a>
+          <a href="study.html" class="nav-link">Study</a>
+          <a href="index.html#contact" class="nav-link">Contact</a>
+        </div>
+      </div>
+    </nav>
+
 
 
 
@@ -676,9 +712,10 @@
             <p class="description">
               Passionate about solving real-world problems using data. Currently seeking Summer 2025 internships 
               and full-time opportunities after May 2026 graduation in Data Science, Analytics, and AI roles.
-              </p>
-              <div class="cta-buttons">
-              <a href="#projects" class="btn btn-secondary">View Projects</a>
+            </p>
+            <div class="cta-buttons">
+              <a href="#projects" class="btn btn-primary">View Projects</a>
+              <a href="study.html" class="btn btn-secondary">Study Notes</a>
               <a href="https://drive.google.com/file/d/1IDUlWq66mZY-jh0URw2VH39gu_FnccR9/view?usp=sharing" target="_blank" class="btn btn-secondary">Download Resume</a>
               <a href="https://github.com/kensuke0529" target="_blank" class="btn btn-secondary">GitHub</a>
               <a href="https://www.linkedin.com/in/umakoshi-kensuke/" target="_blank" class="btn btn-secondary">LinkedIn</a>
@@ -688,8 +725,9 @@
           <!-- Skills Section -->
           <section class="section">
             <div class="container">
-              <h2 class="text-center mb-5">Skills & Expertise</h2>
-              <div class="skills-grid">
+              <div class="card">
+                <h2 class="text-center mb-5">Skills & Expertise</h2>
+                <div class="skills-grid">
                 <div class="skill-item">
                   <i class="fab fa-python"></i>
                   <span>Python</span>
@@ -746,16 +784,18 @@
                     Full-Stack Developer
                 </div>
               </div>
+              </div>
             </div>
           </section>
 
           <!-- Projects Section -->
           <section id="projects" class="section">
             <div class="container">
-              <h2 class="text-center mb-5">Featured Projects</h2>
+              <div class="card">
+                <h2 class="text-center mb-5">Featured Projects</h2>
 
-            <!-- Filter Buttons -->
-            <div class="project-filters">
+                <!-- Filter Buttons -->
+                <div class="project-filters">
               <button class="filter-btn" data-category="all">All</button>
               <button class="filter-btn" data-category="data-analysis">Data Analysis</button>
               <button class="filter-btn" data-category="data-science">Data Science</button>
@@ -855,14 +895,16 @@
                     <a href="https://github.com/kensuke0529/ML" target="_blank">GitHub</a>
                 </div>
               </div>
+              </div>
             </div>
           </section>
 
           <!-- Experience Section -->
           <section class="section">
             <div class="container">
-              <h2 class="text-center mb-5">Experience</h2>
-            <div class="timeline">
+              <div class="card">
+                <h2 class="text-center mb-5">Experience</h2>
+                <div class="timeline">
               <div class="timeline-item">
                   <h3>Teaching Assistant, Introduction to Business Analytics</h3>
                   <div class="date">Aug 2025 – Present</div>
@@ -884,52 +926,46 @@
                 </ul>
                 </div>
               </div>
+              </div>
             </div>
           </section>
 
         </div>
       </div>
 
-      <!-- Sidebar -->
-      <div id="sidebar" class="inactive">
-        <div class="inner">
-          <section>
-              <h2>Contact</h2>
-            <ul class="contact">
-              <li><i class="fas fa-envelope"></i><a href="mailto:kenkou1001@gmail.com">kenkou1001@gmail.com</a></li>
-              <li><i class="fas fa-phone"></i>(442) 274-7842</li>
-              <li><i class="fas fa-map-marker-alt"></i>Salt Lake City, UT</li>
-            </ul>
+          <!-- Contact Section -->
+          <section id="contact" class="section contact-section" style="display: none;">
+            <div class="container">
+              <div class="card">
+                <h2 class="text-center mb-5">Get In Touch</h2>
+                <div class="text-center mb-4">
+                  <p>I'm always interested in new opportunities and collaborations. Feel free to reach out!</p>
+                </div>
+                
+                <div class="contact-info">
+                  <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:kenkou1001@gmail.com">kenkou1001@gmail.com</a>
+                  </div>
+                  <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>(442) 274-7842</span>
+                  </div>
+                  <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Salt Lake City, UT</span>
+                  </div>
+                </div>
+
+                <div class="text-center mt-4">
+                  <a href="https://github.com/kensuke0529" target="_blank" class="btn btn-primary">GitHub</a>
+                  <a href="https://www.linkedin.com/in/umakoshi-kensuke/" target="_blank" class="btn btn-secondary">LinkedIn</a>
+                  <a href="https://drive.google.com/file/d/1IDUlWq66mZY-jh0URw2VH39gu_FnccR9/view?usp=sharing" target="_blank" class="btn btn-secondary">Download Resume</a>
+                </div>
+              </div>
+            </div>
           </section>
 
-          <!-- Contact Form -->
-          <section>
-              <h2>Get In Touch</h2>
-            <form id="contactForm" class="contact-form">
-              <div class="form-group">
-                <input type="text" id="name" name="name" placeholder="Your Name" required>
-              </div>
-              <div class="form-group">
-                <input type="email" id="email" name="email" placeholder="Your Email" required>
-              </div>
-              <div class="form-group">
-                <input type="text" id="subject" name="subject" placeholder="Subject" required>
-              </div>
-              <div class="form-group">
-                <textarea id="message" name="message" placeholder="Your Message" rows="4" required></textarea>
-              </div>
-              <button type="submit" class="submit-btn">
-                <span>Send Message</span>
-                <i class="fas fa-paper-plane"></i>
-              </button>
-            </form>
-          </section>
-          
-          <footer id="footer">
-            <p class="copyright">
-              &copy; 2025 Kensuke Umakoshi. All rights reserved.
-            </p>
-          </footer>
         </div>
       </div>
     </div>
@@ -970,8 +1006,8 @@
         // Project Filter Functionality
         initProjectFilters();
 
-        // Contact Form
-        initContactForm();
+        // Contact section toggle
+        initContactToggle();
 
         // Smooth scrolling for anchor links
         initSmoothScrolling();
@@ -1013,9 +1049,45 @@
         });
       }
 
+      // Contact section toggle
+      function initContactToggle() {
+        const contactLink = document.querySelector('a[href="#contact"]');
+        const contactSection = document.getElementById('contact');
+        
+        if (contactLink && contactSection) {
+          contactLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Toggle contact section visibility
+            if (contactSection.style.display === 'none' || contactSection.style.display === '') {
+              contactSection.style.display = 'block';
+              // Add show class after a small delay for smooth animation
+              setTimeout(() => {
+                contactSection.classList.add('show');
+              }, 10);
+              
+              // Scroll to contact section
+              contactSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            } else {
+              // Hide contact section
+              contactSection.classList.remove('show');
+              setTimeout(() => {
+                contactSection.style.display = 'none';
+              }, 500); // Wait for animation to complete
+            }
+          });
+        }
+      }
+
       // Smooth scrolling for anchor links
       function initSmoothScrolling() {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          // Skip contact link as it's handled by initContactToggle
+          if (anchor.getAttribute('href') === '#contact') return;
+          
           anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
@@ -1029,48 +1101,6 @@
         });
       }
 
-      // Contact form functionality
-      function initContactForm() {
-        const form = document.getElementById('contactForm');
-        if (!form) return;
-
-        form.addEventListener('submit', (e) => {
-          e.preventDefault();
-          
-          const formData = new FormData(form);
-          const data = Object.fromEntries(formData);
-          
-          // Create mailto link with form data
-          const subject = encodeURIComponent(data.subject || 'Portfolio Contact');
-          const body = encodeURIComponent(
-            `Name: ${data.name}\n` +
-            `Email: ${data.email}\n` +
-            `Subject: ${data.subject}\n\n` +
-            `Message:\n${data.message}`
-          );
-          
-          const mailtoLink = `mailto:kenkou1001@gmail.com?subject=${subject}&body=${body}`;
-          
-          // Open email client
-          window.location.href = mailtoLink;
-          
-          // Show success message
-          const submitBtn = form.querySelector('.submit-btn');
-          const originalText = submitBtn.innerHTML;
-          
-          submitBtn.innerHTML = '<i class="fas fa-check"></i> Email Opened!';
-          submitBtn.style.background = 'var(--secondary-color)';
-          
-          // Reset form
-          form.reset();
-          
-          // Reset button after 3 seconds
-          setTimeout(() => {
-            submitBtn.innerHTML = originalText;
-            submitBtn.style.background = '';
-          }, 3000);
-        });
-      }
 
 
 

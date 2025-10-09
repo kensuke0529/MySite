@@ -16,20 +16,20 @@
     
     <style>
       /* ==============================
-         Apple-Inspired Project Page
+         Apple-Inspired Portfolio Design
       ============================== */
       
-      /* CSS Variables for Apple-inspired Theme */
+      /* CSS Variables for Techy Theme */
       :root {
-        --primary-color: #007AFF;
-        --secondary-color: #5856D6;
-        --bg-color: #FFFFFF;
-        --text-color: #1D1D1F;
-        --text-secondary: #86868B;
-        --border-color: #D2D2D7;
-        --card-bg: #F5F5F7;
-        --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.15);
+        --primary-color: #00f0ff;
+        --secondary-color: #b026ff;
+        --bg-color: #0a0e27;
+        --text-color: #e6edf3;
+        --text-secondary: #8b949e;
+        --border-color: #30363d;
+        --card-bg: #161b22;
+        --shadow: 0 4px 20px rgba(0, 240, 255, 0.15);
+        --shadow-hover: 0 8px 30px rgba(0, 240, 255, 0.25);
         --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         --border-radius: 12px;
         --spacing-xs: 0.5rem;
@@ -43,12 +43,12 @@
       /* Dark mode variables */
       [data-theme="dark"] {
         --bg-color: #000000;
-        --text-color: #F5F5F7;
-        --text-secondary: #86868B;
-        --border-color: #1C1C1E;
-        --card-bg: #1C1C1E;
-        --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.4);
+        --text-color: #e6edf3;
+        --text-secondary: #8b949e;
+        --border-color: #21262d;
+        --card-bg: #0d1117;
+        --shadow: 0 4px 20px rgba(0, 240, 255, 0.2);
+        --shadow-hover: 0 8px 30px rgba(0, 240, 255, 0.3);
       }
 
       body {
@@ -81,6 +81,33 @@
         color: var(--text-secondary);
         font-size: 1.1rem;
         line-height: 1.6;
+      }
+
+      /* Theme Toggle Button - Apple Style */
+      .theme-toggle {
+        position: fixed;
+        top: var(--spacing-lg);
+        right: var(--spacing-lg);
+        z-index: 1000;
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-color);
+        font-size: 1.1rem;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        backdrop-filter: blur(20px);
+      }
+
+      .theme-toggle:hover {
+        transform: scale(1.05);
+        box-shadow: var(--shadow-hover);
       }
 
       /* Navigation */
@@ -376,6 +403,11 @@
     </style>
   </head>
   <body class="is-preload">
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" title="Toggle Dark Mode">
+      <i class="fas fa-moon"></i>
+    </button>
+
     <!-- Navigation -->
     <nav class="nav-header">
       <div class="nav-content">
@@ -548,22 +580,45 @@
     <script src="../assets/js/main.js"></script>
 
     <script>
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-            target.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
-          }
-        });
-      });
+      document.addEventListener('DOMContentLoaded', () => {
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        body.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
 
-      // Add loading animation
-      document.addEventListener('DOMContentLoaded', function() {
+        themeToggle.addEventListener('click', () => {
+          const currentTheme = body.getAttribute('data-theme');
+          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          
+          body.setAttribute('data-theme', newTheme);
+          localStorage.setItem('theme', newTheme);
+          updateThemeIcon(newTheme);
+        });
+
+        function updateThemeIcon(theme) {
+          const icon = themeToggle.querySelector('i');
+          icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+              target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }
+          });
+        });
+
+        // Add loading animation
         document.body.classList.remove('is-preload');
       });
     </script>
