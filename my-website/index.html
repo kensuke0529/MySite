@@ -42,17 +42,17 @@
          Apple-Inspired Portfolio Design
       ============================== */
       
-      /* CSS Variables for Apple-inspired Theme */
+      /* CSS Variables for Techy Theme */
       :root {
-        --primary-color: #007AFF;
-        --secondary-color: #5856D6;
-        --bg-color: #FFFFFF;
-        --text-color: #1D1D1F;
-        --text-secondary: #86868B;
-        --border-color: #D2D2D7;
-        --card-bg: #F5F5F7;
-        --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.15);
+        --primary-color: #00f0ff;
+        --secondary-color: #b026ff;
+        --bg-color: #0a0e27;
+        --text-color: #e6edf3;
+        --text-secondary: #8b949e;
+        --border-color: #30363d;
+        --card-bg: #161b22;
+        --shadow: 0 4px 20px rgba(0, 240, 255, 0.15);
+        --shadow-hover: 0 8px 30px rgba(0, 240, 255, 0.25);
         --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         --border-radius: 12px;
         --spacing-xs: 0.5rem;
@@ -66,12 +66,12 @@
       /* Dark mode variables */
       [data-theme="dark"] {
         --bg-color: #000000;
-        --text-color: #F5F5F7;
-        --text-secondary: #86868B;
-        --border-color: #1C1C1E;
-        --card-bg: #1C1C1E;
-        --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.4);
+        --text-color: #e6edf3;
+        --text-secondary: #8b949e;
+        --border-color: #21262d;
+        --card-bg: #0d1117;
+        --shadow: 0 4px 20px rgba(0, 240, 255, 0.2);
+        --shadow-hover: 0 8px 30px rgba(0, 240, 255, 0.3);
       }
 
       body {
@@ -225,7 +225,7 @@
         font-size: 4rem;
         font-weight: 700;
         margin-bottom: var(--spacing-sm);
-        background: linear-gradient(135deg, var(--text-color), var(--text-secondary));
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -416,14 +416,15 @@
       
       .cert-badge {
         background: var(--primary-color);
-        color: white;
+        color: #0a0e27;
         padding: var(--spacing-xs) var(--spacing-sm);
         border-radius: 20px;
         font-size: 0.9rem;
-        font-weight: 500;
+        font-weight: 700;
         display: inline-flex;
         align-items: center;
         gap: var(--spacing-xs);
+        text-shadow: none;
       }
 
       /* Experience Timeline */
@@ -492,44 +493,45 @@
       }
 
       .filter-btn {
-        background: var(--bg-color);
-        border: 2px solid var(--border-color);
-        color: var(--text-color);
+        background: transparent;
+        border: 2px solid var(--primary-color);
+        color: var(--primary-color);
         padding: var(--spacing-sm) var(--spacing-lg);
         border-radius: 30px;
         cursor: pointer; 
         transition: var(--transition);
         font-weight: 600;
-        font-size: 0.95rem;
-        display: flex;
+        font-size: 1rem;
+        display: inline-flex;
         align-items: center;
         justify-content: center;
         min-height: 44px;
         position: relative;
         overflow: hidden;
+        letter-spacing: 0.05em;
+        white-space: nowrap;
+        text-transform: uppercase;
+        box-sizing: border-box;
       }
 
       .filter-btn:hover {
-        background: var(--primary-color);
-        color: white;
+        background: rgba(0, 240, 255, 0.1);
+        color: var(--primary-color);
         border-color: var(--primary-color);
-        transform: translateY(-2px);
-        box-shadow: var(--shadow);
+        transform: translateY(-1px);
       }
 
       .filter-btn.active {
         background: var(--primary-color);
-        color: white;
+        color: var(--bg-color);
         border-color: var(--primary-color);
-        box-shadow: var(--shadow);
-        transform: translateY(-1px);
       }
 
       .filter-btn.active:hover {
-        background: var(--secondary-color);
-        border-color: var(--secondary-color);
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-hover);
+        background: var(--primary-color);
+        color: var(--bg-color);
+        border-color: var(--primary-color);
+        transform: translateY(-1px);
       }
 
       /* Contact Form */
@@ -676,7 +678,7 @@
               and full-time opportunities after May 2026 graduation in Data Science, Analytics, and AI roles.
               </p>
               <div class="cta-buttons">
-              <a href="#projects" class="btn btn-primary">View Projects</a>
+              <a href="#projects" class="btn btn-secondary">View Projects</a>
               <a href="https://drive.google.com/file/d/1IDUlWq66mZY-jh0URw2VH39gu_FnccR9/view?usp=sharing" target="_blank" class="btn btn-secondary">Download Resume</a>
               <a href="https://github.com/kensuke0529" target="_blank" class="btn btn-secondary">GitHub</a>
               <a href="https://www.linkedin.com/in/umakoshi-kensuke/" target="_blank" class="btn btn-secondary">LinkedIn</a>
@@ -754,7 +756,7 @@
 
             <!-- Filter Buttons -->
             <div class="project-filters">
-              <button class="filter-btn active" data-category="all">All</button>
+              <button class="filter-btn" data-category="all">All</button>
               <button class="filter-btn" data-category="data-analysis">Data Analysis</button>
               <button class="filter-btn" data-category="data-science">Data Science</button>
               <button class="filter-btn" data-category="ai">AI</button>
