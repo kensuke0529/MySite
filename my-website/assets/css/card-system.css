@@ -11,12 +11,12 @@
   --card-gap: 16px;
   
   /* Card Colors */
-  --card-bg: #161b22;
-  --card-bg-hover: #1c2128;
-  --card-border: #30363d;
-  --card-border-hover: #00f0ff;
-  --card-shadow: 0 1px 3px rgba(0, 240, 255, 0.1);
-  --card-shadow-hover: 0 4px 12px rgba(0, 240, 255, 0.25);
+  --card-bg: #ffffff;
+  --card-bg-hover: #f8f9fa;
+  --card-border: #dee2e6;
+  --card-border-hover: #007bff;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --card-shadow-hover: 0 4px 12px rgba(0, 123, 255, 0.25);
   
   /* Typography */
   --card-title-size: 16px;
@@ -44,12 +44,12 @@
 
 /* Dark Mode Variables */
 [data-theme="dark"] {
-  --card-bg: #0d1117;
-  --card-bg-hover: #161b22;
-  --card-border: #21262d;
-  --card-border-hover: #00f0ff;
-  --card-shadow: 0 1px 3px rgba(0, 240, 255, 0.15);
-  --card-shadow-hover: 0 4px 12px rgba(0, 240, 255, 0.3);
+  --card-bg: #ffffff;
+  --card-bg-hover: #f8f9fa;
+  --card-border: #dee2e6;
+  --card-border-hover: #007bff;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --card-shadow-hover: 0 4px 12px rgba(0, 123, 255, 0.25);
 }
 
 /* ==============================
@@ -1081,13 +1081,13 @@
 [data-theme="dark"] {
   @media (max-width: 768px) {
     .project-card {
-      background: #1F2937;
-      border-color: #374151;
+      background: #ffffff;
+      border-color: #dee2e6;
     }
     
     .project-card:hover {
-      background: #374151;
-      border-color: #4B5563;
+      background: #f8f9fa;
+      border-color: #007bff;
     }
   }
 }

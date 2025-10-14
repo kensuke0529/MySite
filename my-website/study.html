@@ -33,17 +33,17 @@
          Apple-Inspired Portfolio Design
       ============================== */
       
-      /* CSS Variables for Techy Theme */
+      /* CSS Variables for Light Theme */
       :root {
-        --primary-color: #00f0ff;
+        --primary-color: #007bff;
         --secondary-color: #b026ff;
-        --bg-color: #0a0e27;
-        --text-color: #e6edf3;
-        --text-secondary: #8b949e;
-        --border-color: #30363d;
-        --card-bg: #161b22;
-        --shadow: 0 4px 20px rgba(0, 240, 255, 0.15);
-        --shadow-hover: 0 8px 30px rgba(0, 240, 255, 0.25);
+        --bg-color: #f8f9fa;
+        --text-color: #212529;
+        --text-secondary: #495057;
+        --border-color: #dee2e6;
+        --card-bg: #ffffff;
+        --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        --shadow-hover: 0 8px 30px rgba(0, 123, 255, 0.25);
         --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         --border-radius: 12px;
         --spacing-xs: 0.5rem;
@@ -54,15 +54,15 @@
         --spacing-2xl: 4rem;
       }
 
-      /* Dark mode variables */
+      /* Light mode variables (keeping it light even in "dark" mode) */
       [data-theme="dark"] {
-        --bg-color: #000000;
-        --text-color: #e6edf3;
-        --text-secondary: #8b949e;
-        --border-color: #21262d;
-        --card-bg: #0d1117;
-        --shadow: 0 4px 20px rgba(0, 240, 255, 0.2);
-        --shadow-hover: 0 8px 30px rgba(0, 240, 255, 0.3);
+        --bg-color: #f8f9fa;
+        --text-color: #212529;
+        --text-secondary: #495057;
+        --border-color: #dee2e6;
+        --card-bg: #ffffff;
+        --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        --shadow-hover: 0 8px 30px rgba(0, 123, 255, 0.25);
       }
 
       body {
@@ -279,17 +279,18 @@
         font-size: 1.1rem;
         text-decoration: none;
         transition: var(--transition);
-        border: none;
+        border: 2px solid var(--primary-color);
         cursor: pointer;
         gap: var(--spacing-sm);
-        background: var(--primary-color);
-        color: white;
+        background: transparent;
+        color: var(--primary-color);
         box-shadow: var(--shadow);
         margin: var(--spacing-sm);
       }
 
       .external-link-btn:hover {
-        background: var(--secondary-color);
+        background: var(--primary-color);
+        color: white;
         box-shadow: var(--shadow-hover);
         transform: translateY(-2px);
         text-decoration: none;
@@ -341,12 +342,19 @@
       }
 
       .highlight-tag {
-        background: var(--primary-color);
-        color: white;
+        background: transparent;
+        border: 2px solid var(--primary-color);
+        color: var(--primary-color);
         padding: var(--spacing-xs) var(--spacing-sm);
         border-radius: 15px;
         font-size: 0.8rem;
         font-weight: 500;
+        transition: var(--transition);
+      }
+      
+      .highlight-tag:hover {
+        background: var(--primary-color);
+        color: white;
       }
 
       /* Responsive Design */
