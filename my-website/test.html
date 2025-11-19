@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kensuke | Data Scientist & ML Engineer</title>
+    <style>
+        /* --- RESET & BASE STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #1a1a1a;
+            --accent-color: #555;
+            --line-color: #e0e0e0;
+            --hover-color: #000;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.4;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 0;
+            font-weight: 500;
+            font-size: 18px;
+        }
+
+        .logo {
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            position: relative;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 100px 0 80px 0;
+        }
+
+        h1 {
+            font-size: 6vw;
+            line-height: 1.1;
+            font-weight: 400;
+            letter-spacing: -1px;
+            max-width: 90%;
+            margin-bottom: 60px;
+        }
+
+        .hero-role {
+            font-weight: 600;
+            color: #000;
+        }
+
+        .hero-location {
+            color: var(--accent-color);
+        }
+
+        .hero-subtext {
+            font-size: 24px;
+            line-height: 1.5;
+            max-width: 800px;
+            color: #333;
+            margin-bottom: 100px;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 48px; }
+            .hero-subtext { font-size: 18px; }
+            .hero { padding: 60px 0; }
+        }
+
+        /* --- WORK / PORTFOLIO SECTION --- */
+        .section-header {
+            border-top: 1px solid var(--line-color);
+            padding-top: 60px;
+            margin-bottom: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .project-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 50px 0;
+            border-top: 1px solid var(--line-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-item:last-child {
+            border-bottom: 1px solid var(--line-color);
+        }
+
+        .project-item:hover {
+            padding-left: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .project-info {
+            flex: 1;
+        }
+
+        .project-title {
+            font-size: 42px;
+            font-weight: 400;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .project-tags {
+            font-size: 16px;
+            color: var(--accent-color);
+        }
+
+        .project-arrow {
+            font-size: 42px;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.3s ease;
+        }
+
+        .project-item:hover .project-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        @media (max-width: 768px) {
+            .project-title { font-size: 28px; }
+            .project-item { padding: 30px 0; }
+        }
+
+        /* --- ABOUT SECTION --- */
+        .about-section {
+            padding: 120px 0;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+        }
+
+        .about-text p {
+            font-size: 28px;
+            line-height: 1.5;
+            margin-bottom: 40px;
+        }
+
+        .about-text .small-text {
+            font-size: 18px;
+            color: var(--accent-color);
+            max-width: 600px;
+        }
+
+        @media (max-width: 768px) {
+            .about-section { grid-template-columns: 1fr; gap: 40px; }
+            .about-text p { font-size: 22px; }
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #111;
+            color: #fff;
+            padding: 100px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .footer-cta {
+            font-size: 5vw;
+            font-weight: 500;
+            margin-bottom: 60px;
+            letter-spacing: -1px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            font-size: 18px;
+        }
+
+        .footer-links a {
+            border-bottom: 1px solid #444;
+            padding-bottom: 5px;
+        }
+        
+        .footer-links a:hover {
+            border-bottom: 1px solid #fff;
+        }
+
+        .copyright {
+            margin-top: 80px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <div class="container">
+        <nav>
+            <a href="#" class="logo">Kensuke.</a>
+            <div class="nav-links">
+                <a href="#work">Work</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="container hero">
+        <h1>
+            Hey there, I'm Kensuke,<br>
+            a <span class="hero-role">Data Scientist</span><br>
+            <span class="hero-location">✦ based in the Cloud.</span>
+        </h1>
+        <p class="hero-subtext">
+            I build fast, reliable, and lightweight systems. From recommender engines to fraud detection, I blend complex algorithms with business value like a chef who cares about the nutrition as much as the taste.
+        </p>
+    </div>
+
+    <!-- Portfolio/Work Section -->
+    <div class="container" id="work">
+        <div class="section-header">
+            <span class="label">Selected Work</span>
+        </div>
+
+        <div class="project-list">
+            <!-- Project 1 -->
+            <a href="#" class="project-item">
+                <div class="project-info">
+                    <div class="project-title">Recommender Systems</div>
+                    <div class="project-tags">Machine Learning · Python · Personalization</div>
+                </div>
+                <div class="project-arrow">→</div>
+            </a>
+
+            <!-- Project 2 -->
+            <a href="#" class="project-item">
+                <div class="project-info">
+                    <div class="project-title">Fraud Detection Engine</div>
+                    <div class="project-tags">Anomaly Detection · Real-time Analytics</div>
+                </div>
+                <div class="project-arrow">→</div>
+            </a>
+
+            <!-- Project 3 -->
+            <a href="#" class="project-item">
+                <div class="project-info">
+                    <div class="project-title">Customer Churn Analysis</div>
+                    <div class="project-tags">Predictive Modeling · Data Visualization</div>
+                </div>
+                <div class="project-arrow">→</div>
+            </a>
+            
+            <!-- Project 4 -->
+            <a href="#" class="project-item">
+                <div class="project-info">
+                    <div class="project-title">Cloud Infrastructure</div>
+                    <div class="project-tags">Terraform · AWS · Automation</div>
+                </div>
+                <div class="project-arrow">→</div>
+            </a>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div class="container" id="about">
+        <div class="section-header">
+            <span class="label">About Me</span>
+        </div>
+        <div class="about-section">
+            <div class="about-img-placeholder" style="background: #f0f0f0; height: 300px; width: 100%;">
+                <!-- You can add an <img src="your-photo.jpg"> here -->
+            </div>
+            <div class="about-text">
+                <p>
+                    I do whatever it takes to get the data to talk. 
+                    I am resourceful and dependable. The algorithms I don't already know, I learn quick.
+                </p>
+                <p class="small-text">
+                    This site is designed for decision‑makers who want to quickly validate fit, see work examples, and understand the outcomes delivered. It focuses on clear storytelling of project work, from business problem to measurable result.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="label" style="color: #666; margin-bottom: 20px;">Get in Touch</div>
+                    <div class="footer-cta">Let's work together.</div>
+                    <div class="footer-links">
+                        <a href="mailto:your-email@example.com">Email</a>
+                        <a href="https://github.com/kensuke0529">GitHub</a>
+                        <a href="#">LinkedIn</a>
+                    </div>
+                </div>
+                <div class="copyright">
+                    © 2025 Kensuke. Made with code, logic, and coffee.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,484 +1,162 @@
-<!DOCTYPE HTML>
-<html>
-  <head>
-    <title>Visa Sponsor Job Dashboard - Kensuke Umakoshi</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <meta name="description" content="Interactive dashboard supporting international students in finding visa-sponsored jobs, with dynamic filters by visa type, job title, and location using EDA-processed raw datasets." />
-    <meta name="keywords" content="Visa Sponsorship, Job Dashboard, Data Visualization, EDA, International Students, Job Search, Interactive Dashboard" />
-    <meta name="author" content="Kensuke Umakoshi" />
-    
-    <link rel="stylesheet" href="../assets/css/main.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visa Sponsor Dashboard | Kensuke Umakoshi</title>
     <style>
-      /* ==============================
-         Apple-Inspired Project Page
-      ============================== */
-      
-      /* CSS Variables for Apple-inspired Theme */
-      :root {
-        --primary-color: #007AFF;
-        --secondary-color: #5856D6;
-        --bg-color: #FFFFFF;
-        --text-color: #1D1D1F;
-        --text-secondary: #86868B;
-        --border-color: #D2D2D7;
-        --card-bg: #F5F5F7;
-        --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.15);
-        --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        --border-radius: 12px;
-        --spacing-xs: 0.5rem;
-        --spacing-sm: 1rem;
-        --spacing-md: 1.5rem;
-        --spacing-lg: 2rem;
-        --spacing-xl: 3rem;
-        --spacing-2xl: 4rem;
-      }
+        /* --- SHARED STYLES --- */
+        :root { --bg-color: #0f0f0f; --text-color: #f0f0f0; --accent-color: #888; --line-color: #333; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; } /* Reduced max-width slightly for focus */
+        
+        /* --- NAV --- */
+        nav { padding: 40px 0; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 700; letter-spacing: -0.5px; }
+        .back-link { color: var(--accent-color); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+        .back-link:hover { color: var(--text-color); }
 
-      /* Dark mode variables */
-      [data-theme="dark"] {
-        --bg-color: #000000;
-        --text-color: #F5F5F7;
-        --text-secondary: #86868B;
-        --border-color: #1C1C1E;
-        --card-bg: #1C1C1E;
-        --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.4);
-      }
-
-      body {
-        background-color: var(--bg-color);
-        color: var(--text-color);
-        font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-        font-weight: 400;
-        line-height: 1.6;
-        transition: var(--transition);
-        overflow-x: hidden;
-        margin: 0;
-        padding: 0;
-      }
-
-      /* Apple-style Typography */
-      h1, h2, h3, h4, h5, h6 {
-        font-weight: 600;
-        line-height: 1.2;
-        margin: 0 0 var(--spacing-sm) 0;
-        color: var(--text-color);
-      }
-
-      h1 { font-size: 3.5rem; font-weight: 700; }
-      h2 { font-size: 2.5rem; font-weight: 600; }
-      h3 { font-size: 1.5rem; font-weight: 600; }
-      h4 { font-size: 1.25rem; font-weight: 500; }
-
-      p {
-        margin: 0 0 var(--spacing-sm) 0;
-        color: var(--text-secondary);
-        font-size: 1.1rem;
-        line-height: 1.6;
-      }
-
-      /* Navigation */
-      .nav-header {
-        background: var(--card-bg);
-        border-bottom: 1px solid var(--border-color);
-        padding: var(--spacing-lg) 0;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        backdrop-filter: blur(20px);
-      }
-
-      .nav-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 var(--spacing-lg);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-
-      .nav-logo {
-        font-size: 1.25rem;
-        font-weight: 600;
-        color: var(--text-color);
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        gap: var(--spacing-sm);
-      }
-
-      .nav-logo:hover {
-        color: var(--primary-color);
-        text-decoration: none;
-      }
-
-      .nav-links {
-        display: flex;
-        gap: var(--spacing-lg);
-        align-items: center;
-      }
-
-      .nav-link {
-        color: var(--text-secondary);
-        text-decoration: none;
-        font-weight: 500;
-        transition: var(--transition);
-      }
-
-      .nav-link:hover {
-        color: var(--primary-color);
-        text-decoration: none;
-      }
-
-      /* Project Hero */
-      .project-hero {
-        padding: var(--spacing-2xl) 0;
-        text-align: center;
-        max-width: 800px;
-        margin: 0 auto;
-      }
-
-      .project-hero h1 {
-        font-size: 3rem;
-        margin-bottom: var(--spacing-sm);
-        background: linear-gradient(135deg, var(--text-color), var(--text-secondary));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      .project-hero .subtitle {
-        font-size: 1.25rem;
-        color: var(--text-secondary);
-        margin-bottom: var(--spacing-lg);
-        font-weight: 400;
-      }
-
-      .project-meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: var(--spacing-md);
-        justify-content: center;
-        margin-bottom: var(--spacing-xl);
-      }
-
-      .meta-item {
-        background: var(--card-bg);
-        border: 1px solid var(--border-color);
-        border-radius: 20px;
-        padding: var(--spacing-sm) var(--spacing-md);
-        font-size: 0.9rem;
-        font-weight: 500;
-        color: var(--text-color);
-      }
-
-      .project-links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: var(--spacing-sm);
-        justify-content: center;
-        margin-top: var(--spacing-xl);
-      }
-
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: var(--spacing-sm) var(--spacing-lg);
-        border-radius: var(--border-radius);
-        font-weight: 500;
-        font-size: 1rem;
-        text-decoration: none;
-        transition: var(--transition);
-        border: none;
-        cursor: pointer;
-        gap: var(--spacing-xs);
-      }
-
-      .btn-primary {
-        background: var(--primary-color);
-        color: white;
-        box-shadow: var(--shadow);
-      }
-
-      .btn-primary:hover {
-        background: var(--secondary-color);
-        box-shadow: var(--shadow-hover);
-        transform: translateY(-2px);
-        text-decoration: none;
-      }
-
-      .btn-secondary {
-        background: var(--card-bg);
-        color: var(--text-color);
-        border: 1px solid var(--border-color);
-      }
-
-      .btn-secondary:hover {
-        background: var(--border-color);
-        transform: translateY(-1px);
-        text-decoration: none;
-      }
-
-      /* Project Content */
-      .project-content {
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 0 var(--spacing-lg);
-      }
-
-      .content-section {
-        margin-bottom: var(--spacing-2xl);
-      }
-
-      .content-section h2 {
-        font-size: 2rem;
-        margin-bottom: var(--spacing-lg);
-        color: var(--text-color);
-      }
-
-      .content-section h3 {
-        font-size: 1.5rem;
-        margin-bottom: var(--spacing-md);
-        color: var(--text-color);
-      }
-
-      .content-section p {
-        margin-bottom: var(--spacing-md);
-        color: var(--text-secondary);
-        font-size: 1.1rem;
-        line-height: 1.6;
-      }
-
-      .content-section ul, .content-section ol {
-        margin-bottom: var(--spacing-md);
-        padding-left: var(--spacing-lg);
-      }
-
-      .content-section li {
-        margin-bottom: var(--spacing-xs);
-        color: var(--text-secondary);
-        font-size: 1.1rem;
-        line-height: 1.6;
-      }
-
-      /* Technology tags */
-      .tech-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: var(--spacing-sm);
-        margin: var(--spacing-lg) 0;
-      }
-
-      .tech-tag {
-        background: var(--primary-color);
-        color: white;
-        padding: var(--spacing-xs) var(--spacing-sm);
-        border-radius: 15px;
-        font-size: 0.85rem;
-        font-weight: 500;
-      }
-
-      /* Responsive Design */
-      @media (max-width: 768px) {
-        .nav-content {
-          flex-direction: column;
-          gap: var(--spacing-md);
+        /* --- PROJECT HEADER --- */
+        .project-header { padding: 80px 0 40px; border-bottom: 1px solid var(--line-color); }
+        h1 { font-size: 3.5vw; line-height: 1.1; margin-bottom: 20px; max-width: 900px; }
+        .project-meta { display: flex; gap: 40px; margin-top: 30px; font-size: 14px; color: var(--accent-color); text-transform: uppercase; letter-spacing: 1px; }
+        
+        /* --- HERO IMAGE (UPDATED: SMALLER) --- */
+        .hero-image-container { 
+            width: 100%; 
+            height: 40vh; /* Reduced from 60vh */
+            overflow: hidden; 
+            margin: 50px 0; 
+            background-color: #222; 
+            border-radius: 12px; /* Added rounded corners */
         }
+        .hero-image { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
 
-        .nav-links {
-          flex-direction: column;
-          gap: var(--spacing-sm);
-        }
+        /* --- CONTENT LAYOUT --- */
+        .content-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 60px; padding-bottom: 100px; }
+        .label { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-color); display: block; margin-bottom: 20px; }
+        .text-block p { font-size: 18px; margin-bottom: 30px; color: #ccc; }
+        .text-block ul { list-style: disc; margin-left: 20px; margin-bottom: 30px; color: #ccc; }
+        .text-block li { margin-bottom: 10px; font-size: 18px; }
+        
+        /* --- BUTTONS --- */
+        .btn-group { display: flex; gap: 20px; margin-top: 40px; }
+        .btn { border: 1px solid var(--line-color); padding: 12px 28px; border-radius: 50px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+        .btn:hover { background: #fff; color: #000; }
 
-        .project-hero h1 {
-          font-size: 2.5rem;
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; }
+            nav { padding: 30px 0; }
+            
+            .project-header { padding: 60px 0 30px; }
+            h1 { font-size: 32px; }
+            .project-meta { flex-direction: column; gap: 10px; margin-top: 20px; }
+            
+            .hero-image-container { height: 25vh; margin: 30px 0; }
+            
+            .content-grid { 
+                grid-template-columns: 1fr; 
+                gap: 40px; 
+                padding-bottom: 60px; 
+            }
+            
+            .text-block p, .text-block li { font-size: 16px; }
+            .label { margin-bottom: 10px; }
+            
+            .btn-group { flex-direction: column; gap: 15px; }
+            .btn { text-align: center; display: block; }
         }
-
-        .project-meta {
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .project-links {
-          flex-direction: column;
-          align-items: center;
-        }
-      }
     </style>
-  </head>
-  <body class="is-preload">
-    <!-- Navigation -->
-    <nav class="nav-header">
-      <div class="nav-content">
-        <a href="../index.html" class="nav-logo">
-          <i class="fas fa-arrow-left"></i>
-          <span>Back to Portfolio</span>
-        </a>
-        <div class="nav-links">
-          <a href="../index.html" class="nav-link">Home</a>
-          <a href="../index.html#projects" class="nav-link">Projects</a>
-          <a href="../index.html#contact" class="nav-link">Contact</a>
+</head>
+<body>
+
+    <div class="container">
+        <nav>
+            <a href="../index.html" class="logo">Kensuke Umakoshi</a>
+            <a href="../index.html" class="back-link">← Back to Projects</a>
+        </nav>
+
+        <header class="project-header">
+            <h1>Visa Sponsor Job Dashboard</h1>
+            <div class="project-meta">
+                <span>Tableau</span>
+                <span>Python</span>
+                <span>SQL</span>
+            </div>
+        </header>
+
+        <div class="hero-image-container">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=800&fit=crop" alt="Dashboard Preview" class="hero-image">
         </div>
-      </div>
-    </nav>
 
-    <!-- Project Hero -->
-    <section class="project-hero">
-      <h1>Visa Sponsor Job Dashboard</h1>
-      <p class="subtitle">Interactive dashboard supporting international students in finding visa-sponsored jobs with dynamic filters by visa type, job title, and location</p>
-      
-      <div class="project-meta">
-        <div class="meta-item">
-          <i class="fas fa-tag"></i>
-          Data Visualization
+        <div class="content-grid">
+            <div>
+                <span class="label">Project Overview</span>
+            </div>
+            <div class="text-block">
+                <p>
+                    Developed and deployed an interactive dashboard specifically designed to support international students in finding visa-sponsored job opportunities. The dashboard features dynamic filters by visa type, job title, and location, using EDA-processed raw datasets to provide comprehensive job search capabilities.
+                </p>
+            </div>
+
+            <div>
+                <span class="label">Problem Statement</span>
+            </div>
+            <div class="text-block">
+                <p>
+                    International students face significant challenges in finding job opportunities that offer visa sponsorship. Traditional job search platforms lack specialized filtering for visa sponsorship requirements, making it difficult for international students to identify relevant opportunities and navigate the complex job market.
+                </p>
+            </div>
+
+            <div>
+                <span class="label">Solution</span>
+            </div>
+            <div class="text-block">
+                <p>
+                    Built a comprehensive interactive dashboard that processes job data and provides specialized filtering capabilities for visa-sponsored positions, helping international students find relevant opportunities efficiently.
+                </p>
+                <ul>
+                    <li>Interactive dashboard with dynamic filtering capabilities</li>
+                    <li>Filter by visa type, job title, and location</li>
+                    <li>EDA-processed raw datasets for accurate job matching</li>
+                    <li>Comprehensive job search functionality</li>
+                    <li>User-friendly interface for international students</li>
+                    <li>Real-time data updates and filtering</li>
+                </ul>
+            </div>
+
+            <div>
+                <span class="label">Technical Implementation</span>
+            </div>
+            <div class="text-block">
+                <p>
+                    The dashboard implements a sophisticated data processing pipeline that combines exploratory data analysis with interactive visualization to provide comprehensive job search capabilities.
+                </p>
+                <ul>
+                    <li><strong>Data Processing Pipeline:</strong> Raw dataset collection, EDA, cleaning, standardization, and feature engineering.</li>
+                    <li><strong>Dashboard Features:</strong> Dynamic filtering, interactive visualization, responsive design, and real-time search.</li>
+                    <li><strong>Key Technologies:</strong> Python (Pandas) for data processing, Tableau for visualization, and SQL for data querying.</li>
+                </ul>
+            </div>
+
+            <div>
+                <span class="label">Results & Impact</span>
+            </div>
+            <div class="text-block">
+                <p>The visa sponsor job dashboard successfully provides international students with an efficient tool for finding relevant job opportunities, significantly improving their job search experience.</p>
+                
+                <div class="project-image-container" style="margin: 40px 0;">
+                    <img src="../assets/visa-dashboard-preview.png" alt="Visa Sponsor Dashboard Preview" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
+                    <p style="font-size: 14px; color: #888; margin-top: 10px; text-align: center;">Sample of the interactive visa sponsor dashboard showing key metrics, company data, and geographical distribution</p>
+                </div>
+                <div class="btn-group">
+                    <a href="https://careers.utah.edu/internationalstudents/" target="_blank" class="btn">View Live Site</a>
+                </div>
+            </div>
         </div>
-        <a href="https://careers.utah.edu/internationalstudents/" target="_blank" class="btn btn-primary">
-          <i class="fas fa-external-link-alt"></i>
-          Site
-        </a>
-      </div>
-    </section>
+    </div>
 
-    <!-- Project Content -->
-    <main class="project-content">
-      <!-- Overview Section -->
-      <section class="content-section">
-        <h2>Project Overview</h2>
-        <p>Developed and deployed an interactive dashboard specifically designed to support international students in finding visa-sponsored job opportunities. The dashboard features dynamic filters by visa type, job title, and location, using EDA-processed raw datasets to provide comprehensive job search capabilities.</p>
-        
-        <div class="tech-tags">
-          <span class="tech-tag">Python</span>
-          <span class="tech-tag">EDA</span>
-          <span class="tech-tag">Data Visualization</span>
-          <span class="tech-tag">Interactive Dashboard</span>
-          <span class="tech-tag">Job Search</span>
-          <span class="tech-tag">Visa Sponsorship</span>
-        </div>
-      </section>
-
-      <!-- Problem Statement -->
-      <section class="content-section">
-        <h2>Problem Statement</h2>
-        <p>International students face significant challenges in finding job opportunities that offer visa sponsorship. Traditional job search platforms lack specialized filtering for visa sponsorship requirements, making it difficult for international students to identify relevant opportunities and navigate the complex job market.</p>
-      </section>
-
-      <!-- Solution -->
-      <section class="content-section">
-        <h2>Solution</h2>
-        <p>Built a comprehensive interactive dashboard that processes job data and provides specialized filtering capabilities for visa-sponsored positions, helping international students find relevant opportunities efficiently.</p>
-        
-        <h3>Key Features</h3>
-        <ul>
-          <li>Interactive dashboard with dynamic filtering capabilities</li>
-          <li>Filter by visa type, job title, and location</li>
-          <li>EDA-processed raw datasets for accurate job matching</li>
-          <li>Comprehensive job search functionality</li>
-          <li>User-friendly interface for international students</li>
-          <li>Real-time data updates and filtering</li>
-        </ul>
-      </section>
-
-      <!-- Technical Implementation -->
-      <section class="content-section">
-        <h2>Technical Implementation</h2>
-        <p>The dashboard implements a sophisticated data processing pipeline that combines exploratory data analysis with interactive visualization to provide comprehensive job search capabilities.</p>
-        
-        <h3>Data Processing Pipeline</h3>
-        <ul>
-          <li>Raw dataset collection and preprocessing</li>
-          <li>Exploratory data analysis (EDA) for data insights</li>
-          <li>Data cleaning and standardization</li>
-          <li>Feature engineering for job categorization</li>
-          <li>Interactive filtering and search implementation</li>
-          <li>Real-time data visualization and updates</li>
-        </ul>
-
-        <h3>Dashboard Features</h3>
-        <ul>
-          <li>Dynamic filtering by multiple criteria</li>
-          <li>Interactive data visualization</li>
-          <li>Responsive design for all devices</li>
-          <li>Real-time search and filtering</li>
-          <li>User-friendly interface design</li>
-          <li>Comprehensive job information display</li>
-        </ul>
-
-        <h3>Key Technologies</h3>
-        <ul>
-          <li>Python for data processing and analysis</li>
-          <li>EDA tools for data exploration</li>
-          <li>Interactive visualization libraries</li>
-          <li>Web technologies for dashboard interface</li>
-          <li>Data processing and filtering algorithms</li>
-          <li>User interface design and development</li>
-        </ul>
-      </section>
-
-      <!-- Results -->
-      <section class="content-section">
-        <h2>Results & Impact</h2>
-        <p>The visa sponsor job dashboard successfully provides international students with an efficient tool for finding relevant job opportunities, significantly improving their job search experience.</p>
-        
-        <div style="margin: 2rem 0; text-align: center;">
-          <img src="../assets/img/projects/visa-dashboard-sample.png" alt="Visa Sponsor Dashboard Sample" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);" />
-          <p style="margin-top: 1rem; color: var(--text-secondary); font-style: italic;">Sample of the interactive visa sponsor dashboard showing key metrics, company data, and geographical distribution</p>
-        </div>
-        
-      </section>
-
-      <!-- Challenges & Learnings -->
-      <section class="content-section">
-        <h2>Challenges & Learnings</h2>
-        <p>Building an effective job search dashboard presented challenges in data processing, user interface design, and creating meaningful filtering capabilities for complex job requirements.</p>
-        
-        <h3>Key Learnings</h3>
-        <ul>
-          <li>Importance of EDA in understanding job market data</li>
-          <li>Value of interactive filtering in user experience</li>
-          <li>Significance of user-centered design in specialized tools</li>
-          <li>Importance of data quality in job matching</li>
-        </ul>
-      </section>
-
-      <!-- Future Improvements -->
-      <section class="content-section">
-        <h2>Future Improvements</h2>
-        <p>Future enhancements could include machine learning-based job matching, integration with job boards, automated notifications for new opportunities, and advanced analytics for job market trends.</p>
-      </section>
-    </main>
-
-    <script src="../assets/js/jquery.min.js"></script>
-    <script src="../assets/js/browser.min.js"></script>
-    <script src="../assets/js/breakpoints.min.js"></script>
-    <script src="../assets/js/util.js"></script>
-    <script src="../assets/js/main.js"></script>
-
-    <script>
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-            target.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
-          }
-        });
-      });
-
-      // Add loading animation
-      document.addEventListener('DOMContentLoaded', function() {
-        document.body.classList.remove('is-preload');
-      });
-    </script>
-  </body>
+</body>
 </html>
