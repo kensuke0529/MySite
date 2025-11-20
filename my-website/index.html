@@ -253,6 +253,274 @@
         }
         .footer-links a:hover { color: var(--text-color); }
 
+        /* --- NEW HERO SECTION STYLES --- */
+        .hero {
+            padding: 60px 0; /* Reduced from 100px */
+            border-bottom: 1px solid var(--line-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Left Column */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hello-badge {
+            background-color: #fcece8;
+            color: #000;
+            padding: 8px 24px; /* Reduced padding */
+            font-size: 20px; /* Reduced from 24px */
+            font-weight: 700;
+            display: inline-block;
+            transform: rotate(-5deg);
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            margin-bottom: 30px; /* Reduced margin */
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .hello-badge::after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            height: 2px;
+            background: rgba(0,0,0,0.1);
+            border-radius: 2px;
+        }
+
+        .my-name-label {
+            font-size: 16px;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .hero-name {
+            font-size: 6vw; /* Reduced from 8vw */
+            line-height: 0.9;
+            font-weight: 700;
+            color: #3b6db5; /* Blue from reference */
+            text-transform: uppercase;
+            margin-bottom: 20px; /* Reduced margin */
+            letter-spacing: -2px;
+        }
+
+        .hero-bio {
+            font-size: 18px;
+            color: #ccc;
+            max-width: 500px;
+            margin-bottom: 50px;
+            line-height: 1.6;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .btn-download {
+            padding: 15px 30px;
+            border: 1px solid #a06cd5; /* Purple from reference */
+            color: var(--text-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-download:hover {
+            background-color: #a06cd5;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .social-links-hero a {
+            font-weight: 600;
+            text-decoration: underline;
+            margin-right: 20px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Right Column - Photo Card */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .photo-card {
+            background: #fff;
+            padding: 12px 12px 30px 12px; /* Reduced padding */
+            transform: rotate(3deg);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            max-width: 320px; /* Reduced from 400px */
+            width: 100%;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-card:hover {
+            transform: rotate(0deg) scale(1.02);
+            z-index: 10;
+        }
+
+        .photo-frame {
+            background: #000;
+            width: 100%;
+            aspect-ratio: 4/5;
+            overflow: hidden;
+            filter: grayscale(100%);
+            position: relative;
+        }
+        
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-meta {
+            margin-top: 15px;
+            color: #000;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .card-name {
+            font-weight: 800;
+            font-size: 18px;
+            line-height: 1.2;
+            display: block;
+            text-transform: uppercase;
+        }
+
+        .card-role {
+            font-size: 10px;
+            color: #666;
+            text-transform: uppercase;
+            margin-top: 4px;
+            display: block;
+        }
+
+        .card-year {
+            font-weight: 700;
+            font-size: 18px;
+            color: #ccc;
+        }
+
+        /* Paperclip */
+        .paperclip {
+            position: absolute;
+            top: 40px;
+            right: -20px;
+            width: 60px;
+            height: 120px;
+            border: 4px solid #aaa;
+            border-radius: 20px;
+            z-index: 20;
+            transform: rotate(15deg);
+            /* Simplified CSS paperclip shape */
+            border-bottom: none;
+            border-left: none;
+            opacity: 0.8;
+        }
+        
+        /* Corner Accents */
+        .corner-bracket {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-color: #a06cd5; /* Purple */
+            border-style: solid;
+            opacity: 0.7;
+        }
+        
+        .cb-tl { top: -20px; left: 0; border-width: 1px 0 0 1px; }
+        .cb-tr { top: -20px; right: 0; border-width: 1px 1px 0 0; }
+        .cb-bl { bottom: -20px; left: 0; border-width: 0 0 1px 1px; }
+        .cb-br { bottom: -20px; right: 0; border-width: 0 1px 1px 0; }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: rotate(-5deg) translateY(0); }
+            50% { transform: rotate(-5deg) translateY(-10px); }
+        }
+
+        /* --- FILTER STYLES --- */
+        .filter-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 8px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--text-color);
+            color: var(--text-color);
+        }
+
+        .filter-btn.active {
+            background-color: #3b6db5; /* Blue accent */
+            border-color: #3b6db5;
+            color: #fff;
+        }
+
+        .project-item.hidden {
+            display: none;
+        }
+
+        /* --- BACKGROUND ANIMATION --- */
+        #hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.3; /* Subtle effect */
+            pointer-events: none;
+        }
+
     </style>
     <style>
         /* Mobile Responsiveness Updates */
@@ -265,11 +533,13 @@
             nav { flex-direction: column; gap: 20px; padding: 30px 0; }
             .nav-links { gap: 20px; font-size: 14px; }
 
-            /* Hero */
-            h1 { font-size: 36px; margin-bottom: 20px; }
-            .hero { padding: 80px 0 60px 0; }
-            .hero-sub { font-size: 18px; margin-bottom: 40px; }
-            .hero-meta { flex-direction: column; gap: 10px; font-size: 12px; }
+            /* Hero Mobile */
+            .hero-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+            .hero-name { font-size: 15vw; }
+            .hero-actions { justify-content: center; }
+            .photo-card { transform: rotate(0deg); margin: 0 auto; }
+            .corner-bracket { display: none; }
+            .hero-bio { margin: 0 auto 40px auto; }
 
             /* Projects */
             .project-item {
@@ -307,18 +577,66 @@
         </nav>
 
         <!-- Hero Section -->
+        <!-- Hero Section -->
         <header class="hero">
-            <h1>
-                Data & AI Professional.<br>
-                Building intelligent systems<br>
-                from Cloud to Code.
-            </h1>
-            <p class="hero-sub">
-                Passionate about solving real-world problems using data. Specializing in end-to-end solutions from cloud-native ETL pipelines to interactive dashboards and machine learning systems.
-            </p>
-            <div class="hero-meta">
-                <span>Based in Salt Lake City, UT</span>
-                <span>Open to Work (2025-2026)</span>
+            <canvas id="hero-bg"></canvas>
+            <div class="hero-grid">
+                <!-- Left Content -->
+                <div class="hero-content">
+                    <div class="corner-bracket cb-tl"></div>
+                    
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <div class="hello-badge">hello!</div>
+                    </div>
+
+                    <span class="my-name-label">My Name:</span>
+                    <h1 class="hero-name">
+                        Kensuke<br>Umakoshi
+                    </h1>
+                    
+                    <p class="hero-bio">
+                        Data & AI Professional. Building intelligent systems from Cloud to Code. 
+                        Passionate about solving real-world problems using data, from cloud-native ETL pipelines to interactive dashboards.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="https://drive.google.com/file/d/1IDUlWq66mZY-jh0URw2VH39gu_FnccR9/view?usp=sharing" target="_blank" class="btn-download">
+                            Download CV ↗
+                        </a>
+                        <div class="social-links-hero">
+                            <a href="https://www.linkedin.com/in/umakoshi-kensuke/" target="_blank">LinkedIn</a>
+                            <a href="https://github.com/kensuke0529" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+
+                    <div class="corner-bracket cb-bl"></div>
+                </div>
+
+                <!-- Right Visual -->
+                <div class="hero-visual">
+                    <div class="corner-bracket cb-tr"></div>
+                    
+                    <div class="photo-card">
+                        <!-- Paperclip Graphic (SVG) -->
+                        <svg class="paperclip" width="50" height="100" viewBox="0 0 50 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: 20px; right: -15px; z-index: 20; transform: rotate(10deg); width: 40px;">
+                            <path d="M10 20 V 80 A 15 15 0 0 0 40 80 V 10" stroke="#888" stroke-width="3" stroke-linecap="round" />
+                            <path d="M40 10 V 80 A 15 15 0 0 1 10 80 V 20" stroke="rgba(0,0,0,0.1)" stroke-width="3" stroke-linecap="round" style="mix-blend-mode: multiply;" />
+                        </svg>
+
+                        <div class="photo-frame">
+                            <img src="assets/profile-pic.png" alt="Kensuke Umakoshi">
+                        </div>
+                        <div class="card-meta">
+                            <div>
+                                <span class="card-name">Kensuke Umakoshi</span>
+                                <span class="card-role">Data & AI Professional</span>
+                            </div>
+                            <span class="card-year">2025</span>
+                        </div>
+                    </div>
+
+                    <div class="corner-bracket cb-br"></div>
+                </div>
             </div>
         </header>
 
@@ -326,71 +644,83 @@
         <section id="projects" class="section">
             <span class="section-label">Selected Projects</span>
             
+            <!-- Filter Buttons -->
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="Python">Python</button>
+                <button class="filter-btn" data-filter="SQL">SQL</button>
+                <button class="filter-btn" data-filter="AI">AI</button>
+                <button class="filter-btn" data-filter="DS">DS</button>
+                <button class="filter-btn" data-filter="ML">ML</button>
+                <button class="filter-btn" data-filter="DA">DA</button>
+                <button class="filter-btn" data-filter="Cloud">Cloud</button>
+            </div>
+
             <div class="project-list">
-            <div class="project-item" onclick="window.location.href='projects/visa-sponsor-dashboard.html'">
+            <div class="project-item" data-category="Python DA DS" onclick="window.location.href='projects/visa-sponsor-dashboard.html'">
                 <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=200&h=200&fit=crop" alt="Dashboard" class="project-thumb">
                 <div class="project-title">Visa Sponsor Job Dashboard</div>
                 <div class="project-tags">Python • Streamlit • Data Viz</div>
                 <div class="arrow">→</div>
             </div>
 
-            <div class="project-item" onclick="window.location.href='projects/website-auto-deploy.html'">
+            <div class="project-item" data-category="Cloud" onclick="window.location.href='projects/website-auto-deploy.html'">
                 <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=200&h=200&fit=crop" alt="Cloud" class="project-thumb">
                 <div class="project-title">Static Website Auto-Deploy</div>
                 <div class="project-tags">AWS S3 • Terraform • GitHub Actions</div>
                 <div class="arrow">→</div>
             </div>
 
-            <div class="project-item" onclick="window.location.href='projects/end-to-end-fraud-detection.html'">
+            <div class="project-item" data-category="ML AI Cloud Python" onclick="window.location.href='projects/end-to-end-fraud-detection.html'">
                 <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&h=200&fit=crop" alt="Fraud Detection" class="project-thumb">
                 <div class="project-title">End-to-End Fraud Detection</div>
                 <div class="project-tags">ML Pipeline • Docker • API</div>
                 <div class="arrow">→</div>
             </div>
 
-            <div class="project-item" onclick="window.location.href='projects/cms-medicare-prediction.html'">
+            <div class="project-item" data-category="AI ML Python DS" onclick="window.location.href='projects/cms-medicare-prediction.html'">
                 <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=200&h=200&fit=crop" alt="Medical" class="project-thumb">
                 <div class="project-title">CMS Medicare Prediction</div>
                 <div class="project-tags">Healthcare AI • Predictive Modeling</div>
                 <div class="arrow">→</div>
             </div>
 
-            <div class="project-item" onclick="window.location.href='projects/hybrid-movie-recommendation.html'">
+            <div class="project-item" data-category="AI ML Python" onclick="window.location.href='projects/hybrid-movie-recommendation.html'">
                 <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=200&h=200&fit=crop" alt="Movies" class="project-thumb">
                 <div class="project-title">Hybrid Movie Recommendation</div>
                 <div class="project-tags">Recommender Systems • NLP</div>
                 <div class="arrow">→</div>
             </div>
 
-            <div class="project-item" onclick="window.location.href='projects/ai-news-analyst.html'">
+            <div class="project-item" data-category="AI Python" onclick="window.location.href='projects/ai-news-analyst.html'">
                 <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=200&h=200&fit=crop" alt="News" class="project-thumb">
                 <div class="project-title">AI News Analyst</div>
                 <div class="project-tags">LLM • News API • Automation</div>
                 <div class="arrow">→</div>
             </div>
 
-            <div class="project-item" onclick="window.location.href='projects/ai-study-agent.html'">
+            <div class="project-item" data-category="AI Python" onclick="window.location.href='projects/ai-study-agent.html'">
                 <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=200&h=200&fit=crop" alt="Study" class="project-thumb">
                 <div class="project-title">AI Study Assistant Agent</div>
                 <div class="project-tags">GenAI • Education • Chatbot</div>
                 <div class="arrow">→</div>
             </div>
 
-            <div class="project-item" onclick="window.location.href='projects/pet-breed-classifier.html'">
+            <div class="project-item" data-category="AI ML Python" onclick="window.location.href='projects/pet-breed-classifier.html'">
                 <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=200&h=200&fit=crop" alt="Pets" class="project-thumb">
                 <div class="project-title">Deep Learning Pet Breed Classifier</div>
                 <div class="project-tags">Computer Vision • CNN • PyTorch</div>
                 <div class="arrow">→</div>
             </div>
 
-            <div class="project-item" onclick="window.location.href='projects/food-delivery-analysis.html'">
+            <div class="project-item" data-category="SQL Python DA" onclick="window.location.href='projects/food-delivery-analysis.html'">
                 <img src="assets/food-delivery.jpg" alt="Food" class="project-thumb">
                 <div class="project-title">Food Delivery App Sales Analysis</div>
                 <div class="project-tags">Data Analysis • SQL • Python</div>
                 <div class="arrow">→</div>
             </div>
 
-            <div class="project-item" onclick="window.location.href='projects/banking-churn.html'">
+            <div class="project-item" data-category="DA ML Python DS" onclick="window.location.href='projects/banking-churn.html'">
                 <img src="assets/banking-churn-dashboard.png" alt="Banking" class="project-thumb">
                 <div class="project-title">Banking Churn Analysis</div>
                 <div class="project-tags">FinTech • Classification • EDA</div>
@@ -411,6 +741,18 @@
                     <ul class="role-desc">
                         <li>Mentor students in Python programming and machine learning concepts.</li>
                         <li>Facilitate clear communication of technical results to help students develop strong analytical and data storytelling skills.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="date">Feb 2025 – July 2025</div>
+                <div class="role-info">
+                    <h3>Data Engineering & Analytics Project</h3>
+                    <span class="company">U Career Success, University of Utah | Salt Lake City, UT</span>
+                    <ul class="role-desc">
+                        <li>Drove end-to-end development of university-wide visa sponsor job dashboard serving 1,000+ international students: gathered requirements from career coaches, built automated quarterly ETL pipeline processing 240,000+ H-1B records (Python), and designed interactive Tableau visualizations with company, location, job type, and visa filters.</li>
+                        <li>Collaborated cross-functionally with career advisors and IT team to deploy and integrate dashboard into university career services website, replacing decentralized manual research with centralized H-1B Employer Data Hub access and streamlining sponsor search process.</li>
                     </ul>
                 </div>
             </div>
@@ -451,5 +793,135 @@
         </footer>
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const projectItems = document.querySelectorAll('.project-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    projectItems.forEach(item => {
+                        if (filterValue === 'all') {
+                            item.classList.remove('hidden');
+                        } else {
+                            const categories = item.getAttribute('data-category');
+                            if (categories && categories.includes(filterValue)) {
+                                item.classList.remove('hidden');
+                            } else {
+                                item.classList.add('hidden');
+                            }
+                        }
+                    });
+                });
+            });
+        });
+
+        // --- BACKGROUND ANIMATION SCRIPT ---
+        const canvas = document.getElementById('hero-bg');
+        const ctx = canvas.getContext('2d');
+        
+        let particlesArray;
+        
+        // Set canvas size
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight; // Or height of hero section if preferred, but window is safer for resize
+        
+        // Handle resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            init();
+        });
+        
+        // Particle class
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.directionX = (Math.random() * 0.4) - 0.2; // Slow movement
+                this.directionY = (Math.random() * 0.4) - 0.2;
+                this.size = Math.random() * 2 + 1;
+                this.color = '#888'; // Accent color
+            }
+            
+            // Method to draw individual particle
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+            
+            // Check particle position, check mouse position, move the particle, draw the particle
+            update() {
+                // Check if particle is still within canvas
+                if (this.x > canvas.width || this.x < 0) {
+                    this.directionX = -this.directionX;
+                }
+                if (this.y > canvas.height || this.y < 0) {
+                    this.directionY = -this.directionY;
+                }
+                
+                // Move particle
+                this.x += this.directionX;
+                this.y += this.directionY;
+                
+                // Draw particle
+                this.draw();
+            }
+        }
+        
+        // Create particle array
+        function init() {
+            particlesArray = [];
+            let numberOfParticles = (canvas.width * canvas.height) / 15000; // Density
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+        
+        // Check if particles are close enough to draw line
+        function connect() {
+            let opacityValue = 1;
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
+                    + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                    
+                    if (distance < (canvas.width/7) * (canvas.height/7)) {
+                        opacityValue = 1 - (distance/20000);
+                        ctx.strokeStyle = 'rgba(136, 136, 136,' + opacityValue + ')';
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+        
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+            }
+            connect();
+        }
+        
+        init();
+        animate();
+
+    </script>
 </body>
 </html>
