@@ -535,8 +535,8 @@
 
             /* Hero Mobile */
             .hero-grid { 
-                grid-template-columns: 1fr 0.8fr; 
-                gap: 20px; 
+                grid-template-columns: 7fr 3fr; /* 70% / 30% split */
+                gap: 15px; 
                 text-align: left;
                 grid-template-areas: 
                     "badge photo"
@@ -550,7 +550,7 @@
             }
 
             .hello-badge-wrapper { grid-area: badge; text-align: left !important; margin-bottom: 10px !important; }
-            .my-name-label { display: none; } /* Hide label on mobile to save space */
+            .my-name-label { display: none !important; } /* Hide label on mobile to save space */
             .hero-name { 
                 grid-area: name; 
                 font-size: 8vw; 
