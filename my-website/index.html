@@ -153,6 +153,14 @@
         .project-title {
             font-size: 32px;
             font-weight: 400;
+            margin-bottom: 5px;
+        }
+
+        .project-summary {
+            font-size: 14px;
+            color: var(--accent-color);
+            line-height: 1.4;
+            margin-bottom: 0;
         }
 
         .project-tags {
@@ -587,8 +595,9 @@
                 gap: 12px;
                 padding: 30px 0;
             }
-            .project-title { font-size: 24px; }
-            .project-tags { text-align: left; font-size: 12px; }
+            .project-title { font-size: 24px; margin-bottom: 8px; }
+            .project-summary { font-size: 14px; color: var(--accent-color); margin-bottom: 0; line-height: 1.4; }
+            .project-tags { text-align: right; font-size: 14px; color: var(--accent-color); }
             .arrow { display: none; }
 
             /* Experience */
@@ -697,72 +706,132 @@
             </div>
 
             <div class="project-list">
+            <div class="project-item" data-category="Python DA SQL AI" onclick="window.location.href='projects/ecommerce-rdms.html'">
+                <img src="assets/ecommerce-general.png" alt="E-Commerce Platform" class="project-thumb">
+                <div class="project-info">
+                    <div class="project-title">E-Commerce Marketplace Platform</div>
+                    <p class="project-summary">End-to-end data engineering platform with AI SQL generation and analytics.</p>
+                </div>
+                <div class="project-tags">Data Engineering • AI • SQL • FastAPI</div>
+                <div class="arrow">→</div>
+            </div>
+
+            <div class="project-item" data-category="AI Python GenAI" onclick="window.location.href='projects/customer-support-chatbot.html'">
+                <img src="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=200&h=200&fit=crop" alt="Customer Support AI" class="project-thumb">
+                <div class="project-info">
+                    <div class="project-title">AI Customer Support Agent</div>
+                    <p class="project-summary">AI-powered agent handling inquiries with policy-based responses and intelligent escalation.</p>
+                </div>
+                <div class="project-tags">GenAI • LangGraph • RAG</div>
+                <div class="arrow">→</div>
+            </div>
+
+            <div class="project-item" data-category="AI ML Python NLP" onclick="window.location.href='projects/service-ticket-classification.html'">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=200&h=200&fit=crop" alt="Ticket Classification" class="project-thumb">
+                <div class="project-info">
+                    <div class="project-title">Service Ticket Classification System</div>
+                    <p class="project-summary">Multi-level ticket classification system using BERT-based models to categorize service tickets with 97% accuracy.</p>
+                </div>
+                <div class="project-tags">AI • NLP • BERT • PyTorch</div>
+                <div class="arrow">→</div>
+            </div>
+
             <div class="project-item" data-category="Python DA DS" onclick="window.location.href='projects/visa-sponsor-dashboard.html'">
                 <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=200&h=200&fit=crop" alt="Dashboard" class="project-thumb">
-                <div class="project-title">Visa Sponsor Job Dashboard</div>
+                <div class="project-info">
+                    <div class="project-title">Visa Sponsor Job Dashboard</div>
+                    <p class="project-summary">Interactive dashboard visualizing H-1B visa data to help international students find sponsorship opportunities.</p>
+                </div>
                 <div class="project-tags">Python • Streamlit • Data Viz</div>
                 <div class="arrow">→</div>
             </div>
 
             <div class="project-item" data-category="Cloud" onclick="window.location.href='projects/website-auto-deploy.html'">
                 <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=200&h=200&fit=crop" alt="Cloud" class="project-thumb">
-                <div class="project-title">Static Website Auto-Deploy</div>
+                <div class="project-info">
+                    <div class="project-title">Static Website Auto-Deploy</div>
+                    <p class="project-summary">Automated CI/CD pipeline using AWS S3, Terraform, and GitHub Actions for seamless website deployment.</p>
+                </div>
                 <div class="project-tags">AWS S3 • Terraform • GitHub Actions</div>
                 <div class="arrow">→</div>
             </div>
 
             <div class="project-item" data-category="ML AI Cloud Python" onclick="window.location.href='projects/end-to-end-fraud-detection.html'">
                 <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&h=200&fit=crop" alt="Fraud Detection" class="project-thumb">
-                <div class="project-title">End-to-End Fraud Detection</div>
+                <div class="project-info">
+                    <div class="project-title">End-to-End Fraud Detection</div>
+                    <p class="project-summary">Real-time fraud detection system built with a scalable ML pipeline, Docker, and API integration.</p>
+                </div>
                 <div class="project-tags">ML Pipeline • Docker • API</div>
                 <div class="arrow">→</div>
             </div>
 
             <div class="project-item" data-category="AI ML Python DS" onclick="window.location.href='projects/cms-medicare-prediction.html'">
                 <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=200&h=200&fit=crop" alt="Medical" class="project-thumb">
-                <div class="project-title">CMS Medicare Prediction</div>
+                <div class="project-info">
+                    <div class="project-title">CMS Medicare Prediction</div>
+                    <p class="project-summary">Predictive model analyzing healthcare data to identify trends and optimize Medicare resource allocation.</p>
+                </div>
                 <div class="project-tags">Healthcare AI • Predictive Modeling</div>
                 <div class="arrow">→</div>
             </div>
 
             <div class="project-item" data-category="AI ML Python" onclick="window.location.href='projects/hybrid-movie-recommendation.html'">
                 <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=200&h=200&fit=crop" alt="Movies" class="project-thumb">
-                <div class="project-title">Hybrid Movie Recommendation</div>
+                <div class="project-info">
+                    <div class="project-title">Hybrid Movie Recommendation</div>
+                    <p class="project-summary">Personalized movie recommendation engine combining collaborative filtering and content-based NLP techniques.</p>
+                </div>
                 <div class="project-tags">Recommender Systems • NLP</div>
                 <div class="arrow">→</div>
             </div>
 
             <div class="project-item" data-category="AI Python" onclick="window.location.href='projects/ai-news-analyst.html'">
                 <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=200&h=200&fit=crop" alt="News" class="project-thumb">
-                <div class="project-title">AI News Analyst</div>
+                <div class="project-info">
+                    <div class="project-title">AI News Analyst</div>
+                    <p class="project-summary">Automated news aggregation and analysis tool using LLMs to extract key insights from global headlines.</p>
+                </div>
                 <div class="project-tags">LLM • News API • Automation</div>
                 <div class="arrow">→</div>
             </div>
 
             <div class="project-item" data-category="AI Python" onclick="window.location.href='projects/ai-study-agent.html'">
                 <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=200&h=200&fit=crop" alt="Study" class="project-thumb">
-                <div class="project-title">AI Study Assistant Agent</div>
+                <div class="project-info">
+                    <div class="project-title">AI Study Assistant Agent</div>
+                    <p class="project-summary">Intelligent chatbot designed to assist students with study schedules, resource finding, and Q&A.</p>
+                </div>
                 <div class="project-tags">GenAI • Education • Chatbot</div>
                 <div class="arrow">→</div>
             </div>
 
-            <div class="project-item" data-category="AI ML Python" onclick="window.location.href='projects/pet-breed-classifier.html'">
+            <div class="project-item" data-category="AI ML Python" onclick="window.location.href='projects/pet-breed-classifier.html'" style="display: none;">
                 <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=200&h=200&fit=crop" alt="Pets" class="project-thumb">
-                <div class="project-title">Deep Learning Pet Breed Classifier</div>
+                <div class="project-info">
+                    <div class="project-title">Deep Learning Pet Breed Classifier</div>
+                    <p class="project-summary">Computer vision model capable of accurately identifying pet breeds from images using CNNs.</p>
+                </div>
                 <div class="project-tags">Computer Vision • CNN • PyTorch</div>
                 <div class="arrow">→</div>
             </div>
 
             <div class="project-item" data-category="SQL Python DA" onclick="window.location.href='projects/food-delivery-analysis.html'">
                 <img src="assets/food-delivery.jpg" alt="Food" class="project-thumb">
-                <div class="project-title">Food Delivery App Sales Analysis</div>
+                <div class="project-info">
+                    <div class="project-title">Food Delivery App Sales Analysis</div>
+                    <p class="project-summary">Comprehensive SQL and Python analysis of sales data to drive business insights for a food delivery platform.</p>
+                </div>
                 <div class="project-tags">Data Analysis • SQL • Python</div>
                 <div class="arrow">→</div>
             </div>
 
             <div class="project-item" data-category="DA ML Python DS" onclick="window.location.href='projects/banking-churn.html'">
-                <img src="assets/banking-churn-dashboard.png" alt="Banking" class="project-thumb">
-                <div class="project-title">Banking Churn Analysis</div>
+                <img src="assets/banking-churn-general.png" alt="Banking" class="project-thumb">
+                <div class="project-info">
+                    <div class="project-title">Banking Churn Analysis</div>
+                    <p class="project-summary">Data-driven analysis identifying key factors contributing to customer churn in the banking sector.</p>
+                </div>
                 <div class="project-tags">FinTech • Classification • EDA</div>
                 <div class="arrow">→</div>
             </div>

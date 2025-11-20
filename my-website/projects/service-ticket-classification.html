@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banking Churn Analysis | Kensuke Umakoshi</title>
+    <title>Service Ticket Classification System | Kensuke Umakoshi</title>
     <style>
         :root { --bg-color: #0f0f0f; --text-color: #f0f0f0; --accent-color: #888; --line-color: #333; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -22,6 +22,8 @@
         .content-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 60px; padding-bottom: 100px; }
         .label { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-color); display: block; margin-bottom: 20px; }
         .text-block p { font-size: 18px; margin-bottom: 30px; color: #ccc; }
+        .text-block ul { margin-bottom: 30px; padding-left: 20px; color: #ccc; }
+        .text-block li { margin-bottom: 10px; font-size: 18px; }
         .btn-group { display: flex; gap: 20px; margin-top: 40px; }
         .btn { border: 1px solid var(--line-color); padding: 12px 28px; border-radius: 50px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
         .btn:hover { background: #fff; color: #000; }
@@ -56,15 +58,15 @@
             <a href="../index.html" class="back-link">← Back to Projects</a>
         </nav>
         <header class="project-header">
-            <h1>Banking Churn Analysis</h1>
+            <h1>Service Ticket Classification System</h1>
             <div class="project-meta">
-                <span>Random Forest</span>
-                <span>Data Visualization</span>
-                <span>Predictive Modeling</span>
+                <span>AI & NLP</span>
+                <span>BERT</span>
+                <span>PyTorch</span>
             </div>
         </header>
         <div class="hero-image-container">
-            <img src="../assets/banking-churn-general.png" alt="Banking Data" class="hero-image">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&h=800&fit=crop" alt="Ticket Classification" class="hero-image">
         </div>
         <div class="content-grid">
             <div>
@@ -72,32 +74,37 @@
             </div>
             <div class="text-block">
                 <p>
-                    This project focuses on analyzing customer churn in the banking sector using a comprehensive dataset of 10,000 bank customers. The analysis combines exploratory data analysis (EDA) with machine learning techniques to identify key factors contributing to customer attrition and develop predictive models for churn prevention.
+                    This project implements a multi-level ticket classification system using BERT-based models to categorize service tickets into main categories and hardware subcategories. The system was designed to automate IT support ticket routing and improve response times, achieving 97.78% accuracy on main classification and 95.56% on hardware subcategories.
                 </p>
             </div>
 
             <div>
-                <span class="label">Problem Statement</span>
+                <span class="label">Dataset & Model</span>
             </div>
             <div class="text-block">
                 <p>
-                    Customer churn is a critical issue in the banking industry, with significant financial implications. Understanding why customers leave and predicting churn risk is essential for developing effective retention strategies and maintaining customer satisfaction.
-                </p>
-            </div>
-
-            <div>
-                <span class="label">Solution</span>
-            </div>
-            <div class="text-block">
-                <p>
-                    Developed a comprehensive churn analysis framework that combines statistical analysis with machine learning to identify at-risk customers and provide actionable insights for retention strategies.
+                    The system was trained on a dataset of 1,200 tickets with text lengths ranging from 36 to 181 characters. The data was split into 70% training, 15% validation, and 15% testing sets.
                 </p>
                 <ul>
-                    <li>Interactive Excel dashboard for data visualization and analysis</li>
-                    <li>Comprehensive exploratory data analysis (EDA) to identify patterns</li>
-                    <li>Machine learning models for churn prediction</li>
-                    <li>Statistical analysis of customer demographics and behavior</li>
-                    <li>Actionable recommendations for customer retention</li>
+                    <li><strong>Main Categories:</strong> Hardware, Network, Database, Software, Inquiry/Help</li>
+                    <li><strong>Hardware Subcategories:</strong> CPU, Disk, Keyboard, Memory, Monitor, Mouse</li>
+                    <li><strong>Base Model:</strong> BERT-base-uncased</li>
+                    <li><strong>Framework:</strong> PyTorch with Transformers library</li>
+                    <li><strong>Tokenization:</strong> Max length 128 tokens</li>
+                </ul>
+            </div>
+
+            <div>
+                <span class="label">Key Findings</span>
+            </div>
+            <div class="text-block">
+                <p>
+                    The model demonstrated excellent overall performance with both classification tasks achieving >95% accuracy. Early stopping effectively prevented overfitting, leading to strong generalization on the test set.
+                </p>
+                <ul>
+                    <li><strong>Strengths:</strong> High precision and recall across most categories.</li>
+                    <li><strong>Areas for Improvement:</strong> The 'Software' category had the lowest F1-score (0.93), often confused with Hardware/Network issues.</li>
+                    <li><strong>Business Impact:</strong> 97.78% accuracy enables reliable automated ticket routing, significantly reducing manual classification time.</li>
                 </ul>
             </div>
 
@@ -106,34 +113,14 @@
             </div>
             <div class="text-block">
                 <p>
-                    The project utilized a multi-faceted approach combining traditional analytics with modern machine learning techniques to provide comprehensive insights into customer churn patterns.
+                    The project was implemented using PyTorch and the Hugging Face Transformers library. The BERT-base-uncased model was fine-tuned for both main category and hardware subcategory classification tasks.
                 </p>
                 <ul>
-                    <li><strong>Data Analysis Process:</strong> Data cleaning, EDA, Statistical analysis, Feature engineering, Model development.</li>
-                    <li><strong>Key Technologies:</strong> Python, Excel, Pandas, Scikit-learn, Matplotlib/Seaborn.</li>
-                </ul>
-            </div>
-
-            <div>
-                <span class="label">Results & Impact</span>
-            </div>
-            <div class="text-block">
-                <p>The analysis revealed significant insights into customer churn patterns and developed predictive models with strong performance metrics.</p>
-                
-                <div class="project-image-container" style="margin: 40px 0;">
-                    <img src="../assets/banking-churn-dashboard.png" alt="Banking Churn Dashboard" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
-                    <p style="font-size: 14px; color: #888; margin-top: 10px; text-align: center;">Interactive Excel dashboard used for analyzing customer churn patterns</p>
-                </div>
-
-                <h3>Key Findings</h3>
-                <ul>
-                    <li>Identified key demographic factors contributing to churn</li>
-                    <li>Developed predictive models with high accuracy</li>
-                    <li>Created actionable recommendations for retention strategies</li>
-                    <li>Built interactive dashboards for ongoing monitoring</li>
+                    <li><strong>Technologies:</strong> PyTorch, Hugging Face Transformers, BERT, Python.</li>
+                    <li><strong>Training:</strong> AdamW optimizer (lr=2e-5), Early stopping (patience=5).</li>
                 </ul>
                 <div class="btn-group">
-                    <a href="https://github.com/kensuke0529/Banking-Churn-project" target="_blank" class="btn">View Code</a>
+                    <a href="#" class="btn">View Code (Coming Soon)</a>
                 </div>
             </div>
         </div>
