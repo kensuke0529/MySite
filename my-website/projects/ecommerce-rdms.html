@@ -49,6 +49,28 @@
             .btn-group { flex-direction: column; gap: 15px; }
             .btn { text-align: center; display: block; }
         }
+        
+        /* New Image Styles */
+        .project-image-container { 
+            margin: 40px 0; 
+            border-radius: 8px; 
+            overflow: hidden; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2); 
+            background: #1a1a1a;
+        }
+        
+        .project-image-container img { 
+            width: 100%; 
+            height: auto; 
+            display: block; 
+            object-fit: cover;
+        }
+        
+        /* For images that are natively huge, we might want to constrain them if they look too big */
+        .project-image-container.constrained img {
+            max-width: 800px; /* Optional: limit width if needed */
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>
@@ -89,6 +111,12 @@
                     <li>Automatic error handling and retry logic with LangGraph.</li>
                     <li>Result validation and AI-powered insight generation.</li>
                 </ul>
+                    <li>Result validation and AI-powered insight generation.</li>
+                </ul>
+                <div class="project-image-container" style="margin: 30px 0;">
+                    <img src="../assets/rdms-sql-generator.png" alt="SQL Generator Interface">
+                    <span class="caption">AI-Powered SQL Generator Interface</span>
+                </div>
 
                 <p><strong>Customer Service Chatbot:</strong></p>
                 <ul>
@@ -96,6 +124,12 @@
                     <li>Direct database integration for order and product lookups.</li>
                     <li>Multi-turn conversation capability with history tracking.</li>
                 </ul>
+                    <li>Multi-turn conversation capability with history tracking.</li>
+                </ul>
+                <div class="project-image-container" style="margin: 30px 0;">
+                    <img src="../assets/rdms-chatbot.jpg" alt="Chatbot Interface">
+                    <span class="caption">E-Commerce Chatbot Interface</span>
+                </div>
 
                 <p><strong>Data Engineering & Analytics:</strong></p>
                 <ul>
@@ -113,7 +147,7 @@
                     <strong>Database:</strong> Normalized schema handling Customers, Sellers, Products, Orders, Payments, and Logistics.
                 </p>
                 <div class="project-image-container" style="margin: 40px 0;">
-                    <img src="../assets/ecommerce-architecture.png" alt="System Architecture" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
+                    <img src="../assets/rdms-schema.png" alt="System Architecture" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
                     <p style="font-size: 14px; color: #888; margin-top: 10px; text-align: center;">
                         <strong>System Architecture:</strong> The platform integrates a PostgreSQL database with a Python-based runner and an AI Agent. The AI Agent generates SQL queries, which are executed by the runner, and the results are analyzed and returned as reports.
                     </p>
@@ -131,7 +165,7 @@
                     The chatbot uses a multi-tool architecture to handle various customer requests, from policy questions to order lookups.
                 </p>
                 <div class="project-image-container" style="margin: 40px 0;">
-                    <img src="../assets/ecommerce-chatbot-flow.png" alt="Chatbot Flow" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
+                    <img src="../assets/rdms-chatbot-flow.png" alt="Chatbot Flow" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
                     <p style="font-size: 14px; color: #888; margin-top: 10px; text-align: center;">
                         <strong>Chatbot Logic Flow:</strong> The AI Assistant processes user requests and decides whether to call tools (like Order History or Policy Search). It executes the necessary tools and generates a final response based on the tool results.
                     </p>

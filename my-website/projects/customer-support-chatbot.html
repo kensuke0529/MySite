@@ -141,9 +141,65 @@
                     <li><strong>LLM:</strong> Prompt engineering for classification and response generation.</li>
                 </ul>
                 <div class="btn-group">
-                    <a href="https://customer-support-jnyyddv2u-kensuke0529s-projects.vercel.app/" target="_blank" class="btn">Live Demo</a>
                     <a href="https://github.com/kensuke0529/customer_support_chatbot" target="_blank" class="btn">View Code</a>
                 </div>
+            </div>
+
+            <div>
+                <span class="label">Interactive Demo</span>
+            </div>
+            <div class="text-block">
+                <p>
+                    Try the live agent below. It is running on AWS App Runner and connects to the vector database for policy retrieval.
+                </p>
+                
+                <!-- Embedded Chatbot Container -->
+                <div id="chatbot-demo-container" style="width: 100%; height: 600px; border: 1px solid var(--line-color); border-radius: 12px; overflow: hidden; background: #fff; position: relative;">
+                    <div id="chatbot-loading" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #f9fafb; color: #666;">
+                        Connecting to Agent...
+                    </div>
+                    <div id="chatbot-error" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; flex-direction: column; align-items: center; justify-content: center; background: #f9fafb; padding: 20px; text-align: center;">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 15px;">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="12"></line>
+                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                        <h4 style="color: #111; margin-bottom: 10px; font-size: 18px;">System Unavailable</h4>
+                        <p style="color: #666; font-size: 14px;">The demo service is currently paused to save resources. Please check the GitHub repository for code and documentation.</p>
+                    </div>
+                    <iframe id="chatbot-frame" src="" style="width: 100%; height: 100%; border: none; display: none;" allow="microphone"></iframe>
+                </div>
+
+                <script>
+                    (function() {
+                        const CHATBOT_URL = 'https://zmnpezgene.us-east-1.awsapprunner.com/';
+                        const container = document.getElementById('chatbot-demo-container');
+                        const loading = document.getElementById('chatbot-loading');
+                        const error = document.getElementById('chatbot-error');
+                        const iframe = document.getElementById('chatbot-frame');
+
+                        async function initChatbot() {
+                            try {
+                                // Health check
+                                await fetch(CHATBOT_URL, { method: 'HEAD', mode: 'no-cors' });
+                                
+                                // If successful (or opaque response), load iframe
+                                iframe.src = CHATBOT_URL;
+                                iframe.onload = () => {
+                                    loading.style.display = 'none';
+                                    iframe.style.display = 'block';
+                                };
+                            } catch (e) {
+                                console.error('Chatbot service unavailable:', e);
+                                loading.style.display = 'none';
+                                error.style.display = 'flex';
+                            }
+                        }
+
+                        // Initialize when element is in view (optional optimization) or immediately
+                        initChatbot();
+                    })();
+                </script>
             </div>
         </div>
     </div>
